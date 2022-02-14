@@ -6,7 +6,10 @@ import { BigbluebuttonMobile } from 'bigbluebutton-mobile-sdk';
 export default function App() {
   return (
     <View style={styles.container}>
-      <BigbluebuttonMobile color="#32a852" style={styles.box} />
+      <BigbluebuttonMobile
+        url="https://demo.bigbluebutton.org"
+        style={styles.box}
+      />
     </View>
   );
 }
