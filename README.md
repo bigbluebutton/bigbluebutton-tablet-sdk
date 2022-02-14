@@ -15,7 +15,7 @@ import { BigbluebuttonMobileSdkView } from "bigbluebutton-mobile-sdk";
 
 // ...
 
-<BigbluebuttonMobileSdkView color="tomato" />
+<BigbluebuttonMobileSdkView url="https://demo.bigbluebutton.org" />
 ```
 
 ## Contributing
