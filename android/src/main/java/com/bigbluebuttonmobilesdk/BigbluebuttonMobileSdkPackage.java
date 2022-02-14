@@ -17,6 +17,6 @@ public class BigbluebuttonMobileSdkPackage implements ReactPackage {
 
     @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
-        return Arrays.<ViewManager>asList(new BigbluebuttonMobileSdkViewManager());
+        return Arrays.<ViewManager>asList(new BigbluebuttonMobileManager());
     }
 }

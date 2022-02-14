@@ -1,12 +1,12 @@
 import * as React from 'react';
 
 import { StyleSheet, View } from 'react-native';
-import { BigbluebuttonMobileSdkView } from 'bigbluebutton-mobile-sdk';
+import { BigbluebuttonMobile } from 'bigbluebutton-mobile-sdk';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <BigbluebuttonMobileSdkViewManager color="#32a852" style={styles.box} />
+      <BigbluebuttonMobile color="#32a852" style={styles.box} />
     </View>
   );
 }

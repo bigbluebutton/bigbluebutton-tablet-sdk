@@ -1,12 +1,12 @@
-@objc(BigbluebuttonMobileSdkViewManager)
-class BigbluebuttonMobileSdkViewManager: RCTViewManager {
+@objc(BigbluebuttonMobileManager)
+class BigbluebuttonMobileManager: RCTViewManager {
 
-  override func view() -> (BigbluebuttonMobileSdkView) {
-    return BigbluebuttonMobileSdkView()
+  override func view() -> (BigbluebuttonMobile) {
+    return BigbluebuttonMobile()
   }
 }
 
-class BigbluebuttonMobileSdkView : UIView {
+class BigbluebuttonMobile : UIView {
 
   @objc var color: String = "" {
     didSet {

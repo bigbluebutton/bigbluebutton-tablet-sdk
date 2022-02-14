@@ -9,8 +9,8 @@ import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
 
-public class BigbluebuttonMobileSdkViewManager extends SimpleViewManager<View> {
-    public static final String REACT_CLASS = "BigbluebuttonMobileSdkView";
+public class BigbluebuttonMobileManager extends SimpleViewManager<View> {
+    public static final String REACT_CLASS = "BigbluebuttonMobile";
 
     @Override
     @NonNull

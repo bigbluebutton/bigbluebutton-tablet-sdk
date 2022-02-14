@@ -14,11 +14,11 @@ npm install bigbluebutton-mobile-sdk
 ## Usage
 
 ```js
-import { BigbluebuttonMobileSdkView } from "bigbluebutton-mobile-sdk";
+import { BigBlueButtonMobile } from "bigbluebutton-mobile-sdk";
 
 // ...
 
-<BigbluebuttonMobileSdkView url="https://demo.bigbluebutton.org" />
+<BigBlueButtonMobile url="https://demo.bigbluebutton.org" />
 ```
 
 ## Contributing

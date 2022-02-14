@@ -16,9 +16,9 @@ type BigbluebuttonMobileSdkProps = {
   style: ViewStyle;
 };
 
-const ComponentName = 'BigbluebuttonMobileSdkView';
+const ComponentName = 'BigbluebuttonMobile';
 
-export const BigbluebuttonMobileSdkView =
+export const BigbluebuttonMobile =
   UIManager.getViewManagerConfig(ComponentName) != null
     ? requireNativeComponent<BigbluebuttonMobileSdkProps>(ComponentName)
     : () => {
