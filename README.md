@@ -2,6 +2,9 @@
 
 This repository contains BigBlueButton react-native component, that's used in our [sample implementation](https://github.com/bigbluebutton/bigbluebutton-mobile).
 
+![version](https://img.shields.io/npm/v/bigbluebutton-mobile-sdk.svg)
+
+
 ## Installation
 
 ```sh
