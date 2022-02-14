@@ -22,6 +22,10 @@ import { BigbluebuttonMobileSdkView } from "bigbluebutton-mobile-sdk";
 
 See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
 
+## WebRTC
+
+This project references the library [WebRTC](https://webrtc.org).
+
 ## License
 
-MIT
+LGPL-3.0

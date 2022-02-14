@@ -38,7 +38,7 @@
   ],
   "repository": "https://github.com/bigbluebutton/bigbluebutton-mobile-sdk",
   "author": "BigBlueButton Inc <bigbluebutton@bigbluebutton.org> (https://bigbluebutton.org)",
-  "license": "MIT",
+  "license": "LGPL-3.0",
   "bugs": {
     "url": "https://github.com/bigbluebutton/bigbluebutton-mobile-sdk/issues"
   },
