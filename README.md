@@ -1,8 +1,3 @@
-# bigbluebutton-mobile-lib
+# bigbluebutton-mobile-sdk
 
-## IOS
-
-In order to open the workspace to build this library, you can run:
-```sh
-open ios/BigBlueButtonMobileSDK/Example/BigBlueButtonMobileSDK.xcworkspace
-```
+This repository contains BigBlueButton react-native component, that's used in our [sample implementation](https://github.com/bigbluebutton/bigbluebutton-mobile).
