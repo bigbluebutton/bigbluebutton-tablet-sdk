@@ -1,0 +1,14 @@
+use_frameworks!
+
+platform :ios, '14.0'
+
+target 'BigBlueButtonMobileSDK_Example' do
+  project 'BigBlueButtonMobileSDK.xcodeproj'
+  pod 'BigBlueButtonMobileSDK', :path => '../'
+
+  target 'BigBlueButtonMobileSDK_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
