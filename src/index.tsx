@@ -1,26 +1,23 @@
-import {
-  requireNativeComponent,
-  UIManager,
-  Platform,
-  ViewStyle,
-} from 'react-native';
-
-const LINKING_ERROR =
-  `The package 'bigbluebutton-mobile-sdk' doesn't seem to be linked. Make sure: \n\n` +
-  Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
-  '- You rebuilt the app after installing the package\n' +
-  '- You are not using Expo managed workflow\n';
+import { Platform, ViewStyle, Text } from 'react-native';
+import React from 'react';
+import BBBN_SystemBroadcastPicker from './native-components/BBBN_SystemBroadcastPicker';
 
 type BigbluebuttonMobileSdkProps = {
-  color: string;
+  url: string;
   style: ViewStyle;
 };
 
-const ComponentName = 'BigbluebuttonMobile';
-
-export const BigbluebuttonMobile =
-  UIManager.getViewManagerConfig(ComponentName) != null
-    ? requireNativeComponent<BigbluebuttonMobileSdkProps>(ComponentName)
-    : () => {
-        throw new Error(LINKING_ERROR);
-      };
+export const BigbluebuttonMobile = ({
+  url,
+  style,
+}: BigbluebuttonMobileSdkProps) => {
+  return (
+    <>
+      {Platform.select({
+        ios: <BBBN_SystemBroadcastPicker />,
+        android: null,
+      })}
+      <Text style={style}>BigBlueButton mobile {url}</Text>
+    </>
+  );
+};
