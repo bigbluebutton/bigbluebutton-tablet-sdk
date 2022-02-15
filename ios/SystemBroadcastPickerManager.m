@@ -4,4 +4,6 @@
 
 RCT_EXPORT_VIEW_PROPERTY(broadcastAppBundleId, NSString)
 
++ (BOOL)requiresMainQueueSetup { return YES; }
+
 @end

@@ -7,9 +7,9 @@ export default function App() {
   return (
     <View style={styles.container}>
       <BigbluebuttonMobile
-        broadcastAppBundleId="org.bigbluebutton.mobile.BigBlueButton.BroadcastUpload"
+        broadcastAppBundleId="org.bigbluebutton.mobile-sdk.example.BigbluebuttonMobileSdkBroadcastUploadExtension"
         url="https://demo.bigbluebutton.org"
-        style={styles.box}
+        style={styles.bbb}
       />
     </View>
   );
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
   },
-  box: {
+  bbb: {
     marginTop: 48,
     flex: 1,
   },

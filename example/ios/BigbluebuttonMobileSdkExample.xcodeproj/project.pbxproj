@@ -17,6 +17,9 @@
 		2DCD954D1E0B4F2C00145EB5 /* BigbluebuttonMobileSdkExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* BigbluebuttonMobileSdkExampleTests.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		D6CFBC46D1C92E6B5A87F7EB /* libPods-BigbluebuttonMobileSdkExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DF1D153D3858DB7BED3AFCD /* libPods-BigbluebuttonMobileSdkExample.a */; };
+		F1CB758D27BC01B2007E6C31 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CB754927BBFB61007E6C31 /* ReplayKit.framework */; };
+		F1CB759027BC01B2007E6C31 /* SampleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CB758F27BC01B2007E6C31 /* SampleHandler.swift */; };
+		F1CB759427BC01B2007E6C31 /* BigbluebuttonMobileSdkBroadcastUploadExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F1CB758C27BC01B2007E6C31 /* BigbluebuttonMobileSdkBroadcastUploadExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,7 +37,28 @@
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
 			remoteInfo = "BigbluebuttonMobileSdkExample-tvOS";
 		};
+		F1CB759227BC01B2007E6C31 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F1CB758B27BC01B2007E6C31;
+			remoteInfo = BigbluebuttonMobileSdkBroadcastUploadExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F1CB756127BBFB62007E6C31 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F1CB759427BC01B2007E6C31 /* BigbluebuttonMobileSdkBroadcastUploadExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
@@ -55,6 +79,13 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = BigbluebuttonMobileSdkExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		F1CB754927BBFB61007E6C31 /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReplayKit.framework; path = System/Library/Frameworks/ReplayKit.framework; sourceTree = SDKROOT; };
+		F1CB755527BBFB61007E6C31 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F1CB757F27BBFF91007E6C31 /* SampleHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleHandler.swift; sourceTree = "<group>"; };
+		F1CB758127BBFF91007E6C31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1CB758C27BC01B2007E6C31 /* BigbluebuttonMobileSdkBroadcastUploadExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BigbluebuttonMobileSdkBroadcastUploadExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1CB758F27BC01B2007E6C31 /* SampleHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleHandler.swift; sourceTree = "<group>"; };
+		F1CB759127BC01B2007E6C31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +115,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1CB758927BC01B2007E6C31 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1CB758D27BC01B2007E6C31 /* ReplayKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +166,8 @@
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				3DF1D153D3858DB7BED3AFCD /* libPods-BigbluebuttonMobileSdkExample.a */,
+				F1CB754927BBFB61007E6C31 /* ReplayKit.framework */,
+				F1CB755527BBFB61007E6C31 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -153,6 +194,8 @@
 				13B07FAE1A68108700A75B9A /* BigbluebuttonMobileSdkExample */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* BigbluebuttonMobileSdkExampleTests */,
+				F1CB757E27BBFF91007E6C31 /* BigbluebuttonMobileSdkBroadcastUploadExtensionExample */,
+				F1CB758E27BC01B2007E6C31 /* BigbluebuttonMobileSdkBroadcastUploadExtension */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				6B9684456A2045ADE5A6E47E /* Pods */,
@@ -169,8 +212,27 @@
 				00E356EE1AD99517003FC87E /* BigbluebuttonMobileSdkExampleTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* BigbluebuttonMobileSdkExample-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* BigbluebuttonMobileSdkExample-tvOSTests.xctest */,
+				F1CB758C27BC01B2007E6C31 /* BigbluebuttonMobileSdkBroadcastUploadExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F1CB757E27BBFF91007E6C31 /* BigbluebuttonMobileSdkBroadcastUploadExtensionExample */ = {
+			isa = PBXGroup;
+			children = (
+				F1CB757F27BBFF91007E6C31 /* SampleHandler.swift */,
+				F1CB758127BBFF91007E6C31 /* Info.plist */,
+			);
+			path = BigbluebuttonMobileSdkBroadcastUploadExtensionExample;
+			sourceTree = "<group>";
+		};
+		F1CB758E27BC01B2007E6C31 /* BigbluebuttonMobileSdkBroadcastUploadExtension */ = {
+			isa = PBXGroup;
+			children = (
+				F1CB758F27BC01B2007E6C31 /* SampleHandler.swift */,
+				F1CB759127BC01B2007E6C31 /* Info.plist */,
+			);
+			path = BigbluebuttonMobileSdkBroadcastUploadExtension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,10 +268,12 @@
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				61076E10B99A8FBA0AB072AA /* [CP] Embed Pods Frameworks */,
 				64E27DB830B6DA7D5349C6C7 /* [CP] Copy Pods Resources */,
+				F1CB756127BBFB62007E6C31 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F1CB759327BC01B2007E6C31 /* PBXTargetDependency */,
 			);
 			name = BigbluebuttonMobileSdkExample;
 			productName = BigbluebuttonMobileSdkExample;
@@ -253,12 +317,30 @@
 			productReference = 2D02E4901E0B4A5D006451C7 /* BigbluebuttonMobileSdkExample-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		F1CB758B27BC01B2007E6C31 /* BigbluebuttonMobileSdkBroadcastUploadExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F1CB759527BC01B2007E6C31 /* Build configuration list for PBXNativeTarget "BigbluebuttonMobileSdkBroadcastUploadExtension" */;
+			buildPhases = (
+				F1CB758827BC01B2007E6C31 /* Sources */,
+				F1CB758927BC01B2007E6C31 /* Frameworks */,
+				F1CB758A27BC01B2007E6C31 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BigbluebuttonMobileSdkBroadcastUploadExtension;
+			productName = BigbluebuttonMobileSdkBroadcastUploadExtension;
+			productReference = F1CB758C27BC01B2007E6C31 /* BigbluebuttonMobileSdkBroadcastUploadExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1130;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -266,6 +348,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = N69T9W23TC;
 						LastSwiftMigration = 1120;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
@@ -276,6 +359,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2D02E47A1E0B4A5D006451C7;
+					};
+					F1CB758B27BC01B2007E6C31 = {
+						CreatedOnToolsVersion = 13.2.1;
+						DevelopmentTeam = N69T9W23TC;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -296,6 +384,7 @@
 				00E356ED1AD99517003FC87E /* BigbluebuttonMobileSdkExampleTests */,
 				2D02E47A1E0B4A5D006451C7 /* BigbluebuttonMobileSdkExample-tvOS */,
 				2D02E48F1E0B4A5D006451C7 /* BigbluebuttonMobileSdkExample-tvOSTests */,
+				F1CB758B27BC01B2007E6C31 /* BigbluebuttonMobileSdkBroadcastUploadExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -326,6 +415,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2D02E48E1E0B4A5D006451C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1CB758A27BC01B2007E6C31 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -496,6 +592,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F1CB758827BC01B2007E6C31 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1CB759027BC01B2007E6C31 /* SampleHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -508,6 +612,11 @@
 			isa = PBXTargetDependency;
 			target = 2D02E47A1E0B4A5D006451C7 /* BigbluebuttonMobileSdkExample-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
+		};
+		F1CB759327BC01B2007E6C31 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F1CB758B27BC01B2007E6C31 /* BigbluebuttonMobileSdkBroadcastUploadExtension */;
+			targetProxy = F1CB759227BC01B2007E6C31 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -557,9 +666,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5F0C894CDC43D5CDBE5CFF4E /* Pods-BigbluebuttonMobileSdkExample.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N69T9W23TC;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = BigbluebuttonMobileSdkExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -569,7 +680,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.bigbluebuttonmobilesdk;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.bigbluebutton.mobile-sdk.example";
 				PRODUCT_NAME = BigbluebuttonMobileSdkExample;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.5.2;
@@ -582,9 +693,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4E7A6E20FABB49DD86B3E6A7 /* Pods-BigbluebuttonMobileSdkExample.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N69T9W23TC;
 				INFOPLIST_FILE = BigbluebuttonMobileSdkExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -593,7 +706,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.bigbluebuttonmobilesdk;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.bigbluebutton.mobile-sdk.example";
 				PRODUCT_NAME = BigbluebuttonMobileSdkExample;
 				SWIFT_VERSION = 5.5.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -815,6 +928,75 @@
 			};
 			name = Release;
 		};
+		F1CB759627BC01B2007E6C31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = N69T9W23TC;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BigbluebuttonMobileSdkBroadcastUploadExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BigbluebuttonMobileSdkBroadcastUploadExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.bigbluebutton.mobile-sdk.example.BigbluebuttonMobileSdkBroadcastUploadExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F1CB759727BC01B2007E6C31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = N69T9W23TC;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BigbluebuttonMobileSdkBroadcastUploadExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BigbluebuttonMobileSdkBroadcastUploadExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.bigbluebutton.mobile-sdk.example.BigbluebuttonMobileSdkBroadcastUploadExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -859,6 +1041,15 @@
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
 				83CBBA211A601CBA00E9B192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F1CB759527BC01B2007E6C31 /* Build configuration list for PBXNativeTarget "BigbluebuttonMobileSdkBroadcastUploadExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1CB759627BC01B2007E6C31 /* Debug */,
+				F1CB759727BC01B2007E6C31 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
