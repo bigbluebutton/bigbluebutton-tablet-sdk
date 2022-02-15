@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import { Platform, Text, View, ViewStyle } from 'react-native';
+import { Platform, View, ViewStyle } from 'react-native';
 import React from 'react';
 import BBBN_SystemBroadcastPicker from './native-components/BBBN_SystemBroadcastPicker';
 import { WebView } from 'react-native-webview';
