@@ -3,18 +3,18 @@ import os
 
 @objc(SystemBroadcastPickerManager)
 class SystemBroadcastPickerManager: RCTViewManager {
-    @objc var broadcastAppBundleId: String = ""
-    
     override func view() -> (SystemBroadcastPicker) {
-        let picker = SystemBroadcastPicker();
-        picker.setBroadcastAppBundleId(newBroadcastAppBundleId: broadcastAppBundleId);
-        return picker;
+        return SystemBroadcastPicker();
     }
 }
 
 class SystemBroadcastPicker : UIView {
+    
+    private var broadcastAppBundleId: String = ""
+    
+    private var logger = os.Logger(subsystem: "BigBlueButtonMobileSDK", category: "SystemBroadcastPicker")
+    
     private var broadcastPicker: RPSystemBroadcastPickerView?
-    public var broadcastAppBundleId: String = ""
     
     //initWithFrame to init view from code
     override init(frame: CGRect) {
@@ -29,17 +29,21 @@ class SystemBroadcastPicker : UIView {
     }
     
     private func setupView() {
-        // logger.info("Initializing SystemBroadcastPickerManager, broadcastAppBundleId: \(self.broadcastAppBundleId)")
-        let logger = Logger()
-        logger.info("OI!")
-        let pickerFrame = CGRect(x: 100, y: 100, width: 80, height: 80)
+        logger.info("Initializing SystemBroadcastPickerManager (rendering offscreen)")
+        let pickerFrame = CGRect(x: 0, y: 50, width: 80, height: 80)
         broadcastPicker = RPSystemBroadcastPickerView(frame: pickerFrame)
-        broadcastPicker?.preferredExtension = self.broadcastAppBundleId
         self.addSubview(broadcastPicker!)
     }
     
     @objc(setBroadcastAppBundleId:)
     public func setBroadcastAppBundleId(newBroadcastAppBundleId: String) {
+        logger.info("setBroadcastAppBundleId called \(newBroadcastAppBundleId)")
         self.broadcastAppBundleId = newBroadcastAppBundleId
     }
+    
+    override func didSetProps(_ changedProps: [String]!) {
+        logger.info("Defining preferredExtension as \(self.broadcastAppBundleId)")
+        broadcastPicker?.preferredExtension = self.broadcastAppBundleId
+    }
+    
 }
