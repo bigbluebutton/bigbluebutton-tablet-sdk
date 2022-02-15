@@ -2,6 +2,8 @@ PODS:
   - bigbluebutton-mobile-sdk (0.1.4):
     - React-Core
     - WebRTC-lib
+  - bigbluebutton-mobile-sdk-common (0.1.4):
+    - WebRTC-lib
   - boost-for-react-native (1.63.0)
   - DoubleConversion (1.1.6)
   - FBLazyVector (0.63.4)
@@ -255,6 +257,7 @@ PODS:
 
 DEPENDENCIES:
   - bigbluebutton-mobile-sdk (from `../..`)
+  - bigbluebutton-mobile-sdk-common (from `../../common`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/Libraries/FBReactNativeSpec`)
@@ -293,6 +296,8 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   bigbluebutton-mobile-sdk:
     :path: "../.."
+  bigbluebutton-mobile-sdk-common:
+    :path: "../../common"
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   FBLazyVector:
@@ -349,7 +354,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  bigbluebutton-mobile-sdk: 2c082a3e456466eded2380c00299b37a3d1a6b0d
+  bigbluebutton-mobile-sdk: a9b8d41c5c4d0350da3b107f62cb12d5ffb72c11
+  bigbluebutton-mobile-sdk-common: 097df345c43a16019b5d145da5a9d606e6f304b1
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: cde416483dac037923206447da6e1454df403714
   FBLazyVector: 3bb422f41b18121b71783a905c10e58606f7dc3e
@@ -380,6 +386,6 @@ SPEC CHECKSUMS:
   WebRTC-lib: 508fe02efa0c1a3a8867082a77d24c9be5d29aeb
   Yoga: 4bd86afe9883422a7c4028c00e34790f560923d6
 
-PODFILE CHECKSUM: 42b5cd1a8f6d61f143f7778cb5da0bd7d2ea7c56
+PODFILE CHECKSUM: 0d8e4ce0acc9e5df4b06b708cde258a3989c1d17
 
 COCOAPODS: 1.11.2

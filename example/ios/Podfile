@@ -3,12 +3,17 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '14.7'
 
+target 'BigBlueButtonMobileSdkBroadcastExample' do
+  pod 'bigbluebutton-mobile-sdk-common', :path => '../../common'
+end
+
 target 'BigbluebuttonMobileSdkExample' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
 
   pod 'bigbluebutton-mobile-sdk', :path => '../..'
+#  pod 'bigbluebutton-mobile-sdk-common', :path => '../../common'
   pod 'react-native-webview', :path => '../../node_modules/react-native-webview'
 
   # Enables Flipper.
