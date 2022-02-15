@@ -16,7 +16,7 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* BigbluebuttonMobileSdkExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* BigbluebuttonMobileSdkExampleTests.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		CB4F1AB1CA9ED799628BC8A5 /* libPods-BigbluebuttonMobileSdkExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45671BCDFC4919B1B26E2778 /* libPods-BigbluebuttonMobileSdkExample.a */; };
+		D6CFBC46D1C92E6B5A87F7EB /* libPods-BigbluebuttonMobileSdkExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DF1D153D3858DB7BED3AFCD /* libPods-BigbluebuttonMobileSdkExample.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,11 +47,11 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = BigbluebuttonMobileSdkExample/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = BigbluebuttonMobileSdkExample/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = BigbluebuttonMobileSdkExample/main.m; sourceTree = "<group>"; };
-		18BFDF6F7ED77A3C31EE607A /* Pods-BigbluebuttonMobileSdkExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigbluebuttonMobileSdkExample.debug.xcconfig"; path = "Target Support Files/Pods-BigbluebuttonMobileSdkExample/Pods-BigbluebuttonMobileSdkExample.debug.xcconfig"; sourceTree = "<group>"; };
-		24FBDA202CC560B5364CEF5E /* Pods-BigbluebuttonMobileSdkExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigbluebuttonMobileSdkExample.release.xcconfig"; path = "Target Support Files/Pods-BigbluebuttonMobileSdkExample/Pods-BigbluebuttonMobileSdkExample.release.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* BigbluebuttonMobileSdkExample-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BigbluebuttonMobileSdkExample-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* BigbluebuttonMobileSdkExample-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BigbluebuttonMobileSdkExample-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		45671BCDFC4919B1B26E2778 /* libPods-BigbluebuttonMobileSdkExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BigbluebuttonMobileSdkExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DF1D153D3858DB7BED3AFCD /* libPods-BigbluebuttonMobileSdkExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BigbluebuttonMobileSdkExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E7A6E20FABB49DD86B3E6A7 /* Pods-BigbluebuttonMobileSdkExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigbluebuttonMobileSdkExample.release.xcconfig"; path = "Target Support Files/Pods-BigbluebuttonMobileSdkExample/Pods-BigbluebuttonMobileSdkExample.release.xcconfig"; sourceTree = "<group>"; };
+		5F0C894CDC43D5CDBE5CFF4E /* Pods-BigbluebuttonMobileSdkExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigbluebuttonMobileSdkExample.debug.xcconfig"; path = "Target Support Files/Pods-BigbluebuttonMobileSdkExample/Pods-BigbluebuttonMobileSdkExample.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = BigbluebuttonMobileSdkExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -69,7 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB4F1AB1CA9ED799628BC8A5 /* libPods-BigbluebuttonMobileSdkExample.a in Frameworks */,
+				D6CFBC46D1C92E6B5A87F7EB /* libPods-BigbluebuttonMobileSdkExample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,7 +126,7 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				45671BCDFC4919B1B26E2778 /* libPods-BigbluebuttonMobileSdkExample.a */,
+				3DF1D153D3858DB7BED3AFCD /* libPods-BigbluebuttonMobileSdkExample.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -134,8 +134,8 @@
 		6B9684456A2045ADE5A6E47E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				18BFDF6F7ED77A3C31EE607A /* Pods-BigbluebuttonMobileSdkExample.debug.xcconfig */,
-				24FBDA202CC560B5364CEF5E /* Pods-BigbluebuttonMobileSdkExample.release.xcconfig */,
+				5F0C894CDC43D5CDBE5CFF4E /* Pods-BigbluebuttonMobileSdkExample.debug.xcconfig */,
+				4E7A6E20FABB49DD86B3E6A7 /* Pods-BigbluebuttonMobileSdkExample.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -198,14 +198,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "BigbluebuttonMobileSdkExample" */;
 			buildPhases = (
-				CCC56A3B1A5723D664A0E150 /* [CP] Check Pods Manifest.lock */,
+				A651DAD988A5736BF1C39BC5 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				FF9F127C822862B58AFBD6AA /* [CP] Embed Pods Frameworks */,
-				82365EE1C6E907DAE94CC4C5 /* [CP] Copy Pods Resources */,
+				61076E10B99A8FBA0AB072AA /* [CP] Embed Pods Frameworks */,
+				64E27DB830B6DA7D5349C6C7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -363,7 +363,25 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		82365EE1C6E907DAE94CC4C5 /* [CP] Copy Pods Resources */ = {
+		61076E10B99A8FBA0AB072AA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BigbluebuttonMobileSdkExample/Pods-BigbluebuttonMobileSdkExample-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/WebRTC-lib/WebRTC.framework/WebRTC",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WebRTC.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BigbluebuttonMobileSdkExample/Pods-BigbluebuttonMobileSdkExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		64E27DB830B6DA7D5349C6C7 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -381,7 +399,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BigbluebuttonMobileSdkExample/Pods-BigbluebuttonMobileSdkExample-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CCC56A3B1A5723D664A0E150 /* [CP] Check Pods Manifest.lock */ = {
+		A651DAD988A5736BF1C39BC5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -439,24 +457,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		FF9F127C822862B58AFBD6AA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BigbluebuttonMobileSdkExample/Pods-BigbluebuttonMobileSdkExample-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/WebRTC-lib/WebRTC.framework/WebRTC",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WebRTC.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BigbluebuttonMobileSdkExample/Pods-BigbluebuttonMobileSdkExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -555,7 +555,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 18BFDF6F7ED77A3C31EE607A /* Pods-BigbluebuttonMobileSdkExample.debug.xcconfig */;
+			baseConfigurationReference = 5F0C894CDC43D5CDBE5CFF4E /* Pods-BigbluebuttonMobileSdkExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -580,7 +580,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 24FBDA202CC560B5364CEF5E /* Pods-BigbluebuttonMobileSdkExample.release.xcconfig */;
+			baseConfigurationReference = 4E7A6E20FABB49DD86B3E6A7 /* Pods-BigbluebuttonMobileSdkExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

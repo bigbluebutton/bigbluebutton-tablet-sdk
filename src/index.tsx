@@ -1,6 +1,8 @@
-import { Platform, ViewStyle, Text } from 'react-native';
+/* eslint-disable react-native/no-inline-styles */
+import { Platform, Text, View, ViewStyle } from 'react-native';
 import React from 'react';
 import BBBN_SystemBroadcastPicker from './native-components/BBBN_SystemBroadcastPicker';
+import { WebView } from 'react-native-webview';
 
 type BigbluebuttonMobileSdkProps = {
   url: string;
@@ -23,8 +25,10 @@ export const BigbluebuttonMobile = ({
 
   return (
     <>
-      {broadcastPicker}
-      <Text style={style}>BigBlueButton mobile {url}</Text>
+      <>
+        <View style={{ zIndex: 1 }}>{broadcastPicker}</View>
+        <WebView source={{ uri: url }} style={{ ...style }} />
+      </>
     </>
   );
 };

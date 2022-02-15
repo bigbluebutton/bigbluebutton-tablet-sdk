@@ -30,7 +30,7 @@ class SystemBroadcastPicker : UIView {
     
     private func setupView() {
         logger.info("Initializing SystemBroadcastPickerManager (rendering offscreen)")
-        let pickerFrame = CGRect(x: 0, y: 50, width: 80, height: 80)
+        let pickerFrame = CGRect(x: 0, y: 40, width: 40, height: 40)
         broadcastPicker = RPSystemBroadcastPickerView(frame: pickerFrame)
         self.addSubview(broadcastPicker!)
     }

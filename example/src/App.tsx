@@ -18,11 +18,10 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: 'row',
   },
   box: {
-    marginTop: 100,
+    marginTop: 48,
     flex: 1,
   },
 });
