@@ -1,6 +1,6 @@
 //
 //  SampleHandler.swift
-//  BigbluebuttonMobileSdkBroadcastUploadExtension
+//  BigBlueButtonMobileSdkBroadcastExample
 //
 //  Created by Tiago Daniel Jacobs on 15/02/22.
 //
