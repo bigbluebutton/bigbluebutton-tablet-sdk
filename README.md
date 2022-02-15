@@ -18,7 +18,7 @@ import { BigBlueButtonMobile } from "bigbluebutton-mobile-sdk";
 
 // ...
 
-<BigBlueButtonMobile url="https://demo.bigbluebutton.org" />
+<BigBlueButtonMobile broadcastAppBundleId="org.bigbluebutton.mobile.BigBlueButton.BroadcastUpload" url="https://demo.bigbluebutton.org" />
 ```
 
 ## Contributing

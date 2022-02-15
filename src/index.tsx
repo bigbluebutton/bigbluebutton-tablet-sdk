@@ -4,19 +4,26 @@ import BBBN_SystemBroadcastPicker from './native-components/BBBN_SystemBroadcast
 
 type BigbluebuttonMobileSdkProps = {
   url: string;
+  broadcastAppBundleId: string;
   style: ViewStyle;
 };
 
 export const BigbluebuttonMobile = ({
   url,
+  broadcastAppBundleId,
   style,
 }: BigbluebuttonMobileSdkProps) => {
+  /* Broadcast picker is the button that allow calling the IOS broadcast feature */
+  const broadcastPicker = Platform.select({
+    ios: (
+      <BBBN_SystemBroadcastPicker broadcastAppBundleId={broadcastAppBundleId} />
+    ),
+    android: null,
+  });
+
   return (
     <>
-      {Platform.select({
-        ios: <BBBN_SystemBroadcastPicker />,
-        android: null,
-      })}
+      {broadcastPicker}
       <Text style={style}>BigBlueButton mobile {url}</Text>
     </>
   );

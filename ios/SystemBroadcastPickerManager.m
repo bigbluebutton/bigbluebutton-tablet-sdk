@@ -2,6 +2,6 @@
 
 @interface RCT_EXTERN_REMAP_MODULE(BBBN_SystemBroadcastPicker, SystemBroadcastPickerManager, RCTViewManager)
 
-RCT_EXPORT_VIEW_PROPERTY(url, NSString)
+RCT_EXPORT_VIEW_PROPERTY(broadcastAppBundleId, NSString)
 
 @end
