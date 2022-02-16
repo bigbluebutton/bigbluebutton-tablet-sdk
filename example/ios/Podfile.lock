@@ -1,8 +1,8 @@
 PODS:
-  - bigbluebutton-mobile-sdk (0.1.4):
+  - bigbluebutton-mobile-sdk (0.1.5):
     - React-Core
     - WebRTC-lib
-  - bigbluebutton-mobile-sdk-common (0.1.4):
+  - bigbluebutton-mobile-sdk-common (0.1.5):
     - WebRTC-lib
   - boost-for-react-native (1.63.0)
   - DoubleConversion (1.1.6)
@@ -354,8 +354,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  bigbluebutton-mobile-sdk: a9b8d41c5c4d0350da3b107f62cb12d5ffb72c11
-  bigbluebutton-mobile-sdk-common: 097df345c43a16019b5d145da5a9d606e6f304b1
+  bigbluebutton-mobile-sdk: b03d37e4282a05bd66f7d0dee0d95c8ecd923259
+  bigbluebutton-mobile-sdk-common: 04165de30593269ccde51241babcfdf1d61ad856
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: cde416483dac037923206447da6e1454df403714
   FBLazyVector: 3bb422f41b18121b71783a905c10e58606f7dc3e
