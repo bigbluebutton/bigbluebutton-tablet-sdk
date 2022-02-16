@@ -8,7 +8,7 @@ export default function App() {
     <View style={styles.container}>
       <BigbluebuttonMobile
         broadcastAppBundleId="org.bigbluebutton.mobile-sdk.example.BigBlueButtonMobileSdkBroadcastExample"
-        url="https://demo.bigbluebutton.org"
+        url="https://mobile.bbb.imdt.dev"
         style={styles.bbb}
       />
     </View>
