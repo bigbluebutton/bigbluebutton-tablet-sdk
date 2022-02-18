@@ -13,7 +13,7 @@ target 'BigbluebuttonMobileSdkExample' do
   use_react_native!(:path => config["reactNativePath"])
 
   pod 'bigbluebutton-mobile-sdk', :path => '../..'
-#  pod 'bigbluebutton-mobile-sdk-common', :path => '../../common'
+  pod 'bigbluebutton-mobile-sdk-common', :path => '../../common'
 
   # Enables Flipper.
   #
