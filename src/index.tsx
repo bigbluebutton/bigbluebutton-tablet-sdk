@@ -1,4 +1,4 @@
-import { Platform, ViewStyle } from 'react-native';
+import { Platform, Text, ViewStyle } from 'react-native';
 import React from 'react';
 import BBBN_SystemBroadcastPicker from './native-components/BBBN_SystemBroadcastPicker';
 import { WebView } from 'react-native-webview';
@@ -25,6 +25,7 @@ export const BigbluebuttonMobile = ({
   return (
     <>
       {renderPlatformSpecificComponents(broadcastAppBundleId)}
+      <Text>Hello Milan</Text>
       {<WebView source={{ uri: url }} style={{ ...style }} />}
     </>
   );
