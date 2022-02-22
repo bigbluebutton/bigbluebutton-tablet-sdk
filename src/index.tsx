@@ -1,7 +1,8 @@
-import { Platform, Text, ViewStyle } from 'react-native';
-import React from 'react';
+import { Platform, ViewStyle } from 'react-native';
+import React, { useRef } from 'react';
 import BBBN_SystemBroadcastPicker from './native-components/BBBN_SystemBroadcastPicker';
 import { WebView } from 'react-native-webview';
+import { handleWebviewMessage } from './webview/message-handler';
 
 type BigbluebuttonMobileSdkProps = {
   url: string;
@@ -22,11 +23,20 @@ export const BigbluebuttonMobile = ({
   broadcastAppBundleId,
   style,
 }: BigbluebuttonMobileSdkProps) => {
+  const webViewRef = useRef(null);
+
   return (
     <>
       {renderPlatformSpecificComponents(broadcastAppBundleId)}
-      <Text>Hello Milan</Text>
-      {<WebView source={{ uri: url }} style={{ ...style }} />}
+      {
+        <WebView
+          ref={webViewRef}
+          source={{ uri: url }}
+          style={{ ...style }}
+          onMessage={(msg) => handleWebviewMessage(webViewRef, msg)}
+          applicationNameForUserAgent="BBBMobile"
+        />
+      }
     </>
   );
 };

@@ -14,7 +14,7 @@ class SystemBroadcastPicker : UIView {
     private var logger = os.Logger(subsystem: "BigBlueButtonMobileSDK", category: "SystemBroadcastPicker")
     
     // Reference to the broadcast screen picker
-    private var broadcastPicker: RPSystemBroadcastPickerView?
+    private static var broadcastPicker: RPSystemBroadcastPickerView?
     
     // The bundle-id of our the broadcast application (so system only offers BBB in the list)
     private var broadcastAppBundleId: String = ""
@@ -22,6 +22,7 @@ class SystemBroadcastPicker : UIView {
     //initWithFrame to init view from code
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.translatesAutoresizingMaskIntoConstraints = false
         setupView()
     }
     
@@ -37,11 +38,12 @@ class SystemBroadcastPicker : UIView {
     private func setupView() {
         logger.info("Initializing SystemBroadcastPickerManager")
         let pickerFrame = CGRect(x: 30, y: 30, width: 100, height: 100)
-        broadcastPicker = RPSystemBroadcastPickerView(frame: pickerFrame)
-        broadcastPicker?.showsMicrophoneButton=false
-        broadcastPicker?.isHidden=true
+        SystemBroadcastPicker.broadcastPicker = RPSystemBroadcastPickerView(frame: pickerFrame)
+        SystemBroadcastPicker.broadcastPicker?.showsMicrophoneButton=false
+        SystemBroadcastPicker.broadcastPicker?.isHidden=true
+        SystemBroadcastPicker.broadcastPicker?.translatesAutoresizingMaskIntoConstraints = false
         
-        self.addSubview(broadcastPicker!)
+        self.addSubview(SystemBroadcastPicker.broadcastPicker!)
     }
     
     /**
@@ -51,15 +53,15 @@ class SystemBroadcastPicker : UIView {
     public func setBroadcastAppBundleId(newBroadcastAppBundleId: String) {
         logger.info("setBroadcastAppBundleId called \(newBroadcastAppBundleId)")
         self.broadcastAppBundleId = newBroadcastAppBundleId
-        broadcastPicker?.preferredExtension = self.broadcastAppBundleId
-        
-        self.requestBroadcast() // REMOVE THIS WHEN WE EXPOSE TO REACT (now it's requesting to share screen on app load)
+        SystemBroadcastPicker.broadcastPicker?.preferredExtension = self.broadcastAppBundleId
     }
     
     /**
      * Automatize the action of broadcast picker click
      */
-    private func requestBroadcast() {
+    public static func requestBroadcast(/*data*/) {
+        // write the data that will be accessed from broadcast application
+        
         for view in broadcastPicker?.subviews ?? [] {
             if let button = view as? UIButton {
                 button.sendActions(for: .allEvents)
