@@ -30,6 +30,7 @@ export const BigbluebuttonMobile = ({
       {renderPlatformSpecificComponents(broadcastAppBundleId)}
       {
         <WebView
+          contentMode={'mobile'}
           ref={webViewRef}
           source={{ uri: url }}
           style={{ ...style }}

@@ -61,10 +61,11 @@ class SystemBroadcastPicker : UIView {
      */
     public static func requestBroadcast(/*data*/) {
         // write the data that will be accessed from broadcast application
-        
-        for view in broadcastPicker?.subviews ?? [] {
-            if let button = view as? UIButton {
-                button.sendActions(for: .allEvents)
+        DispatchQueue.main.async {
+            for view in broadcastPicker?.subviews ?? [] {
+                if let button = view as? UIButton {
+                    button.sendActions(for: .allEvents)
+                }
             }
         }
     }

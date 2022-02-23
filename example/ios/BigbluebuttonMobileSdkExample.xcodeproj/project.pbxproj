@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* BigbluebuttonMobileSdkExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* BigbluebuttonMobileSdkExampleTests.m */; };
-		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		70FC9CAF27C6329B00D06733 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FC9CAE27C6329B00D06733 /* AppDelegate.swift */; };
+		70FC9CB227C64FA000D06733 /* UserDefaultsExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FC9CB127C64FA000D06733 /* UserDefaultsExt.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		D4107C11428E565249543452 /* libPods-BigbluebuttonMobileSdkExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8315799A5C1BF7D3955FE7A /* libPods-BigbluebuttonMobileSdkExample.a */; };
 		E34840357A40CF330A083CD4 /* libPods-BigBlueButtonMobileSdkBroadcastExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B60F7CB33D3D557C0DBFB9A /* libPods-BigBlueButtonMobileSdkBroadcastExample.a */; };
@@ -56,15 +56,15 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* BigbluebuttonMobileSdkExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BigbluebuttonMobileSdkExampleTests.m; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* BigbluebuttonMobileSdkExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BigbluebuttonMobileSdkExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = BigbluebuttonMobileSdkExample/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = BigbluebuttonMobileSdkExample/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = BigbluebuttonMobileSdkExample/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = BigbluebuttonMobileSdkExample/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = BigbluebuttonMobileSdkExample/main.m; sourceTree = "<group>"; };
 		2B60F7CB33D3D557C0DBFB9A /* libPods-BigBlueButtonMobileSdkBroadcastExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BigBlueButtonMobileSdkBroadcastExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64F9B7FFD471972C20137BD6 /* Pods-BigBlueButtonMobileSdkBroadcastExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigBlueButtonMobileSdkBroadcastExample.debug.xcconfig"; path = "Target Support Files/Pods-BigBlueButtonMobileSdkBroadcastExample/Pods-BigBlueButtonMobileSdkBroadcastExample.debug.xcconfig"; sourceTree = "<group>"; };
 		70A7A94E27C3C17F003CE731 /* BigbluebuttonMobileSdkExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = BigbluebuttonMobileSdkExample.entitlements; path = BigbluebuttonMobileSdkExample/BigbluebuttonMobileSdkExample.entitlements; sourceTree = "<group>"; };
 		70A7A94F27C3C1AB003CE731 /* BigBlueButtonMobileSdkBroadcastExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BigBlueButtonMobileSdkBroadcastExample.entitlements; sourceTree = "<group>"; };
+		70FC9CAD27C6329B00D06733 /* BigbluebuttonMobileSdkExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BigbluebuttonMobileSdkExample-Bridging-Header.h"; sourceTree = "<group>"; };
+		70FC9CAE27C6329B00D06733 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		70FC9CB127C64FA000D06733 /* UserDefaultsExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExt.swift; sourceTree = "<group>"; };
 		7EC638C00C2D62DDC1E73F8E /* Pods-BigbluebuttonMobileSdkExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigbluebuttonMobileSdkExample.debug.xcconfig"; path = "Target Support Files/Pods-BigbluebuttonMobileSdkExample/Pods-BigbluebuttonMobileSdkExample.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = BigbluebuttonMobileSdkExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B2C3B4EA07C7BC3E4B51B5D2 /* Pods-BigBlueButtonMobileSdkBroadcastExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigBlueButtonMobileSdkBroadcastExample.release.xcconfig"; path = "Target Support Files/Pods-BigBlueButtonMobileSdkBroadcastExample/Pods-BigBlueButtonMobileSdkBroadcastExample.release.xcconfig"; sourceTree = "<group>"; };
@@ -129,12 +129,12 @@
 			children = (
 				70A7A94E27C3C17F003CE731 /* BigbluebuttonMobileSdkExample.entitlements */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
-				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
-				13B07FB01A68108700A75B9A /* AppDelegate.m */,
+				70FC9CAD27C6329B00D06733 /* BigbluebuttonMobileSdkExample-Bridging-Header.h */,
+				70FC9CAE27C6329B00D06733 /* AppDelegate.swift */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
-				13B07FB71A68108700A75B9A /* main.m */,
+				70FC9CB127C64FA000D06733 /* UserDefaultsExt.swift */,
 			);
 			name = BigbluebuttonMobileSdkExample;
 			sourceTree = "<group>";
@@ -468,8 +468,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
-				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				70FC9CB227C64FA000D06733 /* UserDefaultsExt.swift in Sources */,
+				70FC9CAF27C6329B00D06733 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,6 +500,7 @@
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -522,6 +523,7 @@
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = BigbluebuttonMobileSdkExampleTests/Info.plist;
@@ -559,6 +561,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.bigbluebutton.mobile-sdk.example";
 				PRODUCT_NAME = BigbluebuttonMobileSdkExample;
+				SWIFT_OBJC_BRIDGING_HEADER = "BigbluebuttonMobileSdkExample-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.5.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -586,6 +589,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.bigbluebutton.mobile-sdk.example";
 				PRODUCT_NAME = BigbluebuttonMobileSdkExample;
+				SWIFT_OBJC_BRIDGING_HEADER = "BigbluebuttonMobileSdkExample-Bridging-Header.h";
 				SWIFT_VERSION = 5.5.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";

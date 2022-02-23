@@ -10,6 +10,4 @@ import bigbluebutton_mobile_sdk_common
 
 class SampleHandler: BBBSampleHandler {
   
-  let defaults = UserDefaults.init(suiteName: "group.com.zuehlke.bbb")
-
 }
