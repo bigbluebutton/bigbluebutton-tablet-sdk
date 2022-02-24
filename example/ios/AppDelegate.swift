@@ -13,9 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, RCTBridgeDelegate {
   var window: UIWindow?
   var bridge: RCTBridge!
   
-  private let defaults = UserDefaults.init(suiteName: "group.com.zuehlke.bbb")
-  private var sdpOfferObserver: NSKeyValueObservation?
-  
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
     bridge = RCTBridge(delegate: self, launchOptions: launchOptions)
@@ -26,9 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, RCTBridgeDelegate {
     self.window = UIWindow(frame: UIScreen.main.bounds)
     self.window?.rootViewController = rootViewController
     self.window?.makeKeyAndVisible()
-    
-    setupUserDefaultsObserver()
-    
+        
     return true
   }
   
@@ -39,12 +34,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, RCTBridgeDelegate {
 //    let mainBundle = Bundle.main
 //    return mainBundle.url(forResource: "main", withExtension: "jsbundle")!
 //#endif
-  }
-  
-  private func setupUserDefaultsObserver() {
-    sdpOfferObserver = defaults?.observe(\.sdpOffer, options: [.new]) { (defaults, change) in // watch for [weak self]
-      guard let sdpOffer = change.newValue else { return }
-      print("SDP OFFER RECEIVED: \(sdpOffer)")
-    }
   }
 }

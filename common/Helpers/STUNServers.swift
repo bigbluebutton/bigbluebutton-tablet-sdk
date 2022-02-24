@@ -1,0 +1,20 @@
+//
+//  STUNServers.swift
+//  bigbluebutton-mobile-sdk-common
+//
+//  Created by Milan Bojic on 23.2.22..
+//
+
+import Foundation
+
+enum STUNServers {
+    
+    /// Google's public stun servers.
+    static var defaultServers: [String] {
+        return ["stun:stun.l.google.com:19302",
+                "stun:stun1.l.google.com:19302",
+                "stun:stun2.l.google.com:19302",
+                "stun:stun3.l.google.com:19302",
+                "stun:stun4.l.google.com:19302"]
+    }
+}
