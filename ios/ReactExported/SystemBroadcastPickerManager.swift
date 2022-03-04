@@ -16,9 +16,6 @@ class SystemBroadcastPicker : UIView {
     // Reference to the broadcast screen picker
     private static var broadcastPicker: RPSystemBroadcastPickerView?
     
-    // The bundle-id of our the broadcast application (so system only offers BBB in the list)
-    private var broadcastAppBundleId: String = ""
-    
     //initWithFrame to init view from code
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,18 +39,9 @@ class SystemBroadcastPicker : UIView {
         SystemBroadcastPicker.broadcastPicker?.showsMicrophoneButton=false
         SystemBroadcastPicker.broadcastPicker?.isHidden=true
         SystemBroadcastPicker.broadcastPicker?.translatesAutoresizingMaskIntoConstraints = false
+        SystemBroadcastPicker.broadcastPicker?.preferredExtension = BigBlueButtonSDK.getBroadcastExtensionBundleId()
         
         self.addSubview(SystemBroadcastPicker.broadcastPicker!)
-    }
-    
-    /**
-     * Receive this property from react
-     */
-    @objc(setBroadcastAppBundleId:)
-    public func setBroadcastAppBundleId(newBroadcastAppBundleId: String) {
-        logger.info("setBroadcastAppBundleId called \(newBroadcastAppBundleId)")
-        self.broadcastAppBundleId = newBroadcastAppBundleId
-        SystemBroadcastPicker.broadcastPicker?.preferredExtension = self.broadcastAppBundleId
     }
     
     /**
@@ -61,10 +49,11 @@ class SystemBroadcastPicker : UIView {
      */
     public static func requestBroadcast(/*data*/) {
         // write the data that will be accessed from broadcast application
-        
-        for view in broadcastPicker?.subviews ?? [] {
-            if let button = view as? UIButton {
-                button.sendActions(for: .allEvents)
+        DispatchQueue.main.async {
+            for view in broadcastPicker?.subviews ?? [] {
+                if let button = view as? UIButton {
+                    button.sendActions(for: .allEvents)
+                }
             }
         }
     }

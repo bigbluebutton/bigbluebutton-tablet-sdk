@@ -1,7 +1,5 @@
 import { HostComponent, requireNativeComponent } from 'react-native';
-interface Props {
-  broadcastAppBundleId: string;
-}
+interface Props {}
 
 const BBBN_SystemBroadcastPicker: HostComponent<Props> = requireNativeComponent(
   'BBBN_SystemBroadcastPicker'

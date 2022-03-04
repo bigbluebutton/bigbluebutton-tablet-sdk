@@ -6,28 +6,24 @@ import { handleWebviewMessage } from './webview/message-handler';
 
 type BigbluebuttonMobileSdkProps = {
   url: string;
-  broadcastAppBundleId: string;
   style: ViewStyle;
 };
 
-const renderPlatformSpecificComponents = (broadcastAppBundleId: string) =>
+const renderPlatformSpecificComponents = () =>
   Platform.select({
-    ios: (
-      <BBBN_SystemBroadcastPicker broadcastAppBundleId={broadcastAppBundleId} />
-    ),
+    ios: <BBBN_SystemBroadcastPicker />,
     android: null,
   });
 
 export const BigbluebuttonMobile = ({
   url,
-  broadcastAppBundleId,
   style,
 }: BigbluebuttonMobileSdkProps) => {
   const webViewRef = useRef(null);
 
   return (
     <>
-      {renderPlatformSpecificComponents(broadcastAppBundleId)}
+      {renderPlatformSpecificComponents()}
       {
         <WebView
           ref={webViewRef}

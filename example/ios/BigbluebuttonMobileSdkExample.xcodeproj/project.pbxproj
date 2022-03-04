@@ -14,7 +14,9 @@
 		F1C81DD727BC0E5800BC9C2F /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CB754927BBFB61007E6C31 /* ReplayKit.framework */; };
 		F1C81DDA27BC0E5800BC9C2F /* SampleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C81DD927BC0E5800BC9C2F /* SampleHandler.swift */; };
 		F1C81DDE27BC0E5800BC9C2F /* BigBlueButtonMobileSdkBroadcastExample.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F1C81DD627BC0E5800BC9C2F /* BigBlueButtonMobileSdkBroadcastExample.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		F1D24A0B27D18674003B294F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D24A0A27D18674003B294F /* AppDelegate.swift */; };
+		F1CF7F4627D1A4CB00E0C7F1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CF7F4527D1A4CB00E0C7F1 /* Constants.swift */; };
+		F1CF7F4827D1AAAF00E0C7F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CF7F4727D1AAAF00E0C7F1 /* AppDelegate.swift */; };
+		F1CF7F4A27D1AABD00E0C7F1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CF7F4927D1AABD00E0C7F1 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,8 +61,10 @@
 		F1C81DDB27BC0E5800BC9C2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1CB754927BBFB61007E6C31 /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReplayKit.framework; path = System/Library/Frameworks/ReplayKit.framework; sourceTree = SDKROOT; };
 		F1CB755527BBFB61007E6C31 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F1CF7F4527D1A4CB00E0C7F1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F1CF7F4727D1AAAF00E0C7F1 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = BigbluebuttonMobileSdkExample/AppDelegate.swift; sourceTree = "<group>"; };
+		F1CF7F4927D1AABD00E0C7F1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = SOURCE_ROOT; };
 		F1D24A0927D18674003B294F /* swift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "swift-Bridging-Header.h"; sourceTree = "<group>"; };
-		F1D24A0A27D18674003B294F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1D24A0C27D18E21003B294F /* BigbluebuttonMobileSdkExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = BigbluebuttonMobileSdkExample.entitlements; path = BigbluebuttonMobileSdkExample/BigbluebuttonMobileSdkExample.entitlements; sourceTree = "<group>"; };
 		F1D24A0D27D18E32003B294F /* BigBlueButtonMobileSdkBroadcastExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BigBlueButtonMobileSdkBroadcastExample.entitlements; sourceTree = "<group>"; };
 		F8315799A5C1BF7D3955FE7A /* libPods-BigbluebuttonMobileSdkExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BigbluebuttonMobileSdkExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,12 +94,13 @@
 		13B07FAE1A68108700A75B9A /* BigbluebuttonMobileSdkExample */ = {
 			isa = PBXGroup;
 			children = (
+				F1CF7F4527D1A4CB00E0C7F1 /* Constants.swift */,
+				F1CF7F4727D1AAAF00E0C7F1 /* AppDelegate.swift */,
 				F1D24A0C27D18E21003B294F /* BigbluebuttonMobileSdkExample.entitlements */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
-				F1D24A0A27D18674003B294F /* AppDelegate.swift */,
 				F1D24A0927D18674003B294F /* swift-Bridging-Header.h */,
 			);
 			name = BigbluebuttonMobileSdkExample;
@@ -160,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				F1D24A0D27D18E32003B294F /* BigBlueButtonMobileSdkBroadcastExample.entitlements */,
+				F1CF7F4927D1AABD00E0C7F1 /* Constants.swift */,
 				F1C81DD927BC0E5800BC9C2F /* SampleHandler.swift */,
 				F1C81DDB27BC0E5800BC9C2F /* Info.plist */,
 			);
@@ -390,7 +396,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1D24A0B27D18674003B294F /* AppDelegate.swift in Sources */,
+				F1CF7F4827D1AAAF00E0C7F1 /* AppDelegate.swift in Sources */,
+				F1CF7F4627D1A4CB00E0C7F1 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +406,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1C81DDA27BC0E5800BC9C2F /* SampleHandler.swift in Sources */,
+				F1CF7F4A27D1AABD00E0C7F1 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

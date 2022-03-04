@@ -4,6 +4,11 @@ import os
 open class BBBSampleHandler : RPBroadcastSampleHandler {
     // Logger (these messages are displayed in the console application)
     private var logger = os.Logger(subsystem: "BigBlueButtonMobileSDK", category: "BBBSampleHandler")
+    private var appGroupName:String = "";
+    
+    open func setAppGroupName(appGroupName:String) {
+        self.appGroupName = appGroupName;
+    }
     
     open override func broadcastStarted(withSetupInfo setupInfo: [String : NSObject]?) {
         logger.info("ReplayKit2 event - broadcastStarted")
