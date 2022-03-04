@@ -1,6 +1,6 @@
 {
   "name": "bigbluebutton-mobile-sdk",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "This repository contains BigBlueButton react-native component, that's used in our [sample implementation](https://github.com/bigbluebutton/bigbluebutton-mobile).",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
