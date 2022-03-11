@@ -1,26 +1,38 @@
-import {
-  requireNativeComponent,
-  UIManager,
-  Platform,
-  ViewStyle,
-} from 'react-native';
-
-const LINKING_ERROR =
-  `The package 'bigbluebutton-mobile-sdk' doesn't seem to be linked. Make sure: \n\n` +
-  Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
-  '- You rebuilt the app after installing the package\n' +
-  '- You are not using Expo managed workflow\n';
+import { Platform, ViewStyle } from 'react-native';
+import React, { useRef } from 'react';
+import BBBN_SystemBroadcastPicker from './native-components/BBBN_SystemBroadcastPicker';
+import { WebView } from 'react-native-webview';
+import { handleWebviewMessage } from './webview/message-handler';
 
 type BigbluebuttonMobileSdkProps = {
-  color: string;
+  url: string;
   style: ViewStyle;
 };
 
-const ComponentName = 'BigbluebuttonMobileSdkView';
+const renderPlatformSpecificComponents = () =>
+  Platform.select({
+    ios: <BBBN_SystemBroadcastPicker />,
+    android: null,
+  });
 
-export const BigbluebuttonMobileSdkView =
-  UIManager.getViewManagerConfig(ComponentName) != null
-    ? requireNativeComponent<BigbluebuttonMobileSdkProps>(ComponentName)
-    : () => {
-        throw new Error(LINKING_ERROR);
-      };
+export const BigbluebuttonMobile = ({
+  url,
+  style,
+}: BigbluebuttonMobileSdkProps) => {
+  const webViewRef = useRef(null);
+
+  return (
+    <>
+      {renderPlatformSpecificComponents()}
+      {
+        <WebView
+          ref={webViewRef}
+          source={{ uri: url }}
+          style={{ ...style }}
+          onMessage={(msg) => handleWebviewMessage(webViewRef, msg)}
+          applicationNameForUserAgent="BBBMobile"
+        />
+      }
+    </>
+  );
+};

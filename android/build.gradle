@@ -54,6 +54,7 @@ repositories {
 }
 
 dependencies {
+    implementation project(':react-native-webview')
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
 }

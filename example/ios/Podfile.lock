@@ -1,6 +1,9 @@
 PODS:
-  - bigbluebutton-mobile-sdk (0.1.0):
+  - bigbluebutton-mobile-sdk (0.1.8):
+    - bigbluebutton-mobile-sdk-common
     - React-Core
+    - WebRTC-lib
+  - bigbluebutton-mobile-sdk-common (0.1.8):
     - WebRTC-lib
   - boost-for-react-native (1.63.0)
   - DoubleConversion (1.1.6)
@@ -188,6 +191,8 @@ PODS:
     - React-cxxreact (= 0.63.4)
     - React-jsi (= 0.63.4)
   - React-jsinspector (0.63.4)
+  - react-native-webview (11.17.2):
+    - React-Core
   - React-RCTActionSheet (0.63.4):
     - React-Core/RCTActionSheetHeaders (= 0.63.4)
   - React-RCTAnimation (0.63.4):
@@ -253,6 +258,7 @@ PODS:
 
 DEPENDENCIES:
   - bigbluebutton-mobile-sdk (from `../..`)
+  - bigbluebutton-mobile-sdk-common (from `../../common`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/Libraries/FBReactNativeSpec`)
@@ -270,6 +276,7 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
+  - react-native-webview (from `../node_modules/react-native-webview`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
   - React-RCTBlob (from `../node_modules/react-native/Libraries/Blob`)
@@ -290,6 +297,8 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   bigbluebutton-mobile-sdk:
     :path: "../.."
+  bigbluebutton-mobile-sdk-common:
+    :path: "../../common"
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   FBLazyVector:
@@ -320,6 +329,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsiexecutor"
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
+  react-native-webview:
+    :path: "../node_modules/react-native-webview"
   React-RCTActionSheet:
     :path: "../node_modules/react-native/Libraries/ActionSheetIOS"
   React-RCTAnimation:
@@ -344,7 +355,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  bigbluebutton-mobile-sdk: ba72e940eea4190f7b499ed1a9e33e2d57ad7f8d
+  bigbluebutton-mobile-sdk: 3b5da479ad35ed28109cc74b1f8bf7c284e61bb0
+  bigbluebutton-mobile-sdk-common: 1da6689f4b52a15f0225f991d9e62158e654b941
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: cde416483dac037923206447da6e1454df403714
   FBLazyVector: 3bb422f41b18121b71783a905c10e58606f7dc3e
@@ -361,6 +373,7 @@ SPEC CHECKSUMS:
   React-jsi: a0418934cf48f25b485631deb27c64dc40fb4c31
   React-jsiexecutor: 93bd528844ad21dc07aab1c67cb10abae6df6949
   React-jsinspector: 58aef7155bc9a9683f5b60b35eccea8722a4f53a
+  react-native-webview: 380c1a03ec94b7ed764dac8db1e7c9952d08c93a
   React-RCTActionSheet: 89a0ca9f4a06c1f93c26067af074ccdce0f40336
   React-RCTAnimation: 1bde3ecc0c104c55df246eda516e0deb03c4e49b
   React-RCTBlob: a97d378b527740cc667e03ebfa183a75231ab0f0
@@ -374,6 +387,6 @@ SPEC CHECKSUMS:
   WebRTC-lib: 508fe02efa0c1a3a8867082a77d24c9be5d29aeb
   Yoga: 4bd86afe9883422a7c4028c00e34790f560923d6
 
-PODFILE CHECKSUM: e84704278155bd10d2637b20fd1b1519bedb0c00
+PODFILE CHECKSUM: f8fce284a6a970f8f12eaf796d7b132a61b2e095
 
 COCOAPODS: 1.11.2

@@ -1,12 +1,15 @@
 import * as React from 'react';
 
 import { StyleSheet, View } from 'react-native';
-import { BigbluebuttonMobileSdkView } from 'bigbluebutton-mobile-sdk';
+import { BigbluebuttonMobile } from 'bigbluebutton-mobile-sdk';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <BigbluebuttonMobileSdkViewManager color="#32a852" style={styles.box} />
+      <BigbluebuttonMobile
+        url="https://mobile.bbb.imdt.dev"
+        style={styles.bbb}
+      />
     </View>
   );
 }
@@ -14,12 +17,10 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: 'row',
   },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
+  bbb: {
+    marginTop: 48,
+    flex: 1,
   },
 });
