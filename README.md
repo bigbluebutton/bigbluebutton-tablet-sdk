@@ -33,7 +33,7 @@ This SDK (in combination with bigbluebutton-html5 code tweaks) implements replac
 
 The following sequence diagram represents what happens when BigBlueButton calls the `navigator.getDisplayMedia` function:
 
-![getDisplayMedia sequence diagram](/docs/uml/ios-screenshare/exported/BigBlueButton Mobile screenshare.svg "getDisplayMedia sequence diagram")
+<img src="/docs/uml/ios-screenshare/exported/BigBlueButton Mobile screenshare.svg"/>
 
 
 
