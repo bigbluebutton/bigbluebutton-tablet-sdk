@@ -1,6 +1,7 @@
 import type { MutableRefObject } from 'react';
 import type { WebView, WebViewMessageEvent } from 'react-native-webview';
 import initializeScreenShare from '../methods/initializeScreenShare';
+import createScreenShareOffer from '../methods/createScreenShareOffer';
 
 function observePromiseResult(
   webViewRef: MutableRefObject<WebView>,
@@ -38,6 +39,9 @@ export function handleWebviewMessage(
     switch (data?.method) {
       case 'initializeScreenShare':
         promise = initializeScreenShare();
+        break;
+      case 'createOffer':
+        promise = createScreenShareOffer();
         break;
       default:
         throw `Unknown method ${data?.method}`;

@@ -5,3 +5,7 @@ const ScreenShareService = NativeModules.BBBN_ScreenShareService;
 export function initializeScreenShare() {
   ScreenShareService.initializeScreenShare();
 }
+
+export function createScreenShareOffer() {
+  ScreenShareService.createScreenShareOffer();
+}

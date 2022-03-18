@@ -2,7 +2,7 @@ import { initializeScreenShare as nativeInitializeScreenShare } from '../native-
 import nativeEmitter from '../native-messaging/emitter';
 
 // Reference to the resolver of last call
-let resolve = (a: String) => {
+let resolve = (a: String | null) => {
   console.log(
     `default resolve function called, this should never happen: ${a}`
   );
@@ -15,7 +15,7 @@ nativeEmitter.addListener('onBroadcastRequested', () => {
 
 // Resolve promise when broadcast is started (this event means that user confirmed the screenshare)
 nativeEmitter.addListener('onBroadcastStarted', () => {
-  resolve('null');
+  resolve(null);
 });
 
 // Entry point of this method
@@ -26,9 +26,10 @@ function initializeScreenShare() {
 
     try {
       // call native swift method that triggers the broadcast popup
+      console.log(`>nativeInitializeScreenShare`);
       nativeInitializeScreenShare();
     } catch (e) {
-      rej(`Call to nativeInitializeScreenShare failed`);
+      rej(`Call to nativeInitializeScreenShare failed zzy`);
     }
   });
 }

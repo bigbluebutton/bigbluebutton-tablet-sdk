@@ -14,12 +14,15 @@ open class BBBSharedData {
     private static var userDefaultsGroup:String?
     
     public enum SharedData {
-        public static let broadcastStarted   = "broadcastStarted"
-        public static let broadcastPaused    = "broadcastPaused"
-        public static let broadcastResumed   = "broadcastResumed"
-        public static let broadcastFinished  = "broadcastFinished"
+        public static let broadcastStarted   = "broadcastStarted"                   // Broadcaster -> UI APP
+        public static let broadcastPaused    = "broadcastPaused"                    // Broadcaster -> UI APP
+        public static let broadcastResumed   = "broadcastResumed"                   // Broadcaster -> UI APP
+        public static let broadcastFinished  = "broadcastFinished"                  // Broadcaster -> UI APP
+        public static let createScreenShareOffer  = "createScreenShareOffer"        // UI APP -> Broadcaster
+        public static let screenShareOfferCreated  = "screenShareOfferCreated"      // Broadcaster -> UI APP
     }
     
+    // Get reference to userDefaults object (that's actually the object used to share information among UI APP and the BroadcastUploadExtension APP)
     public static func getUserDefaults(appGroupName:String) -> UserDefaults {
         if(userDefaults == nil || userDefaultsGroup == nil || userDefaultsGroup != appGroupName) {
             logger.info("getUserDefaults \(appGroupName) -> Created")
@@ -33,10 +36,22 @@ open class BBBSharedData {
     }
     
     // Generates a unique payload
-    public static func generatePayload() -> String {
-        // TODO - replace by UUID
+    public static func generatePayload(properties:Dictionary<String,String> = [:]) -> String {
         let now=String(DateFormatter.localizedString(from: Date(), dateStyle: .medium, timeStyle: .short));
         
-        return "{\"timestamp\": \(now)}";
+        var payload = properties;
+        payload["uuid"] = UUID().uuidString;
+        payload["timestamp"] = now;
+        
+        let encoder = JSONEncoder()
+        if let jsonData = try? encoder.encode(payload) {
+            if let jsonString = String(data: jsonData, encoding: .utf8) {
+                print("JSON = \(jsonString)")
+                return jsonString
+            }
+        }
+        
+        logger.error("JSON encoder error, returning empty object")
+        return "{}";
     }
 }

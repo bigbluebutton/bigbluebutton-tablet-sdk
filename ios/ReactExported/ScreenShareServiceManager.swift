@@ -6,6 +6,7 @@
 
 import Foundation
 import os
+import bigbluebutton_mobile_sdk_common
 
 @objc(ScreenShareServiceManager)
 class ScreenShareServiceManager: NSObject {
@@ -25,4 +26,17 @@ class ScreenShareServiceManager: NSObject {
         ReactNativeEventEmitter.emitter.sendEvent(withName: eventName, body: nil);
     }
     
+    // React native exposed method (called when user click the button to share screen)
+    @objc func createScreenShareOffer() -> Void {
+        logger.info("createScreenShareOffer")
+        
+        // Send request of SDP to the broadcast upload extension
+        // TIP - the handling of SDP response is done in observer2 of BigBlueButtonSDK class
+        logger.info("createScreenShareOffer - persisting information on UserDefaults")
+        BBBSharedData
+            .getUserDefaults(appGroupName: BigBlueButtonSDK.getAppGroupName())
+            .set(BBBSharedData.generatePayload(), forKey: BBBSharedData.SharedData.createScreenShareOffer)
+        
+        
+    }
 }
