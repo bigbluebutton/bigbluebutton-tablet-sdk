@@ -1,14 +1,18 @@
 import * as React from 'react';
 
-import { StyleSheet, View } from 'react-native';
+import { Alert, StyleSheet, View } from 'react-native';
 import { BigbluebuttonMobile } from 'bigbluebutton-mobile-sdk';
 
 export default function App() {
+  function onError(e: string) {
+    Alert.alert('Page not exists', e);
+  }
   return (
     <View style={styles.container}>
       <BigbluebuttonMobile
         url="https://mobile.bbb.imdt.dev"
         style={styles.bbb}
+        onError={(e: any) => onError(e)}
       />
     </View>
   );
