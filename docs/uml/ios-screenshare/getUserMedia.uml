@@ -1,0 +1,16 @@
+# open with https://sequencediagram.org/
+title BigBlueButton Mobile screenshare - getDisplayMedia
+
+bigbluebutton-html5->navigator:getDisplayMedia
+navigator->bigbluebutton-mobile(RN):initializeScreenShare
+bigbluebutton-mobile(RN)->bigbluebutton-mobile(SWIFT event emitter):addEventListener("broadcastStarted")
+bigbluebutton-mobile(RN)->bigbluebutton-mobile(SWIFT):ScreenShareServiceManager.initializeScreenShare
+bigbluebutton-mobile(SWIFT)->ios:SystemBroadcastPicker.requestBroadcast
+ios->bigbluebutton-mobile(BroadcastExtension):BBBSampleHandler.broadcastStarted
+bigbluebutton-mobile(BroadcastExtension)->UserDefaults:set key onBroadcastStarted
+UserDefaults->bigbluebutton-mobile(SWIFT KVO observer):onBroadcastStarted
+bigbluebutton-mobile(SWIFT KVO observer)->bigbluebutton-mobile(SWIFT):onBroadcastStarted
+bigbluebutton-mobile(SWIFT)->bigbluebutton-mobile(SWIFT event emitter):onBroadcastStarted
+bigbluebutton-mobile(SWIFT event emitter)->bigbluebutton-mobile(RN):onBroadcastStarted
+bigbluebutton-mobile(RN)->navigator:resolve initializeScreenShare
+navigator->bigbluebutton-html5:resolve getDisplayMedia

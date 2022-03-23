@@ -1,6 +1,7 @@
 import type { MutableRefObject } from 'react';
 import type { WebView, WebViewMessageEvent } from 'react-native-webview';
-import { handleMethodCall } from './method-call-handler';
+import initializeScreenShare from '../methods/initializeScreenShare';
+import createScreenShareOffer from '../methods/createScreenShareOffer';
 
 function observePromiseResult(
   webViewRef: MutableRefObject<WebView>,
@@ -34,7 +35,17 @@ export function handleWebviewMessage(
 
   const data = JSON.parse(stringData);
   if (data?.method && data?.sequence) {
-    const promise = handleMethodCall(data.method, data.arguments);
+    let promise;
+    switch (data?.method) {
+      case 'initializeScreenShare':
+        promise = initializeScreenShare();
+        break;
+      case 'createOffer':
+        promise = createScreenShareOffer();
+        break;
+      default:
+        throw `Unknown method ${data?.method}`;
+    }
     observePromiseResult(webViewRef, data.sequence, promise);
   } else {
     console.log(`Ignoring unknown message: $stringData`);

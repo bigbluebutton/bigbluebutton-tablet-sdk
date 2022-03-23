@@ -25,6 +25,18 @@ import { BigBlueButtonMobile } from "bigbluebutton-mobile-sdk";
       />
 ```
 
+## Architecture
+
+This SDK (in combination with bigbluebutton-html5 code tweaks) implements replacement functions to navigator and WebRTC functions.
+
+### getDisplayMedia
+
+The following sequence diagram represents what happens when BigBlueButton calls the `navigator.getDisplayMedia` function:
+
+<img src="/docs/uml/ios-screenshare/exported/BigBlueButton Mobile screenshare.svg"/>
+
+
+
 ## Contributing
 
 See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
