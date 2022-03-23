@@ -7,6 +7,7 @@ import { handleWebviewMessage } from './webview/message-handler';
 type BigbluebuttonMobileSdkProps = {
   url: string;
   style: ViewStyle;
+  onError: Function;
 };
 
 const renderPlatformSpecificComponents = () =>
@@ -18,6 +19,7 @@ const renderPlatformSpecificComponents = () =>
 export const BigbluebuttonMobile = ({
   url,
   style,
+  onError,
 }: BigbluebuttonMobileSdkProps) => {
   const webViewRef = useRef(null);
 
@@ -31,6 +33,7 @@ export const BigbluebuttonMobile = ({
           style={{ ...style }}
           onMessage={(msg) => handleWebviewMessage(webViewRef, msg)}
           applicationNameForUserAgent="BBBMobile"
+          onError={(e) => onError(e.nativeEvent.code)}
         />
       }
     </>
