@@ -48,7 +48,8 @@ final class WebRTCClient: NSObject {
         config.sdpSemantics = .unifiedPlan
         
         // gatherContinually will let WebRTC to listen to any network changes and send any new candidates to the other client
-        config.continualGatheringPolicy = .gatherContinually
+        // gatherOnce will get candidates only on beginning (this is how BBB expect to have it for now, so we use this one)
+        config.continualGatheringPolicy = .gatherOnce
         
         // Define media constraints. DtlsSrtpKeyAgreement is required to be true to be able to connect with web browsers.
         let constraints = RTCMediaConstraints(mandatoryConstraints: nil,
@@ -61,8 +62,8 @@ final class WebRTCClient: NSObject {
         self.peerConnection = peerConnection
         
         super.init()
-        createMediaSenders()
-        configureAudioSession()
+        // createMediaSenders()
+        // configureAudioSession()
         self.peerConnection.delegate = self
     }
     
@@ -88,13 +89,13 @@ final class WebRTCClient: NSObject {
     
     // MARK: Media
     
-    func push(videoFrame: RTCVideoFrame) {
+    /*func push(videoFrame: RTCVideoFrame) {
         guard videoCapturer != nil, videoSource != nil else { return }
         videoSource!.capturer(videoCapturer!, didCapture: videoFrame)
         print("RTCVideoFrame pushed to server.")
-    }
+    }*/
     
-    private func configureAudioSession() {
+    /*private func configureAudioSession() {
         self.rtcAudioSession.lockForConfiguration()
         do {
             try self.rtcAudioSession.setCategory(AVAudioSession.Category.playAndRecord.rawValue)
@@ -103,9 +104,9 @@ final class WebRTCClient: NSObject {
             debugPrint("Error changing AVAudioSession category: \(error)")
         }
         self.rtcAudioSession.unlockForConfiguration()
-    }
+    }*/
     
-    private func createMediaSenders() {
+    /*private func createMediaSenders() {
         let streamId = "stream"
         
         // Audio
@@ -116,23 +117,23 @@ final class WebRTCClient: NSObject {
         let videoTrack = self.createVideoTrack()
         self.localVideoTrack = videoTrack
         self.peerConnection.add(videoTrack, streamIds: [streamId])
-    }
+    }*/
     
-    private func createAudioTrack() -> RTCAudioTrack {
+    /*private func createAudioTrack() -> RTCAudioTrack {
         let audioConstrains = RTCMediaConstraints(mandatoryConstraints: nil, optionalConstraints: nil)
         let audioSource = WebRTCClient.factory.audioSource(with: audioConstrains)
         let audioTrack = WebRTCClient.factory.audioTrack(with: audioSource, trackId: "audio0")
         return audioTrack
-    }
+    }*/
     
-    private func createVideoTrack() -> RTCVideoTrack {
+    /*private func createVideoTrack() -> RTCVideoTrack {
         videoSource = WebRTCClient.factory.videoSource(forScreenCast: true)
         videoCapturer = RTCVideoCapturer(delegate: videoSource!)
         videoSource!.adaptOutputFormat(toWidth: 600, height: 800, fps: 15)
         let videoTrack = WebRTCClient.factory.videoTrack(with: videoSource!, trackId: "video0")
         videoTrack.isEnabled = true
         return videoTrack
-    }
+    }*/
 }
 
 // MARK: RTCPeerConnectionDelegate Methods

@@ -4,8 +4,8 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 platform :ios, '14.7'
 
 target 'BigBlueButtonMobileSdkBroadcastExample' do
-  pod 'bigbluebutton-mobile-sdk-common', :path => '../../common'
-  pod 'bigbluebutton-mobile-sdk-broadcast-upload-extension', :path => '../../broadcast-upload-extension'
+  pod 'bigbluebutton-mobile-sdk-common', :path => '../../ios-common'
+  pod 'bigbluebutton-mobile-sdk-broadcast-upload-extension', :path => '../../ios-broadcast-upload-extension'
 end
 
 target 'BigbluebuttonMobileSdkExample' do
@@ -14,7 +14,7 @@ target 'BigbluebuttonMobileSdkExample' do
   use_react_native!(:path => config["reactNativePath"])
 
   pod 'bigbluebutton-mobile-sdk', :path => '../..'
-  pod 'bigbluebutton-mobile-sdk-common', :path => '../../common'
+  pod 'bigbluebutton-mobile-sdk-common', :path => '../../ios-common'
 
   # Enables Flipper.
   #
