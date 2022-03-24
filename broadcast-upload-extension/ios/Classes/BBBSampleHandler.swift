@@ -6,6 +6,7 @@
 
 import ReplayKit
 import os
+import bigbluebutton_mobile_sdk_common
 
 open class BBBSampleHandler : RPBroadcastSampleHandler {
     // Logger (these messages are displayed in the console application)
