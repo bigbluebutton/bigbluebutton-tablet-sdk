@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.platforms    = { :ios => "14.7" }
   s.source       = { :git => "https://github.com/bigbluebutton/bigbluebutton-mobile-sdk.git", :tag => "#{s.version}" }
 
-  s.source_files = "ios/**/*.{h,m,mm,swift}"
+  s.source_files = "Classes/*.{h,m,mm,swift}"
 
   s.dependency "WebRTC-lib"
   s.dependency "bigbluebutton-mobile-sdk-common"

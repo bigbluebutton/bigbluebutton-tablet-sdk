@@ -13,6 +13,7 @@ open class BBBSampleHandler : RPBroadcastSampleHandler {
     private var logger = os.Logger(subsystem: "BigBlueButtonMobileSDK", category: "BBBSampleHandler")
     private var appGroupName:String = "";
     private var observer:NSKeyValueObservation?;
+    private var screenBroadcaster:ScreenBroadcaster?;
     
     open func setAppGroupName(appGroupName:String) {
         logger.info("Received appGroupName: \(appGroupName)")
@@ -31,15 +32,25 @@ open class BBBSampleHandler : RPBroadcastSampleHandler {
         logger.info("ReplayKit2 event - broadcastStarted - persisting information on UserDefaults")
         userDefaults.set(BBBSharedData.generatePayload(), forKey: BBBSharedData.SharedData.broadcastStarted)
         
+        self.screenBroadcaster = ScreenBroadcaster()
+        
         // Listen for createOffer requests from the UI APP
         logger.info("Configuring observer")
         self.observer = userDefaults.observe(\.createScreenShareOffer, options: [.new]) { (defaults, change) in
             self.logger.info("Observer detected a createScreenShareOffer request!")
-            BBBSharedData
-                .getUserDefaults(appGroupName: self.appGroupName)
-                .set(BBBSharedData.generatePayload(properties: [
-                    "sdp": "this is SDP from extension"
-                ]), forKey: BBBSharedData.SharedData.screenShareOfferCreated)
+            
+            Task.init {
+                let optionalSdp = await self.screenBroadcaster?.createOffer()
+                if(optionalSdp != nil){
+                    let sdp = optionalSdp!
+                    self.logger.info("Got SDP back from screenBroadcaster: \(sdp)")
+                    BBBSharedData
+                        .getUserDefaults(appGroupName: self.appGroupName)
+                        .set(BBBSharedData.generatePayload(properties: [
+                            "sdp": sdp
+                        ]), forKey: BBBSharedData.SharedData.screenShareOfferCreated)
+                }
+            }
         }
     }
     

@@ -362,8 +362,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   bigbluebutton-mobile-sdk: 3b5da479ad35ed28109cc74b1f8bf7c284e61bb0
-  bigbluebutton-mobile-sdk-broadcast-upload-extension: ab8f9cebcde6ac34d5643c27da289928f8225b78
-  bigbluebutton-mobile-sdk-common: 1da6689f4b52a15f0225f991d9e62158e654b941
+  bigbluebutton-mobile-sdk-broadcast-upload-extension: a7db971c25db05172529a414b1faf12e410f732a
+  bigbluebutton-mobile-sdk-common: a230c42cc0f816b44a060a829255fd3900e08e35
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: cde416483dac037923206447da6e1454df403714
   FBLazyVector: 3bb422f41b18121b71783a905c10e58606f7dc3e

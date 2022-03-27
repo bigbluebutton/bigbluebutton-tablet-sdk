@@ -6,7 +6,7 @@
 //
 
 import ReplayKit
-import bigbluebutton_mobile_sdk_common
+import bigbluebutton_mobile_sdk_broadcast_upload_extension
 
 class SampleHandler: BBBSampleHandler {
     override func broadcastStarted(withSetupInfo setupInfo: [String : NSObject]?) {
