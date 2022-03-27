@@ -12,7 +12,8 @@ open class BBBSampleHandler : RPBroadcastSampleHandler {
     // Logger (these messages are displayed in the console application)
     private var logger = os.Logger(subsystem: "BigBlueButtonMobileSDK", category: "BBBSampleHandler")
     private var appGroupName:String = "";
-    private var observer:NSKeyValueObservation?;
+    private var createOfferCallObserver:NSKeyValueObservation?;
+    private var setRemoteSDPCallObserver:NSKeyValueObservation?;
     private var screenBroadcaster:ScreenBroadcaster?;
     
     open func setAppGroupName(appGroupName:String) {
@@ -35,8 +36,8 @@ open class BBBSampleHandler : RPBroadcastSampleHandler {
         self.screenBroadcaster = ScreenBroadcaster()
         
         // Listen for createOffer requests from the UI APP
-        logger.info("Configuring observer")
-        self.observer = userDefaults.observe(\.createScreenShareOffer, options: [.new]) { (defaults, change) in
+        logger.info("Configuring observer for createOffer")
+        self.createOfferCallObserver = userDefaults.observe(\.createScreenShareOffer, options: [.new]) { (defaults, change) in
             self.logger.info("Observer detected a createScreenShareOffer request!")
             
             Task.init {
@@ -49,6 +50,26 @@ open class BBBSampleHandler : RPBroadcastSampleHandler {
                         .set(BBBSharedData.generatePayload(properties: [
                             "sdp": sdp
                         ]), forKey: BBBSharedData.SharedData.screenShareOfferCreated)
+                }
+            }
+        }
+        
+        logger.info("Configuring observer for setRemoteSDP")
+        self.setRemoteSDPCallObserver = userDefaults.observe(\.setScreenShareRemoteSDP, options: [.new]) { (defaults, change) in
+            let payload:String = (change.newValue!);
+            self.logger.info("Observer detected a setScreenShareRemoteSDP request with payload \(payload)")
+            let payloadData = payload.data(using: .utf8)!
+            let decodedPayload = (try? JSONDecoder().decode([String: String].self, from: payloadData))!
+            let sdp = decodedPayload["sdp"]
+            
+            Task.init {
+                let remoteSDPDefined = await self.screenBroadcaster!.setRemoteSDP(remoteSDP: sdp!)
+
+                if(remoteSDPDefined){
+                    self.logger.info("Remote SDP defined!")
+                    BBBSharedData
+                        .getUserDefaults(appGroupName: self.appGroupName)
+                        .set(BBBSharedData.generatePayload(), forKey: BBBSharedData.SharedData.setScreenShareRemoteSDPCompleted)
                 }
             }
         }

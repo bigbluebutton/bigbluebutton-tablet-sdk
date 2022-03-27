@@ -7,6 +7,7 @@
 
 import Foundation
 import WebRTC
+import os
 
 protocol WebRTCClientDelegate: AnyObject {
     func webRTCClient(_ client: WebRTCClient, didDiscoverLocalCandidate candidate: RTCIceCandidate)
@@ -14,6 +15,7 @@ protocol WebRTCClientDelegate: AnyObject {
 }
 
 open class WebRTCClient: NSObject {
+    private var logger = os.Logger(subsystem: "BigBlueButtonMobileSDK", category: "WebRTCClient")
     
     // The `RTCPeerConnectionFactory` is in charge of creating new RTCPeerConnection instances.
     // A new RTCPeerConnection should be created every new call, but the factory is shared.
@@ -76,9 +78,15 @@ open class WebRTCClient: NSObject {
         return sdp
     }
     
-    func set(remoteSdp: RTCSessionDescription, completion: @escaping (Error?) -> ()) {
-        self.peerConnection.setRemoteDescription(remoteSdp, completionHandler: completion)
+    public func setRemoteSDP(remoteSDP: String) async {
+        do {
+            let rtcSessionDescription = RTCSessionDescription(type: RTCSdpType.answer, sdp: remoteSDP)
+            try await self.peerConnection.setRemoteDescription(rtcSessionDescription)
+        } catch {
+            self.logger.error("Error setting remote SDP")
+        }
     }
+    
     
     func set(remoteCandidate: RTCIceCandidate, completion: @escaping (Error?) -> ()) {
         self.peerConnection.add(remoteCandidate, completionHandler: completion)
@@ -138,41 +146,41 @@ open class WebRTCClient: NSObject {
 extension WebRTCClient: RTCPeerConnectionDelegate {
     
     public func peerConnection(_ peerConnection: RTCPeerConnection, didChange stateChanged: RTCSignalingState) {
-        debugPrint("peerConnection new signaling state: \(stateChanged)")
+        self.logger.info("peerConnection new signaling state: \(stateChanged.rawValue)")
     }
     
     public func peerConnection(_ peerConnection: RTCPeerConnection, didAdd stream: RTCMediaStream) {
-        debugPrint("peerConnection did add stream \(stream)")
+        self.logger.info("peerConnection did add stream \(stream.streamId)")
     }
     
     public func peerConnection(_ peerConnection: RTCPeerConnection, didRemove stream: RTCMediaStream) {
-        debugPrint("peerConnection did remove stream \(stream)")
+        self.logger.info("peerConnection did remove stream \(stream.streamId)")
     }
     
     public func peerConnectionShouldNegotiate(_ peerConnection: RTCPeerConnection) {
-        debugPrint("peerConnection should negotiate")
+        self.logger.info("peerConnection should negotiate")
     }
     
     public func peerConnection(_ peerConnection: RTCPeerConnection, didChange newState: RTCIceConnectionState) {
-        debugPrint("peerConnection new connection state: \(newState)")
+        self.logger.info("peerConnection new connection state: \(newState.rawValue)")
         self.delegate?.webRTCClient(self, didChangeConnectionState: newState)
     }
     
     public func peerConnection(_ peerConnection: RTCPeerConnection, didChange newState: RTCIceGatheringState) {
-        debugPrint("peerConnection new gathering state: \(newState)")
+        self.logger.info("peerConnection new gathering state: \(newState.rawValue)")
     }
     
     public func peerConnection(_ peerConnection: RTCPeerConnection, didGenerate candidate: RTCIceCandidate) {
-        debugPrint("peerConnection discovered new candidate")
+        self.logger.info("peerConnection discovered new candidate")
         self.delegate?.webRTCClient(self, didDiscoverLocalCandidate: candidate)
     }
     
     public func peerConnection(_ peerConnection: RTCPeerConnection, didRemove candidates: [RTCIceCandidate]) {
-        debugPrint("peerConnection did remove candidate(s)")
+        self.logger.info("peerConnection did remove candidate(s)")
     }
     
     public func peerConnection(_ peerConnection: RTCPeerConnection, didOpen dataChannel: RTCDataChannel) {
-        debugPrint("peerConnection did open data channel")
+        self.logger.info("peerConnection did open data channel")
     }
 }
 

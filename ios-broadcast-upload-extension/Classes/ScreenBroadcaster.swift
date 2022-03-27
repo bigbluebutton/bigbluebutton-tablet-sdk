@@ -29,4 +29,15 @@ open class ScreenBroadcaster {
         }
     }
     
+    public func setRemoteSDP(remoteSDP:String) async -> Bool  {
+        do {
+            try await self.webRTCClient.setRemoteSDP(remoteSDP: remoteSDP)
+            return true
+        }
+        catch {
+            return false
+        }
+    }
+    
+    
 }

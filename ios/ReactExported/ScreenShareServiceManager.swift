@@ -39,4 +39,17 @@ class ScreenShareServiceManager: NSObject {
         
         
     }
+    
+    @objc func setScreenShareRemoteSDP(_ remoteSDP:String) -> Void {
+        logger.info("setScreenShareRemoteSDP call arrived on swift: \(remoteSDP)")
+        // Send request of "set remote SDP" to broadcast upload extension
+        // TIP - the handling of this method response is done in observer3 of BigBlueButtonSDK class
+        logger.info("setScreenShareRemoteSDP - persisting information on UserDefaults")
+        BBBSharedData
+            .getUserDefaults(appGroupName: BigBlueButtonSDK.getAppGroupName())
+            .set(BBBSharedData.generatePayload(properties: [
+                "sdp": remoteSDP
+            ]), forKey: BBBSharedData.SharedData.setScreenShareRemoteSDP)
+        
+    }
 }

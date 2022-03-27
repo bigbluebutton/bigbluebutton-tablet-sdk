@@ -11,4 +11,5 @@
 
 RCT_EXTERN_METHOD(initializeScreenShare)
 RCT_EXTERN_METHOD(createScreenShareOffer)
+RCT_EXTERN_METHOD(setScreenShareRemoteSDP: (NSString *)remoteSDP)
 @end

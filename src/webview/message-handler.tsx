@@ -2,6 +2,7 @@ import type { MutableRefObject } from 'react';
 import type { WebView, WebViewMessageEvent } from 'react-native-webview';
 import initializeScreenShare from '../methods/initializeScreenShare';
 import createScreenShareOffer from '../methods/createScreenShareOffer';
+import setScreenShareRemoteSDP from '../methods/setScreenShareRemoteSDP';
 
 function observePromiseResult(
   webViewRef: MutableRefObject<WebView>,
@@ -42,6 +43,9 @@ export function handleWebviewMessage(
         break;
       case 'createOffer':
         promise = createScreenShareOffer();
+        break;
+      case 'setRemoteDescription':
+        promise = setScreenShareRemoteSDP(data?.arguments[0].sdp);
         break;
       default:
         throw `Unknown method ${data?.method}`;

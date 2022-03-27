@@ -34,5 +34,15 @@ extension UserDefaults {
     @objc open dynamic var screenShareOfferCreated: String {
         return string(forKey: BBBSharedData.SharedData.createScreenShareOffer) ?? ""
     }
+    
+    // UI APP -> Broadcaster
+    @objc open dynamic var setScreenShareRemoteSDP: String {
+        return string(forKey: BBBSharedData.SharedData.setScreenShareRemoteSDP) ?? ""
+    }
+    
+    // Broadcaster -> UI APP
+    @objc open dynamic var setScreenShareRemoteSDPCompleted: String {
+        return string(forKey: BBBSharedData.SharedData.setScreenShareRemoteSDPCompleted) ?? ""
+    }
 
 }

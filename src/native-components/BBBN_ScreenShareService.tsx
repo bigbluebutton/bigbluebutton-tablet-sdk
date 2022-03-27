@@ -9,3 +9,7 @@ export function initializeScreenShare() {
 export function createScreenShareOffer() {
   ScreenShareService.createScreenShareOffer();
 }
+
+export function setScreenShareRemoteSDP(remoteSDP: string) {
+  ScreenShareService.setScreenShareRemoteSDP(remoteSDP);
+}
