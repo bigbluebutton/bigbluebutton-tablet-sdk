@@ -33,7 +33,7 @@ open class BBBSampleHandler : RPBroadcastSampleHandler {
         logger.info("ReplayKit2 event - broadcastStarted - persisting information on UserDefaults")
         userDefaults.set(BBBSharedData.generatePayload(), forKey: BBBSharedData.SharedData.broadcastStarted)
         
-        self.screenBroadcaster = ScreenBroadcaster()
+        self.screenBroadcaster = ScreenBroadcaster(appGroupName: appGroupName)
         
         // Listen for createOffer requests from the UI APP
         logger.info("Configuring observer for createOffer")

@@ -1,8 +1,10 @@
 import { Platform, ViewStyle } from 'react-native';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import BBBN_SystemBroadcastPicker from './native-components/BBBN_SystemBroadcastPicker';
 import { WebView } from 'react-native-webview';
 import { handleWebviewMessage } from './webview/message-handler';
+import * as onScreenShareLocalIceCandidate from './events/onScreenShareLocalIceCandidate';
+import * as onScreenShareSignalingStateChange from './events/onScreenShareSignalingStateChange';
 
 type BigbluebuttonMobileSdkProps = {
   url: string;
@@ -20,6 +22,11 @@ export const BigbluebuttonMobile = ({
   style,
 }: BigbluebuttonMobileSdkProps) => {
   const webViewRef = useRef(null);
+
+  useEffect(() => {
+    onScreenShareLocalIceCandidate.setupListener(webViewRef);
+    onScreenShareSignalingStateChange.setupListener(webViewRef);
+  }, [webViewRef]);
 
   return (
     <>

@@ -9,9 +9,11 @@ import Foundation
 import WebRTC
 import os
 
-protocol WebRTCClientDelegate: AnyObject {
+public protocol WebRTCClientDelegate: AnyObject {
     func webRTCClient(_ client: WebRTCClient, didDiscoverLocalCandidate candidate: RTCIceCandidate)
-    func webRTCClient(_ client: WebRTCClient, didChangeConnectionState state: RTCIceConnectionState)
+    func webRTCClient(_ client: WebRTCClient, didChangeIceConnectionState state: RTCIceConnectionState)
+    func webRTCClient(_ client: WebRTCClient, didChangeIceGatheringState state: RTCIceGatheringState)
+    func webRTCClient(_ client: WebRTCClient, didChangeSignalingState state: RTCSignalingState)
 }
 
 open class WebRTCClient: NSObject {
@@ -27,7 +29,7 @@ open class WebRTCClient: NSObject {
         return RTCPeerConnectionFactory(encoderFactory: videoEncoderFactory, decoderFactory: videoDecoderFactory)
     }()
     
-    weak var delegate: WebRTCClientDelegate?
+    public weak var delegate: WebRTCClientDelegate?
     private let peerConnection: RTCPeerConnection
     private let rtcAudioSession =  RTCAudioSession.sharedInstance()
     private let audioQueue = DispatchQueue(label: "audio")
@@ -78,13 +80,9 @@ open class WebRTCClient: NSObject {
         return sdp
     }
     
-    public func setRemoteSDP(remoteSDP: String) async {
-        do {
-            let rtcSessionDescription = RTCSessionDescription(type: RTCSdpType.answer, sdp: remoteSDP)
-            try await self.peerConnection.setRemoteDescription(rtcSessionDescription)
-        } catch {
-            self.logger.error("Error setting remote SDP")
-        }
+    public func setRemoteSDP(remoteSDP: String) async throws {
+        let rtcSessionDescription = RTCSessionDescription(type: RTCSdpType.answer, sdp: remoteSDP)
+        try await self.peerConnection.setRemoteDescription(rtcSessionDescription)
     }
     
     
@@ -147,6 +145,8 @@ extension WebRTCClient: RTCPeerConnectionDelegate {
     
     public func peerConnection(_ peerConnection: RTCPeerConnection, didChange stateChanged: RTCSignalingState) {
         self.logger.info("peerConnection new signaling state: \(stateChanged.rawValue)")
+        
+        self.delegate?.webRTCClient(self, didChangeSignalingState: stateChanged)
     }
     
     public func peerConnection(_ peerConnection: RTCPeerConnection, didAdd stream: RTCMediaStream) {
@@ -163,11 +163,20 @@ extension WebRTCClient: RTCPeerConnectionDelegate {
     
     public func peerConnection(_ peerConnection: RTCPeerConnection, didChange newState: RTCIceConnectionState) {
         self.logger.info("peerConnection new connection state: \(newState.rawValue)")
-        self.delegate?.webRTCClient(self, didChangeConnectionState: newState)
+        self.delegate?.webRTCClient(self, didChangeIceConnectionState: newState)
     }
     
     public func peerConnection(_ peerConnection: RTCPeerConnection, didChange newState: RTCIceGatheringState) {
         self.logger.info("peerConnection new gathering state: \(newState.rawValue)")
+        self.delegate?.webRTCClient(self, didChangeIceGatheringState: newState)
+        
+        if(newState == .complete) {
+            self.logger.info("peerConnection new gathering state is COMPLETE")
+        } else if(newState == .gathering) {
+            self.logger.info("peerConnection new gathering state is GATHERING")
+        } else if(newState == .new) {
+            self.logger.info("peerConnection new gathering state is NEW")
+        }
     }
     
     public func peerConnection(_ peerConnection: RTCPeerConnection, didGenerate candidate: RTCIceCandidate) {

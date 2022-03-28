@@ -18,6 +18,8 @@ open class BigBlueButtonSDK: NSObject {
     private static var observer1: NSKeyValueObservation?
     private static var observer2: NSKeyValueObservation?
     private static var observer3: NSKeyValueObservation?
+    private static var observer4: NSKeyValueObservation?
+    private static var observer5: NSKeyValueObservation?
     
     public static func initialize(broadcastExtensionBundleId:String, appGroupName:String) {
         self.broadcastExtensionBundleId = broadcastExtensionBundleId
@@ -49,6 +51,32 @@ open class BigBlueButtonSDK: NSObject {
         observer3 = userDefaults?.observe(\.setScreenShareRemoteSDPCompleted, options: [.new]) { (defaults, change) in
             logger.info("Detected a change in userDefaults for key setScreenShareRemoteSDPCompleted")
             ReactNativeEventEmitter.emitter.sendEvent(withName: ReactNativeEventEmitter.EVENT.onSetScreenShareRemoteSDPCompleted.rawValue, body: nil)
+        }
+        
+        //setScreenShareRemoteSDPCompleted
+        observer4 = userDefaults?.observe(\.onScreenShareLocalIceCandidate, options: [.new]) { (defaults, change) in
+            let payload:String = (change.newValue!);
+            logger.info("Detected a change in userDefaults for key onScreenShareLocalIceCandidate \(payload)")
+            let payloadData = payload.data(using: .utf8)!
+            
+            let decodedPayload = (try? JSONDecoder().decode([String: String].self, from: payloadData))!
+            let iceJson = decodedPayload["iceJson"]
+            
+            logger.info("")
+            ReactNativeEventEmitter.emitter.sendEvent(withName: ReactNativeEventEmitter.EVENT.onScreenShareLocalIceCandidate.rawValue, body: iceJson)
+        }
+        
+        
+        //onScreenShareSignalingStateChange
+        observer5 = userDefaults?.observe(\.onScreenShareSignalingStateChange, options: [.new]) { (defaults, change) in
+            let payload:String = (change.newValue!);
+            logger.info("Detected a change in userDefaults for key onScreenShareSignalingStateChange \(payload)")
+            let payloadData = payload.data(using: .utf8)!
+
+            let decodedPayload = (try? JSONDecoder().decode([String: String].self, from: payloadData))!
+            let newState = decodedPayload["newState"]
+            
+            ReactNativeEventEmitter.emitter.sendEvent(withName: ReactNativeEventEmitter.EVENT.onScreenShareSignalingStateChange.rawValue, body: newState)
         }
     }
     
