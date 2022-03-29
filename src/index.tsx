@@ -9,6 +9,8 @@ import * as onScreenShareSignalingStateChange from './events/onScreenShareSignal
 type BigbluebuttonMobileSdkProps = {
   url: string;
   style: ViewStyle;
+  onError?: any;
+  onSuccess?: any;
 };
 
 const renderPlatformSpecificComponents = () =>
@@ -20,6 +22,8 @@ const renderPlatformSpecificComponents = () =>
 export const BigbluebuttonMobile = ({
   url,
   style,
+  onError,
+  onSuccess,
 }: BigbluebuttonMobileSdkProps) => {
   const webViewRef = useRef(null);
 
@@ -38,6 +42,14 @@ export const BigbluebuttonMobile = ({
           style={{ ...style }}
           onMessage={(msg) => handleWebviewMessage(webViewRef, msg)}
           applicationNameForUserAgent="BBBMobile"
+          onLoadEnd={(content: any) => {
+            /*in case of success, the property code is not defined*/
+            if (typeof content.nativeEvent.code !== 'undefined') {
+              onError(content);
+            } else {
+              onSuccess(content);
+            }
+          }}
         />
       }
     </>
