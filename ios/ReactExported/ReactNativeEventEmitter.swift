@@ -22,6 +22,7 @@ open class ReactNativeEventEmitter: RCTEventEmitter {
         case onSetScreenShareRemoteSDPCompleted = "onSetScreenShareRemoteSDPCompleted"
         case onScreenShareLocalIceCandidate = "onScreenShareLocalIceCandidate"
         case onScreenShareSignalingStateChange = "onScreenShareSignalingStateChange"
+        case onAddScreenShareRemoteIceCandidateCompleted = "onAddScreenShareRemoteIceCandidateCompleted"
     }
     
     override init() {

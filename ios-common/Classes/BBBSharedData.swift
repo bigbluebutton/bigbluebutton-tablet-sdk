@@ -25,9 +25,13 @@ open class BBBSharedData {
         public static let setScreenShareRemoteSDP  = "setScreenShareRemoteSDP"                        // UI APP -> Broadcaster
         public static let setScreenShareRemoteSDPCompleted  = "setScreenShareRemoteSDPCompleted"      // Broadcaster -> UI APP
         
+        public static let addScreenShareRemoteIceCandidate = "addScreenShareRemoteIceCandidate" // UI APP -> Broadcaster
+        public static let addScreenShareRemoteIceCandidateCompleted = "addScreenShareRemoteIceCandidateCompleted" // Broadcaster -> UI APP
+        
         public static let onScreenShareLocalIceCandidate  = "onScreenShareLocalIceCandidate"  // Broadcaster -> UI APP
         
         public static let onScreenShareSignalingStateChange = "onScreenShareSignalingStateChange" // Broadcaster -> UI APP
+        
     }
     
     // Get reference to userDefaults object (that's actually the object used to share information among UI APP and the BroadcastUploadExtension APP)

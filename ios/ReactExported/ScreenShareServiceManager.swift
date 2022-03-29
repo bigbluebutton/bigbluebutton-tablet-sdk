@@ -52,4 +52,19 @@ class ScreenShareServiceManager: NSObject {
             ]), forKey: BBBSharedData.SharedData.setScreenShareRemoteSDP)
         
     }
+    
+    
+    @objc func addScreenShareRemoteIceCandidate(_ remoteCandidate:String) -> Void {
+        logger.info("addScreenShareRemoteIceCandidate call arrived on swift: \(remoteCandidate)")
+        // Send request of "add remote ICE candidate" to broadcast upload extension
+        // TIP - the handling of this method response is done in observer6 of BigBlueButtonSDK class
+        logger.info("addScreenShareRemoteIceCandidate - persisting information on UserDefaults")
+        BBBSharedData
+            .getUserDefaults(appGroupName: BigBlueButtonSDK.getAppGroupName())
+            .set(BBBSharedData.generatePayload(properties: [
+                "candidate": remoteCandidate
+            ]), forKey: BBBSharedData.SharedData.addScreenShareRemoteIceCandidate)
+        
+    }
+    
 }

@@ -14,6 +14,7 @@ open class BBBSampleHandler : RPBroadcastSampleHandler {
     private var appGroupName:String = "";
     private var createOfferCallObserver:NSKeyValueObservation?;
     private var setRemoteSDPCallObserver:NSKeyValueObservation?;
+    private var addScreenShareRemoteIceCandidateObserver:NSKeyValueObservation?;
     private var screenBroadcaster:ScreenBroadcaster?;
     
     open func setAppGroupName(appGroupName:String) {
@@ -57,7 +58,8 @@ open class BBBSampleHandler : RPBroadcastSampleHandler {
         logger.info("Configuring observer for setRemoteSDP")
         self.setRemoteSDPCallObserver = userDefaults.observe(\.setScreenShareRemoteSDP, options: [.new]) { (defaults, change) in
             let payload:String = (change.newValue!);
-            self.logger.info("Observer detected a setScreenShareRemoteSDP request with payload \(payload)")
+            // self.logger.info("Observer detected a setScreenShareRemoteSDP request with payload \(payload)")
+            self.logger.info("Observer detected a setScreenShareRemoteSDP request")
             let payloadData = payload.data(using: .utf8)!
             let decodedPayload = (try? JSONDecoder().decode([String: String].self, from: payloadData))!
             let sdp = decodedPayload["sdp"]
@@ -70,6 +72,29 @@ open class BBBSampleHandler : RPBroadcastSampleHandler {
                     BBBSharedData
                         .getUserDefaults(appGroupName: self.appGroupName)
                         .set(BBBSharedData.generatePayload(), forKey: BBBSharedData.SharedData.setScreenShareRemoteSDPCompleted)
+                }
+            }
+        }
+        
+        logger.info("Configuring observer for addScreenShareRemoteIceCandidate")
+        self.addScreenShareRemoteIceCandidateObserver = userDefaults.observe(\.addScreenShareRemoteIceCandidate, options: [.new]) { (defaults, change) in
+            let payload:String = (change.newValue!);
+            // self.logger.info("Observer detected a addScreenShareRemoteIceCandidate request with payload \(payload)")
+            self.logger.info("Observer detected a addScreenShareRemoteIceCandidate request")
+            let payloadData = payload.data(using: .utf8)!
+            let decodedPayload = (try? JSONDecoder().decode([String: String].self, from: payloadData))!
+            let candidateAsString = decodedPayload["candidate"]!
+            let candidateAsData = candidateAsString.data(using: .utf8)!
+            let candidate = (try? JSONDecoder().decode(IceCandidate.self, from: candidateAsData))
+            
+            Task.init {
+                let remoteCandidateAdded = await self.screenBroadcaster!.addRemoteCandidate(remoteCandidate: candidate!)
+
+                if(remoteCandidateAdded){
+                    self.logger.info("Remote candidate added!")
+                    BBBSharedData
+                        .getUserDefaults(appGroupName: self.appGroupName)
+                        .set(BBBSharedData.generatePayload(), forKey: BBBSharedData.SharedData.addScreenShareRemoteIceCandidateCompleted)
                 }
             }
         }

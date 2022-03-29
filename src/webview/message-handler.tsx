@@ -3,6 +3,7 @@ import type { WebView, WebViewMessageEvent } from 'react-native-webview';
 import initializeScreenShare from '../methods/initializeScreenShare';
 import createScreenShareOffer from '../methods/createScreenShareOffer';
 import setScreenShareRemoteSDP from '../methods/setScreenShareRemoteSDP';
+import addScreenShareRemoteIceCandidate from '../methods/addScreenShareRemoteIceCandidate';
 
 function observePromiseResult(
   webViewRef: MutableRefObject<WebView>,
@@ -46,6 +47,11 @@ export function handleWebviewMessage(
         break;
       case 'setRemoteDescription':
         promise = setScreenShareRemoteSDP(data?.arguments[0].sdp);
+        break;
+      case 'addRemoteIceCandidate':
+        promise = addScreenShareRemoteIceCandidate(
+          JSON.stringify(data?.arguments[0])
+        );
         break;
       default:
         throw `Unknown method ${data?.method}`;

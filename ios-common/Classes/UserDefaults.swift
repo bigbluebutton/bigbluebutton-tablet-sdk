@@ -45,6 +45,16 @@ extension UserDefaults {
         return string(forKey: BBBSharedData.SharedData.setScreenShareRemoteSDPCompleted) ?? ""
     }
     
+    // UI APP -> Broadcaster
+    @objc open dynamic var addScreenShareRemoteIceCandidate: String {
+        return string(forKey: BBBSharedData.SharedData.addScreenShareRemoteIceCandidate) ?? ""
+    }
+    
+    // Broadcaster -> UI APP
+    @objc open dynamic var addScreenShareRemoteIceCandidateCompleted: String {
+        return string(forKey: BBBSharedData.SharedData.addScreenShareRemoteIceCandidateCompleted) ?? ""
+    }
+    
     // Broadcaster -> UI APP
     @objc open dynamic var onScreenShareLocalIceCandidate: String {
         return string(forKey: BBBSharedData.SharedData.onScreenShareLocalIceCandidate) ?? ""

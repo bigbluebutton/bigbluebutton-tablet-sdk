@@ -66,7 +66,7 @@ open class WebRTCClient: NSObject {
         self.peerConnection = peerConnection
         
         super.init()
-        // createMediaSenders()
+        createMediaSenders()
         // configureAudioSession()
         self.peerConnection.delegate = self
     }
@@ -85,6 +85,10 @@ open class WebRTCClient: NSObject {
         try await self.peerConnection.setRemoteDescription(rtcSessionDescription)
     }
     
+    public func setRemoteCandidate(remoteIceCandidate: IceCandidate) async throws {
+        let rtcRemoteCandidate = RTCIceCandidate(sdp: remoteIceCandidate.candidate, sdpMLineIndex: remoteIceCandidate.sdpMLineIndex, sdpMid: remoteIceCandidate.sdpMid)
+         try await self.peerConnection.add(rtcRemoteCandidate)
+    }
     
     func set(remoteCandidate: RTCIceCandidate, completion: @escaping (Error?) -> ()) {
         self.peerConnection.add(remoteCandidate, completionHandler: completion)
@@ -109,18 +113,18 @@ open class WebRTCClient: NSObject {
         self.rtcAudioSession.unlockForConfiguration()
     }*/
     
-    /*private func createMediaSenders() {
+    private func createMediaSenders() {
         let streamId = "stream"
         
         // Audio
-        let audioTrack = self.createAudioTrack()
-        self.peerConnection.add(audioTrack, streamIds: [streamId])
+        // let audioTrack = self.createAudioTrack()
+        // self.peerConnection.add(audioTrack, streamIds: [streamId])
         
         // Video
         let videoTrack = self.createVideoTrack()
         self.localVideoTrack = videoTrack
         self.peerConnection.add(videoTrack, streamIds: [streamId])
-    }*/
+    }
     
     /*private func createAudioTrack() -> RTCAudioTrack {
         let audioConstrains = RTCMediaConstraints(mandatoryConstraints: nil, optionalConstraints: nil)
@@ -129,14 +133,14 @@ open class WebRTCClient: NSObject {
         return audioTrack
     }*/
     
-    /*private func createVideoTrack() -> RTCVideoTrack {
+    private func createVideoTrack() -> RTCVideoTrack {
         videoSource = WebRTCClient.factory.videoSource(forScreenCast: true)
         videoCapturer = RTCVideoCapturer(delegate: videoSource!)
         videoSource!.adaptOutputFormat(toWidth: 600, height: 800, fps: 15)
         let videoTrack = WebRTCClient.factory.videoTrack(with: videoSource!, trackId: "video0")
         videoTrack.isEnabled = true
         return videoTrack
-    }*/
+    }
 }
 
 // MARK: RTCPeerConnectionDelegate Methods

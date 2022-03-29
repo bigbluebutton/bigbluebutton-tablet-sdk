@@ -13,3 +13,7 @@ export function createScreenShareOffer() {
 export function setScreenShareRemoteSDP(remoteSDP: string) {
   ScreenShareService.setScreenShareRemoteSDP(remoteSDP);
 }
+
+export function addScreenShareRemoteIceCandidate(remoteCandidateJson: string) {
+  ScreenShareService.addScreenShareRemoteIceCandidate(remoteCandidateJson);
+}

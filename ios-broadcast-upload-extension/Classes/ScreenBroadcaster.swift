@@ -44,6 +44,17 @@ open class ScreenBroadcaster {
             return false
         }
     }
+    
+    public func addRemoteCandidate(remoteCandidate:IceCandidate) async -> Bool  {
+        do {
+            try await self.webRTCClient.setRemoteCandidate(remoteIceCandidate: remoteCandidate)
+            return true
+        }
+        catch {
+            return false
+        }
+    }
+    
 }
 
 extension ScreenBroadcaster: WebRTCClientDelegate {

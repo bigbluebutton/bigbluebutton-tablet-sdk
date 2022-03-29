@@ -20,6 +20,7 @@ open class BigBlueButtonSDK: NSObject {
     private static var observer3: NSKeyValueObservation?
     private static var observer4: NSKeyValueObservation?
     private static var observer5: NSKeyValueObservation?
+    private static var observer6: NSKeyValueObservation?
     
     public static func initialize(broadcastExtensionBundleId:String, appGroupName:String) {
         self.broadcastExtensionBundleId = broadcastExtensionBundleId
@@ -76,6 +77,12 @@ open class BigBlueButtonSDK: NSObject {
             let newState = decodedPayload["newState"]
             
             ReactNativeEventEmitter.emitter.sendEvent(withName: ReactNativeEventEmitter.EVENT.onScreenShareSignalingStateChange.rawValue, body: newState)
+        }
+        
+        //addScreenShareRemoteIceCandidateCompleted
+        observer6 = userDefaults?.observe(\.addScreenShareRemoteIceCandidateCompleted, options: [.new]) { (defaults, change) in
+            logger.info("Detected a change in userDefaults for key addScreenShareRemoteIceCandidateCompleted")
+            ReactNativeEventEmitter.emitter.sendEvent(withName: ReactNativeEventEmitter.EVENT.onAddScreenShareRemoteIceCandidateCompleted.rawValue, body: nil)
         }
     }
     
