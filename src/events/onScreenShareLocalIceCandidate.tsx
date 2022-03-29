@@ -6,10 +6,14 @@ export function setupListener(_webViewRef: MutableRefObject<any>) {
   nativeEmitter.addListener(
     'onScreenShareLocalIceCandidate',
     (jsonEncodedIceCandidate) => {
-      const iceCandidate = JSON.parse(jsonEncodedIceCandidate);
+      let iceCandidate = JSON.parse(jsonEncodedIceCandidate);
+      if (typeof iceCandidate == 'string') {
+        iceCandidate = JSON.parse(iceCandidate);
+      }
+      const event = { candidate: iceCandidate };
       _webViewRef.current.injectJavaScript(
         `window.bbbMobileScreenShareIceCandidateCallback(${JSON.stringify(
-          iceCandidate
+          event
         )});`
       );
     }

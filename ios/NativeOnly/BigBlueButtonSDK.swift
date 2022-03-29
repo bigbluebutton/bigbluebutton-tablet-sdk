@@ -62,7 +62,6 @@ open class BigBlueButtonSDK: NSObject {
             let decodedPayload = (try? JSONDecoder().decode([String: String].self, from: payloadData))!
             let iceJson = decodedPayload["iceJson"]
             
-            logger.info("")
             ReactNativeEventEmitter.emitter.sendEvent(withName: ReactNativeEventEmitter.EVENT.onScreenShareLocalIceCandidate.rawValue, body: iceJson)
         }
         
