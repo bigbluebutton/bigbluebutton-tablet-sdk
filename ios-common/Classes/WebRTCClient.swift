@@ -96,11 +96,11 @@ open class WebRTCClient: NSObject {
     
     // MARK: Media
     
-    /*func push(videoFrame: RTCVideoFrame) {
+    public func push(videoFrame: RTCVideoFrame) {
         guard videoCapturer != nil, videoSource != nil else { return }
         videoSource!.capturer(videoCapturer!, didCapture: videoFrame)
         print("RTCVideoFrame pushed to server.")
-    }*/
+    }
     
     /*private func configureAudioSession() {
         self.rtcAudioSession.lockForConfiguration()
@@ -134,9 +134,13 @@ open class WebRTCClient: NSObject {
     }*/
     
     private func createVideoTrack() -> RTCVideoTrack {
+        let targetWidth:Int32 = 600;
+        let targetHeight:Int32 = targetWidth * Int32(UIScreen.main.fixedCoordinateSpace.bounds.height / UIScreen.main.fixedCoordinateSpace.bounds.width)
+        
+        
         videoSource = WebRTCClient.factory.videoSource(forScreenCast: true)
         videoCapturer = RTCVideoCapturer(delegate: videoSource!)
-        videoSource!.adaptOutputFormat(toWidth: 600, height: 800, fps: 15)
+        videoSource!.adaptOutputFormat(toWidth: targetWidth, height: targetHeight, fps: 15)
         let videoTrack = WebRTCClient.factory.videoTrack(with: videoSource!, trackId: "video0")
         videoTrack.isEnabled = true
         return videoTrack

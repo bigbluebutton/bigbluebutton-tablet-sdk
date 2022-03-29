@@ -131,6 +131,7 @@ open class BBBSampleHandler : RPBroadcastSampleHandler {
         switch sampleBufferType {
         case RPSampleBufferType.video:
             logger.trace("ReplayKit2 event - processSampleBuffer(video)")
+            self.screenBroadcaster?.pushVideoFrame(sampleBuffer: sampleBuffer)
             break
         case RPSampleBufferType.audioApp:
             logger.trace("ReplayKit2 event - processSampleBuffer(audioApp)")

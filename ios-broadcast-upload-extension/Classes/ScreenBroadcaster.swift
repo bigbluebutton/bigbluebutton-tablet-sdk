@@ -13,6 +13,7 @@ open class ScreenBroadcaster {
     private var webRTCClient:WebRTCClient
     private var appGroupName:String
     private let encoder = JSONEncoder()
+    public var isConnected:Bool = false
     
     init(appGroupName: String) {
         self.appGroupName = appGroupName
@@ -52,6 +53,20 @@ open class ScreenBroadcaster {
         }
         catch {
             return false
+        }
+    }
+    
+    public func pushVideoFrame(sampleBuffer: CMSampleBuffer) -> Void {
+        if(!isConnected) {
+            self.logger.info("Ignoring pushVideoFrame - not connected")
+        } else {
+            self.logger.info("pushing video")
+            let imageBuffer:CVImageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)!
+            let timeStampNs: Int64 = Int64(CMTimeGetSeconds(CMSampleBufferGetPresentationTimeStamp(sampleBuffer)) * 1000000000)
+            let rtcPixlBuffer = RTCCVPixelBuffer(pixelBuffer: imageBuffer)
+            let rtcVideoFrame = RTCVideoFrame(buffer: rtcPixlBuffer, rotation: ._0, timeStampNs: timeStampNs)
+            self.webRTCClient.push(videoFrame: rtcVideoFrame)
+            self.logger.info("video pushed")
         }
     }
     
@@ -132,6 +147,8 @@ extension ScreenBroadcaster: WebRTCClientDelegate {
         default:
             self.logger.error("peerConnection new signaling state -> UNKNOWN")
         }
+        
+        self.isConnected = true
         
         BBBSharedData
             .getUserDefaults(appGroupName: self.appGroupName)
