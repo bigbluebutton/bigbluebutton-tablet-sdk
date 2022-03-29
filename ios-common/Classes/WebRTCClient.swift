@@ -38,6 +38,7 @@ open class WebRTCClient: NSObject {
     private var videoSource: RTCVideoSource?
     private var videoCapturer: RTCVideoCapturer?
     private var localVideoTrack: RTCVideoTrack?
+    private var isRatioDefined:Bool=false
 
     @available(*, unavailable)
     override init() {
@@ -134,16 +135,23 @@ open class WebRTCClient: NSObject {
     }*/
     
     private func createVideoTrack() -> RTCVideoTrack {
-        let targetWidth:Int32 = 600;
-        let targetHeight:Int32 = targetWidth * Int32(UIScreen.main.fixedCoordinateSpace.bounds.height / UIScreen.main.fixedCoordinateSpace.bounds.width)
-        
-        
         videoSource = WebRTCClient.factory.videoSource(forScreenCast: true)
         videoCapturer = RTCVideoCapturer(delegate: videoSource!)
-        videoSource!.adaptOutputFormat(toWidth: targetWidth, height: targetHeight, fps: 15)
         let videoTrack = WebRTCClient.factory.videoTrack(with: videoSource!, trackId: "video0")
         videoTrack.isEnabled = true
         return videoTrack
+    }
+    
+    public func setRatio(originalWidth: Int32, originalHeight: Int32) {
+        let targetWidth:Int32 = 600;
+        let targetHeight:Int32 = targetWidth * Int32(originalHeight / originalWidth)
+        
+        videoSource!.adaptOutputFormat(toWidth: targetWidth, height: targetHeight, fps: 15)
+        self.isRatioDefined = true;
+    }
+    
+    public func getIsRatioDefined() -> Bool {
+        return self.isRatioDefined;
     }
 }
 

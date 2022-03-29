@@ -19,7 +19,7 @@ const renderPlatformSpecificComponents = () =>
     android: null,
   });
 
-export const BigbluebuttonMobile = ({
+export const BigBlueButtonMobile = ({
   url,
   style,
   onError,
@@ -45,9 +45,9 @@ export const BigbluebuttonMobile = ({
           onLoadEnd={(content: any) => {
             /*in case of success, the property code is not defined*/
             if (typeof content.nativeEvent.code !== 'undefined') {
-              onError(content);
+              if (onError) onError(content);
             } else {
-              onSuccess(content);
+              if (onSuccess) onSuccess(content);
             }
           }}
         />

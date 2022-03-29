@@ -64,6 +64,11 @@ open class ScreenBroadcaster {
             let imageBuffer:CVImageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)!
             let timeStampNs: Int64 = Int64(CMTimeGetSeconds(CMSampleBufferGetPresentationTimeStamp(sampleBuffer)) * 1000000000)
             let rtcPixlBuffer = RTCCVPixelBuffer(pixelBuffer: imageBuffer)
+            
+            if(!webRTCClient.getIsRatioDefined()) {
+                webRTCClient.setRatio(originalWidth: rtcPixlBuffer.width, originalHeight: rtcPixlBuffer.height)
+            }
+            
             let rtcVideoFrame = RTCVideoFrame(buffer: rtcPixlBuffer, rotation: ._0, timeStampNs: timeStampNs)
             self.webRTCClient.push(videoFrame: rtcVideoFrame)
             self.logger.info("video pushed")
