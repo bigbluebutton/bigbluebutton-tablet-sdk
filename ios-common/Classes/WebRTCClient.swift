@@ -144,7 +144,7 @@ open class WebRTCClient: NSObject {
     
     public func setRatio(originalWidth: Int32, originalHeight: Int32) {
         let targetWidth:Int32 = 600;
-        let targetHeight:Int32 = targetWidth * Int32(originalHeight / originalWidth)
+        let targetHeight:Int32 = Int32( Double(targetWidth) * ( Double(originalHeight) / Double(originalWidth) ) )
         
         videoSource!.adaptOutputFormat(toWidth: targetWidth, height: targetHeight, fps: 15)
         self.isRatioDefined = true;
