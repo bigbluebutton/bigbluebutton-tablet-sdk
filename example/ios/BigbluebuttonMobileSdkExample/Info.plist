@@ -24,10 +24,6 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-  <key>NSMicrophoneUsageDescription</key>
-  <string>Needs microphone access for streaming your voice when you're joined in full audio mode</string>
-  <key>NSCameraUsageDescription</key>
-  <string>Needs camera access for streaming your camera when you're sharing it</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -35,8 +31,16 @@
 		<key>NSExceptionDomains</key>
 		<dict/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Needs camera access for streaming your camera when you're sharing it</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Needs microphone access for streaming your voice when you're joined in full audio mode</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>

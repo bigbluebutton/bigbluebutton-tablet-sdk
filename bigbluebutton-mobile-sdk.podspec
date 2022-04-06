@@ -14,6 +14,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/bigbluebutton/bigbluebutton-mobile-sdk.git", :tag => "#{s.version}" }
 
   s.source_files = "ios/**/*.{h,m,mm,swift}"
+  s.resources = "ios/Assets/*"
 
   s.dependency "React-Core"
   s.dependency "WebRTC-lib"

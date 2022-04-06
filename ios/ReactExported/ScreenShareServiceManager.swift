@@ -7,15 +7,42 @@
 import Foundation
 import os
 import bigbluebutton_mobile_sdk_common
+import AVFAudio
 
 @objc(ScreenShareServiceManager)
 class ScreenShareServiceManager: NSObject {
     // Logger (these messages are displayed in the console application)
     private var logger = os.Logger(subsystem: "BigBlueButtonMobileSDK", category: "ScreenShareServiceManager")
+    var audioSession = AVAudioSession.sharedInstance()
+    var player: AVAudioPlayer!
     
     // React native exposed method (called when user click the button to share screen)
     @objc func initializeScreenShare() -> Void {
         logger.info("initializeScreenShare")
+        
+        Task.init {
+            do{
+                try audioSession.setCategory(AVAudioSession.Category.playback, options: [AVAudioSession.CategoryOptions.mixWithOthers])
+                try audioSession.setPrefersNoInterruptionsFromSystemAlerts(true)
+                try audioSession.setActive(true)
+                
+            }catch{
+                print(error)
+            }
+            
+            let path = Bundle.main.path(forResource: "music2", ofType : "mp3")!
+            let url = URL(fileURLWithPath : path)
+            
+            print("audioUrl2 = \(url)")
+            do {
+                player = try AVAudioPlayer(contentsOf: url)
+                player.play()
+            }
+            catch {
+                print (error)
+            }
+        }
+        
         
         // Request the system broadcast
         logger.info("initializeScreenShare - requesting broadcast")

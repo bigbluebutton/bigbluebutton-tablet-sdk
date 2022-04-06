@@ -40,6 +40,7 @@ export const BigBlueButtonMobile = ({
           ref={webViewRef}
           source={{ uri: url }}
           style={{ ...style }}
+          contentMode={'mobile'}
           onMessage={(msg) => handleWebviewMessage(webViewRef, msg)}
           applicationNameForUserAgent="BBBMobile"
           onLoadEnd={(content: any) => {
