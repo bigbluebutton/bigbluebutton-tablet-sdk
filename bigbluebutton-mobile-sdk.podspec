@@ -18,5 +18,4 @@ Pod::Spec.new do |s|
 
   s.dependency "React-Core"
   s.dependency "WebRTC-lib"
-  s.dependency "bigbluebutton-mobile-sdk-common"
 end
