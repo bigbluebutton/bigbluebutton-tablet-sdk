@@ -43,6 +43,7 @@ export const BigBlueButtonMobile = ({
           contentMode={'mobile'}
           onMessage={(msg) => handleWebviewMessage(webViewRef, msg)}
           applicationNameForUserAgent="BBBMobile"
+          allowsInlineMediaPlayback={true}
           onLoadEnd={(content: any) => {
             /*in case of success, the property code is not defined*/
             if (typeof content.nativeEvent.code !== 'undefined') {
