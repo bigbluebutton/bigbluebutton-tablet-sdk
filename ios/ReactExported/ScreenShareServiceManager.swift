@@ -22,7 +22,8 @@ class ScreenShareServiceManager: NSObject {
         
         Task.init {
             do{
-                try audioSession.setCategory(AVAudioSession.Category.playback, options: [AVAudioSession.CategoryOptions.mixWithOthers])
+//                try audioSession.setCategory(AVAudioSession.Category.playback, options: [AVAudioSession.CategoryOptions.mixWithOthers])
+                try audioSession.setCategory(AVAudioSession.Category.playAndRecord, options: [AVAudioSession.CategoryOptions.mixWithOthers])
                 try audioSession.setPrefersNoInterruptionsFromSystemAlerts(true)
                 try audioSession.setActive(true)
                 

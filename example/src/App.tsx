@@ -33,7 +33,7 @@ export default function App() {
     <View style={styles.container}>
       {loadComponent ? (
         <BigBlueButtonMobile
-          url="https://mobile.bbb.imdt.dev"
+          url="https://demo-ios.bigbluebutton.org"
           style={styles.bbb}
           onError={(content: any) => handleOnError(content)}
           onSuccess={() => console.log('URL Valid')}

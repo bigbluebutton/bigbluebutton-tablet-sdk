@@ -6,6 +6,7 @@
 
 import ReplayKit
 import os
+import CallKit
 
 @objc(SystemBroadcastPickerManager)
 class SystemBroadcastPickerManager: RCTViewManager {
@@ -18,9 +19,13 @@ class SystemBroadcastPicker : UIView {
     
     // Logger (these messages are displayed in the console application)
     private var logger = os.Logger(subsystem: "BigBlueButtonMobileSDK", category: "SystemBroadcastPicker")
+    private static var logger2 = os.Logger(subsystem: "BigBlueButtonMobileSDK", category: "SystemBroadcastPicker")
     
     // Reference to the broadcast screen picker
     private static var broadcastPicker: RPSystemBroadcastPickerView?
+    
+    // Delegate for call kit methods
+    private static var callKitDelegate: CallKitDelegate = CallKitDelegate()
     
     //initWithFrame to init view from code
     override init(frame: CGRect) {
@@ -55,13 +60,25 @@ class SystemBroadcastPicker : UIView {
      */
     public static func requestBroadcast(/*data*/) {
         // write the data that will be accessed from broadcast application
+//        DispatchQueue.main.async {
+//            for view in broadcastPicker?.subviews ?? [] {
+//                if let button = view as? UIButton {
+//                    button.sendActions(for: .allEvents)
+//                }
+//            }
+//        }
+        self.logger2.info("AAAAAA!")
+        
         DispatchQueue.main.async {
-            for view in broadcastPicker?.subviews ?? [] {
-                if let button = view as? UIButton {
-                    button.sendActions(for: .allEvents)
-                }
-            }
+            let provider = CXProvider(configuration: CXProviderConfiguration(localizedName: "My App"));
+            let controller = CXCallController();
+            
+            provider.setDelegate(callKitDelegate, queue: nil)
+            
+            let transaction = CXTransaction(action: CXStartCallAction(call: UUID(), handle: CXHandle(type: .generic, value: "Hey I am calling you!")))
+            controller.request(transaction, completion: { error in })
         }
+
     }
     
 }
