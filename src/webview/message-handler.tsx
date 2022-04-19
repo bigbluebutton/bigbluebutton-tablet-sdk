@@ -3,7 +3,9 @@ import type { WebView, WebViewMessageEvent } from 'react-native-webview';
 import initializeScreenShare from '../methods/initializeScreenShare';
 import createScreenShareOffer from '../methods/createScreenShareOffer';
 import setScreenShareRemoteSDP from '../methods/setScreenShareRemoteSDP';
+import setFullAudioRemoteSDP from '../methods/setFullAudioRemoteSDP';
 import addScreenShareRemoteIceCandidate from '../methods/addScreenShareRemoteIceCandidate';
+import createFullAudioOffer from '../methods/createFullAudioOffer';
 
 function observePromiseResult(
   webViewRef: MutableRefObject<WebView>,
@@ -42,11 +44,17 @@ export function handleWebviewMessage(
       case 'initializeScreenShare':
         promise = initializeScreenShare();
         break;
-      case 'createOffer':
+      case 'createFullAudioOffer':
+        promise = createFullAudioOffer();
+        break;
+      case 'createScreenShareOffer':
         promise = createScreenShareOffer();
         break;
-      case 'setRemoteDescription':
+      case 'setScreenShareRemoteSDP':
         promise = setScreenShareRemoteSDP(data?.arguments[0].sdp);
+        break;
+      case 'setFullAudioRemoteSDP':
+        promise = setFullAudioRemoteSDP(data?.arguments[0].sdp);
         break;
       case 'addRemoteIceCandidate':
         promise = addScreenShareRemoteIceCandidate(

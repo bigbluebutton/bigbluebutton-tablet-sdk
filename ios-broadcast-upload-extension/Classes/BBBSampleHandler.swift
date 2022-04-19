@@ -15,7 +15,7 @@ open class BBBSampleHandler : RPBroadcastSampleHandler {
     private var createOfferCallObserver:NSKeyValueObservation?;
     private var setRemoteSDPCallObserver:NSKeyValueObservation?;
     private var addScreenShareRemoteIceCandidateObserver:NSKeyValueObservation?;
-    private var screenBroadcaster:ScreenBroadcaster?;
+    private var screenBroadcaster:ScreenBroadcasterService?;
     
     open func setAppGroupName(appGroupName:String) {
         logger.info("Received appGroupName: \(appGroupName)")
@@ -34,7 +34,7 @@ open class BBBSampleHandler : RPBroadcastSampleHandler {
         logger.info("ReplayKit2 event - broadcastStarted - persisting information on UserDefaults")
         userDefaults.set(BBBSharedData.generatePayload(), forKey: BBBSharedData.SharedData.broadcastStarted)
         
-        self.screenBroadcaster = ScreenBroadcaster(appGroupName: appGroupName)
+        self.screenBroadcaster = ScreenBroadcasterService(appGroupName: appGroupName)
         
         // Listen for createOffer requests from the UI APP
         logger.info("Configuring observer for createOffer")

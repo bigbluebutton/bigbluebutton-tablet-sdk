@@ -5,6 +5,7 @@ import { WebView } from 'react-native-webview';
 import { handleWebviewMessage } from './webview/message-handler';
 import * as onScreenShareLocalIceCandidate from './events/onScreenShareLocalIceCandidate';
 import * as onScreenShareSignalingStateChange from './events/onScreenShareSignalingStateChange';
+import * as onBroadcastFinished from './events/onBroadcastFinished';
 
 type BigbluebuttonMobileSdkProps = {
   url: string;
@@ -30,6 +31,7 @@ export const BigBlueButtonMobile = ({
   useEffect(() => {
     onScreenShareLocalIceCandidate.setupListener(webViewRef);
     onScreenShareSignalingStateChange.setupListener(webViewRef);
+    onBroadcastFinished.setupListener(webViewRef);
   }, [webViewRef]);
 
   return (

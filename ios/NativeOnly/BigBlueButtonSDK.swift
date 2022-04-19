@@ -21,6 +21,7 @@ open class BigBlueButtonSDK: NSObject {
     private static var observer4: NSKeyValueObservation?
     private static var observer5: NSKeyValueObservation?
     private static var observer6: NSKeyValueObservation?
+    private static var observer7: NSKeyValueObservation?
     
     public static func initialize(broadcastExtensionBundleId:String, appGroupName:String) {
         self.broadcastExtensionBundleId = broadcastExtensionBundleId
@@ -83,6 +84,12 @@ open class BigBlueButtonSDK: NSObject {
         observer6 = userDefaults?.observe(\.addScreenShareRemoteIceCandidateCompleted, options: [.new]) { (defaults, change) in
             logger.info("Detected a change in userDefaults for key addScreenShareRemoteIceCandidateCompleted")
             ReactNativeEventEmitter.emitter.sendEvent(withName: ReactNativeEventEmitter.EVENT.onAddScreenShareRemoteIceCandidateCompleted.rawValue, body: nil)
+        }
+        
+        //addScreenShareRemoteIceCandidateCompleted
+        observer7 = userDefaults?.observe(\.broadcastFinished, options: [.new]) { (defaults, change) in
+            logger.info("Detected a change in userDefaults for key broadcastFinished")
+            ReactNativeEventEmitter.emitter.sendEvent(withName: ReactNativeEventEmitter.EVENT.onBroadcastFinished.rawValue, body: nil)
         }
     }
     

@@ -7,10 +7,10 @@ import os
 import bigbluebutton_mobile_sdk_common
 import WebRTC
 
-open class ScreenBroadcaster {
+open class ScreenBroadcasterService {
     // Logger (these messages are displayed in the console application)
-    private var logger = os.Logger(subsystem: "BigBlueButtonMobileSDK", category: "ScreenBroadcaster")
-    private var webRTCClient:WebRTCClient
+    private var logger = os.Logger(subsystem: "BigBlueButtonMobileSDK", category: "ScreenBroadcasterService")
+    private var webRTCClient:ScreenShareWebRTCClient
     private var appGroupName:String
     private let encoder = JSONEncoder()
     public var isConnected:Bool = false
@@ -18,7 +18,7 @@ open class ScreenBroadcaster {
     init(appGroupName: String) {
         self.appGroupName = appGroupName
         
-        webRTCClient = WebRTCClient(iceServers: ["stun:stun.l.google.com:19302",
+        webRTCClient = ScreenShareWebRTCClient(iceServers: ["stun:stun.l.google.com:19302",
                                      "stun:stun1.l.google.com:19302",
                                      "stun:stun2.l.google.com:19302",
                                      "stun:stun3.l.google.com:19302",
@@ -77,9 +77,9 @@ open class ScreenBroadcaster {
     
 }
 
-extension ScreenBroadcaster: WebRTCClientDelegate {
+extension ScreenBroadcasterService: ScreenShareWebRTCClientDelegate {
     
-    public func webRTCClient(_ client: WebRTCClient, didDiscoverLocalCandidate rtcIceCandidate: RTCIceCandidate) {
+    public func webRTCClient(_ client: ScreenShareWebRTCClient, didDiscoverLocalCandidate rtcIceCandidate: RTCIceCandidate) {
         do {
             let iceCandidate = IceCandidate(from: rtcIceCandidate)
             let iceCandidateAsJsonData = try self.encoder.encode(iceCandidate)
@@ -96,7 +96,7 @@ extension ScreenBroadcaster: WebRTCClientDelegate {
         }
     }
     
-    public func webRTCClient(_ client: WebRTCClient, didChangeIceConnectionState state: RTCIceConnectionState) {
+    public func webRTCClient(_ client: ScreenShareWebRTCClient, didChangeIceConnectionState state: RTCIceConnectionState) {
         switch state {
         case .connected:
             self.logger.info("didChangeConnectionState -> connected")
@@ -115,7 +115,7 @@ extension ScreenBroadcaster: WebRTCClientDelegate {
         }
     }
     
-    public func webRTCClient(_ client: WebRTCClient, didChangeIceGatheringState state: RTCIceGatheringState) {
+    public func webRTCClient(_ client: ScreenShareWebRTCClient, didChangeIceGatheringState state: RTCIceGatheringState) {
         switch state {
         case .new:
             self.logger.info("didChangeGatheringState -> new")
@@ -128,7 +128,7 @@ extension ScreenBroadcaster: WebRTCClientDelegate {
         }
     }
     
-    public func webRTCClient(_ client: WebRTCClient, didChangeSignalingState state: RTCSignalingState) {
+    public func webRTCClient(_ client: ScreenShareWebRTCClient, didChangeSignalingState state: RTCSignalingState) {
         var stateString = ""
         switch(state) {
         case .haveLocalOffer:

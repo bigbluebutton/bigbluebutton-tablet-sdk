@@ -12,7 +12,7 @@ export function setupListener(_webViewRef: MutableRefObject<any>) {
       }
       const event = { candidate: iceCandidate };
       _webViewRef.current.injectJavaScript(
-        `window.bbbMobileScreenShareIceCandidateCallback(${JSON.stringify(
+        `window.bbbMobileScreenShareIceCandidateCallback && window.bbbMobileScreenShareIceCandidateCallback(${JSON.stringify(
           event
         )});`
       );

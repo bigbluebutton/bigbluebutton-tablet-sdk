@@ -6,7 +6,7 @@ export function setupListener(_webViewRef: MutableRefObject<any>) {
   nativeEmitter.addListener('onScreenShareSignalingStateChange', (newState) => {
     console.log(`Temos um novo state: ${newState}`);
     _webViewRef.current.injectJavaScript(
-      `window.bbbMobileScreenShareSignalingStateChangeCallback(${JSON.stringify(
+      `window.bbbMobileScreenShareSignalingStateChangeCallback && window.bbbMobileScreenShareSignalingStateChangeCallback(${JSON.stringify(
         newState
       )});`
     );
