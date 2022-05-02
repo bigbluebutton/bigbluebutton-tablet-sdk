@@ -14,13 +14,13 @@ nativeEmitter.addListener('onScreenShareOfferCreated', (sdp) => {
 });
 
 // Entry point of this method
-function createScreenShareOffer() {
+function createScreenShareOffer(instanceId: Number) {
   return new Promise((res, rej) => {
     // store the resolver for later call (when event is received)
     resolve = res;
 
     try {
-      console.log(`>nativeCreateScreenShareOffer`);
+      console.log(`[${instanceId}] - >nativeCreateScreenShareOffer`);
       // call native swift method that triggers the broadcast popup
       nativeCreateScreenShareOffer();
     } catch (e) {

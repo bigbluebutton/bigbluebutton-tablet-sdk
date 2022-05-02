@@ -1,4 +1,4 @@
-import { Platform, ViewStyle } from 'react-native';
+import { EmitterSubscription, Platform, ViewStyle } from 'react-native';
 import React, { useEffect, useRef } from 'react';
 import BBBN_SystemBroadcastPicker from './native-components/BBBN_SystemBroadcastPicker';
 import { WebView } from 'react-native-webview';
@@ -14,6 +14,10 @@ type BigbluebuttonMobileSdkProps = {
   onSuccess?: any;
 };
 
+const data = {
+  instances: 0
+}
+
 const renderPlatformSpecificComponents = () =>
   Platform.select({
     ios: <BBBN_SystemBroadcastPicker />,
@@ -27,11 +31,27 @@ export const BigBlueButtonMobile = ({
   onSuccess,
 }: BigbluebuttonMobileSdkProps) => {
   const webViewRef = useRef(null);
+  const thisInstanceId = ++data.instances;
+
+  // console.log("XXX - ", thisInstanceId);
 
   useEffect(() => {
-    onScreenShareLocalIceCandidate.setupListener(webViewRef);
-    onScreenShareSignalingStateChange.setupListener(webViewRef);
-    onBroadcastFinished.setupListener(webViewRef);
+    const logPrefix = `[${thisInstanceId}] - ${url.substring(8, 16)}`;
+    
+    console.log(`${logPrefix} - addingListeners`);
+    const listeners:EmitterSubscription[] = [];
+    listeners.push(onScreenShareLocalIceCandidate.setupListener(webViewRef));
+    listeners.push(onScreenShareSignalingStateChange.setupListener(webViewRef));
+    listeners.push(onBroadcastFinished.setupListener(webViewRef));
+
+    return () => {
+      console.log(`${logPrefix} - Removing listeners`);
+      
+      listeners.forEach( (listener, index) => {
+        console.log(`${logPrefix} - Removing listener ${index}`);
+        listener.remove();
+       } );
+    }
   }, [webViewRef]);
 
   return (
@@ -43,7 +63,7 @@ export const BigBlueButtonMobile = ({
           source={{ uri: url }}
           style={{ ...style }}
           contentMode={'mobile'}
-          onMessage={(msg) => handleWebviewMessage(webViewRef, msg)}
+          onMessage={(msg) => handleWebviewMessage(thisInstanceId, webViewRef, msg)}
           applicationNameForUserAgent="BBBMobile"
           allowsInlineMediaPlayback={true}
           onLoadEnd={(content: any) => {

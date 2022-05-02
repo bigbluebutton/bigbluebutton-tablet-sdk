@@ -14,13 +14,13 @@ nativeEmitter.addListener('onSetScreenShareRemoteSDPCompleted', () => {
 });
 
 // Entry point of this method
-function setScreenShareRemoteSDP(remoteSdp: string) {
+function setScreenShareRemoteSDP(instanceId: Number, remoteSdp: string) {
   return new Promise((res, rej) => {
     // store the resolver for later call (when event is received)
     resolve = res;
 
     try {
-      console.log(`>nativeSetScreenShareRemoteSDP ${remoteSdp}`);
+      console.log(`[${instanceId}] - >nativeSetScreenShareRemoteSDP ${remoteSdp}`);
       // call native swift method that triggers the broadcast popup
       nativeSetScreenShareRemoteSDP(remoteSdp);
     } catch (e) {

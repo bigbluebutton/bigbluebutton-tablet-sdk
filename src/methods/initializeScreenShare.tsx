@@ -19,14 +19,14 @@ nativeEmitter.addListener('onBroadcastStarted', () => {
 });
 
 // Entry point of this method
-function initializeScreenShare() {
+function initializeScreenShare(instanceId: Number) {
   return new Promise((res, rej) => {
     // store the resolver for later call (when event is received)
     resolve = res;
 
     try {
       // call native swift method that triggers the broadcast popup
-      console.log(`>nativeInitializeScreenShare`);
+      console.log(`[${instanceId}] - >nativeInitializeScreenShare`);
       nativeInitializeScreenShare();
     } catch (e) {
       rej(`Call to nativeInitializeScreenShare failed zzy`);
