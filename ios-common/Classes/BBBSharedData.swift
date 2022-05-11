@@ -31,6 +31,7 @@ open class BBBSharedData {
         public static let onScreenShareLocalIceCandidate  = "onScreenShareLocalIceCandidate"  // Broadcaster -> UI APP
         
         public static let onScreenShareSignalingStateChange = "onScreenShareSignalingStateChange" // Broadcaster -> UI APP
+        public static let onApplicationTerminated = "onApplicationTerminated" // UI APP -> Broadcaster
         
     }
     

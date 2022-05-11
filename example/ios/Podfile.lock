@@ -362,7 +362,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   bigbluebutton-mobile-sdk: c22205a921c38e43d5c5ec2c8f47d890db5e189e
-  bigbluebutton-mobile-sdk-broadcast-upload-extension: 702331796aa06d3cac9fc202cb20888b3e3a57eb
+  bigbluebutton-mobile-sdk-broadcast-upload-extension: 755c8bb697a1a45855ad44b6b0ad95a62cc978d7
   bigbluebutton-mobile-sdk-common: 287c9acc965d00e72d71a0d2b020fa8e483e7a11
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: cde416483dac037923206447da6e1454df403714
@@ -396,4 +396,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 1cef60f4fb4cef93dc6de3cb3b53463e5f48a9bc
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3

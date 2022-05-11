@@ -6,6 +6,7 @@
 
 import UIKit
 import bigbluebutton_mobile_sdk
+import bigbluebutton_mobile_sdk_common
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, RCTBridgeDelegate {
@@ -35,7 +36,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, RCTBridgeDelegate {
 
     return true
   }
-
+  
+  func applicationWillTerminate(_ application: UIApplication) {
+    BigBlueButtonSDK.onAppTerminated()
+  }
+  
   func sourceURL(for bridge: RCTBridge!) -> URL! {
 //#if DEBUG
     return RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index", fallbackResource:nil)
