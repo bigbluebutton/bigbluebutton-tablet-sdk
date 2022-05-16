@@ -14,14 +14,14 @@ nativeEmitter.addListener('onAddScreenShareRemoteIceCandidateCompleted', () => {
 });
 
 // Entry point of this method
-function addScreenShareRemoteIceCandidate(remoteCandidateJson: string) {
+function addScreenShareRemoteIceCandidate(instanceId: Number, remoteCandidateJson: string) {
   return new Promise((res, rej) => {
     // store the resolver for later call (when event is received)
     resolve = res;
 
     try {
       console.log(
-        `>nativeAddScreenShareRemoteIceCandidate ${remoteCandidateJson}`
+        `[${instanceId}] - >nativeAddScreenShareRemoteIceCandidate ${remoteCandidateJson}`
       );
       // call native swift method that triggers the broadcast popup
       nativeAddScreenShareRemoteIceCandidate(remoteCandidateJson);

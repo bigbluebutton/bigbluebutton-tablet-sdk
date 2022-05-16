@@ -1,9 +1,10 @@
 import type { MutableRefObject } from 'react';
+import type { EmitterSubscription } from 'react-native';
 import nativeEmitter from '../native-messaging/emitter';
 
-export function setupListener(_webViewRef: MutableRefObject<any>) {
+export function setupListener(_webViewRef: MutableRefObject<any>):EmitterSubscription {
   // Resolve promise when SDP offer is available
-  nativeEmitter.addListener(
+  return nativeEmitter.addListener(
     'onScreenShareLocalIceCandidate',
     (jsonEncodedIceCandidate) => {
       let iceCandidate = JSON.parse(jsonEncodedIceCandidate);

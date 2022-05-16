@@ -8,13 +8,14 @@ import addScreenShareRemoteIceCandidate from '../methods/addScreenShareRemoteIce
 import createFullAudioOffer from '../methods/createFullAudioOffer';
 
 function observePromiseResult(
+  instanceId: Number,
   webViewRef: MutableRefObject<WebView>,
   sequence: number,
   prom: Promise<any>
 ) {
   prom
     .then((result: any) => {
-      console.log(`Promise ${sequence} resolved!`, result);
+      console.log(`[${instanceId}] - Promise ${sequence} resolved!`, result);
       webViewRef.current.injectJavaScript(
         `window.nativeMethodCallResult(${sequence}, true ${
           result ? ',' + JSON.stringify(result) : ''
@@ -22,7 +23,7 @@ function observePromiseResult(
       );
     })
     .catch((exception: any) => {
-      console.error(`Promise ${sequence} failed!`, exception);
+      console.error(`[${instanceId}] - Promise ${sequence} failed!`, exception);
       webViewRef.current.injectJavaScript(
         `window.nativeMethodCallResult(${sequence}, false ${
           exception ? ',' + JSON.stringify(exception) : ''
@@ -32,41 +33,45 @@ function observePromiseResult(
 }
 
 export function handleWebviewMessage(
+  instanceId: Number,
   webViewRef: MutableRefObject<any>,
   event: WebViewMessageEvent
 ) {
   const stringData = event?.nativeEvent?.data;
 
+  console.log("handleWebviewMessage - ", instanceId);
+  
   const data = JSON.parse(stringData);
   if (data?.method && data?.sequence) {
     let promise;
     switch (data?.method) {
       case 'initializeScreenShare':
-        promise = initializeScreenShare();
+        promise = initializeScreenShare(instanceId);
         break;
       case 'createFullAudioOffer':
-        promise = createFullAudioOffer();
+        promise = createFullAudioOffer(instanceId);
         break;
       case 'createScreenShareOffer':
-        promise = createScreenShareOffer();
+        promise = createScreenShareOffer(instanceId);
         break;
       case 'setScreenShareRemoteSDP':
-        promise = setScreenShareRemoteSDP(data?.arguments[0].sdp);
+        promise = setScreenShareRemoteSDP(instanceId, data?.arguments[0].sdp);
         break;
       case 'setFullAudioRemoteSDP':
-        promise = setFullAudioRemoteSDP(data?.arguments[0].sdp);
+        promise = setFullAudioRemoteSDP(instanceId, data?.arguments[0].sdp);
         break;
       case 'addRemoteIceCandidate':
         promise = addScreenShareRemoteIceCandidate(
+          instanceId,
           JSON.stringify(data?.arguments[0])
         );
         break;
       default:
-        throw `Unknown method ${data?.method}`;
+        throw `[${instanceId}] - Unknown method ${data?.method}`;
     }
-    observePromiseResult(webViewRef, data.sequence, promise);
+    observePromiseResult(instanceId, webViewRef, data.sequence, promise);
   } else {
-    console.log(`Ignoring unknown message: $stringData`);
+    console.log(`[${instanceId}] - Ignoring unknown message: $stringData`);
   }
 }
 

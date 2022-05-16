@@ -14,13 +14,13 @@ nativeEmitter.addListener('onSetFullAudioRemoteSDPCompleted', () => {
 });
 
 // Entry point of this method
-function setFullAudioRemoteSDP(remoteSdp: string) {
+function setFullAudioRemoteSDP(instanceId: Number, remoteSdp: string) {
   return new Promise((res, rej) => {
     // store the resolver for later call (when event is received)
     resolve = res;
 
     try {
-      console.log(`>nativeSetFullAudioRemoteSDP ${remoteSdp}`);
+      console.log(`[${instanceId}] - >nativeSetFullAudioRemoteSDP ${remoteSdp}`);
       // call native swift method that triggers the broadcast popup
       nativeSetFullAudioRemoteSDP(remoteSdp);
     } catch (e) {
