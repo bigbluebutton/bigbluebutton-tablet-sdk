@@ -110,7 +110,9 @@ open class AudioWebRTCClient: NSObject {
         
         do {
             try self.rtcAudioSession.setCategory(AVAudioSession.Category.playAndRecord.rawValue)
+            try self.rtcAudioSession.session.setCategory(AVAudioSession.Category.playAndRecord, options: [AVAudioSession.CategoryOptions.mixWithOthers])
             try self.rtcAudioSession.setMode(AVAudioSession.Mode.voiceChat.rawValue)
+            
         } catch let error {
             debugPrint("Error changing AVAudioSession category: \(error)")
         }

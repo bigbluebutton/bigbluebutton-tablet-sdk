@@ -8,6 +8,7 @@
 import Foundation
 import os
 import bigbluebutton_mobile_sdk_common
+import AVFAudio
 
 open class BigBlueButtonSDK: NSObject {
     // Logger (these messages are displayed in the console application)
@@ -91,6 +92,13 @@ open class BigBlueButtonSDK: NSObject {
             logger.info("Detected a change in userDefaults for key broadcastFinished")
             ReactNativeEventEmitter.emitter.sendEvent(withName: ReactNativeEventEmitter.EVENT.onBroadcastFinished.rawValue, body: nil)
         }
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, options: [AVAudioSession.CategoryOptions.mixWithOthers])
+            try AVAudioSession.sharedInstance().setPrefersNoInterruptionsFromSystemAlerts(true)
+        } catch let error {
+            logger.error("Error configuring audio session \(error.localizedDescription)")
+        }
     }
     
     public static func getBroadcastExtensionBundleId() -> String {
@@ -107,6 +115,7 @@ open class BigBlueButtonSDK: NSObject {
     }
     
     public static func onAppTerminated(){
+        logger.info("onAppTerminated called")
         BBBSharedData
             .getUserDefaults(appGroupName: self.appGroupName)
             .set(BBBSharedData.generatePayload(), forKey: BBBSharedData.SharedData.onApplicationTerminated)
