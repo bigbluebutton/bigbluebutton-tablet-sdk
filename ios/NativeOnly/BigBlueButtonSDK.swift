@@ -105,5 +105,11 @@ open class BigBlueButtonSDK: NSObject {
         observer1?.invalidate()
         observer2?.invalidate()
     }
+    
+    public static func onAppTerminated(){
+        BBBSharedData
+            .getUserDefaults(appGroupName: self.appGroupName)
+            .set(BBBSharedData.generatePayload(), forKey: BBBSharedData.SharedData.onApplicationTerminated)
+    }
 
 }

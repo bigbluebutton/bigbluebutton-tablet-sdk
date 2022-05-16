@@ -12,9 +12,10 @@ open class BBBSampleHandler : RPBroadcastSampleHandler {
     // Logger (these messages are displayed in the console application)
     private var logger = os.Logger(subsystem: "BigBlueButtonMobileSDK", category: "BBBSampleHandler")
     private var appGroupName:String = "";
-    private var createOfferCallObserver:NSKeyValueObservation?;
-    private var setRemoteSDPCallObserver:NSKeyValueObservation?;
+    private var createScreenShareOfferObserver:NSKeyValueObservation?;
+    private var setScreenShareRemoteSDPOBserver:NSKeyValueObservation?;
     private var addScreenShareRemoteIceCandidateObserver:NSKeyValueObservation?;
+    private var onApplicationTerminatedObserver:NSKeyValueObservation?;
     private var screenBroadcaster:ScreenBroadcasterService?;
     
     open func setAppGroupName(appGroupName:String) {
@@ -36,9 +37,16 @@ open class BBBSampleHandler : RPBroadcastSampleHandler {
         
         self.screenBroadcaster = ScreenBroadcasterService(appGroupName: appGroupName)
         
+        // Handle quit application to finish broadcast togheter
+        logger.info("Configuring observer for finishApplication")
+        self.onApplicationTerminatedObserver = userDefaults.observe(\.onApplicationTerminated, options: [.new]) { (defaults, change) in
+            self.logger.info("Observer detected a onQuitApplicationWithBroadcastActive request!")
+            finishBroadcastGracefully(self)
+        }
+        
         // Listen for createOffer requests from the UI APP
         logger.info("Configuring observer for createOffer")
-        self.createOfferCallObserver = userDefaults.observe(\.createScreenShareOffer, options: [.new]) { (defaults, change) in
+        self.createScreenShareOfferObserver = userDefaults.observe(\.createScreenShareOffer, options: [.new]) { (defaults, change) in
             self.logger.info("Observer detected a createScreenShareOffer request!")
             
             Task.init {
@@ -56,7 +64,7 @@ open class BBBSampleHandler : RPBroadcastSampleHandler {
         }
         
         logger.info("Configuring observer for setRemoteSDP")
-        self.setRemoteSDPCallObserver = userDefaults.observe(\.setScreenShareRemoteSDP, options: [.new]) { (defaults, change) in
+        self.setScreenShareRemoteSDPOBserver = userDefaults.observe(\.setScreenShareRemoteSDP, options: [.new]) { (defaults, change) in
             let payload:String = (change.newValue!);
             // self.logger.info("Observer detected a setScreenShareRemoteSDP request with payload \(payload)")
             self.logger.info("Observer detected a setScreenShareRemoteSDP request")
