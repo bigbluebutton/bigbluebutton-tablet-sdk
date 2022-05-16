@@ -38,6 +38,8 @@ open class AudioWebRTCClient: NSObject {
     private var videoCapturer: RTCVideoCapturer?
     private var localVideoTrack: RTCVideoTrack?
     private var isRatioDefined:Bool=false
+    
+    private var isActiveObserver1:NSKeyValueObservation?
 
     @available(*, unavailable)
     override init() {
@@ -105,6 +107,7 @@ open class AudioWebRTCClient: NSObject {
     
     private func configureAudioSession() {
         self.rtcAudioSession.lockForConfiguration()
+        
         do {
             try self.rtcAudioSession.setCategory(AVAudioSession.Category.playAndRecord.rawValue)
             try self.rtcAudioSession.setMode(AVAudioSession.Mode.voiceChat.rawValue)
@@ -112,6 +115,13 @@ open class AudioWebRTCClient: NSObject {
             debugPrint("Error changing AVAudioSession category: \(error)")
         }
         self.rtcAudioSession.unlockForConfiguration()
+        
+        self.isActiveObserver1 = self.rtcAudioSession.observe(\.isActive, options: [.new]) { (defaults, change) in
+            if(!self.rtcAudioSession.isActive) {
+                self.logger.info("isActive changed to false, restoring it");
+                self.restoreAudioSession()
+            }
+        }
     }
     
     private func createMediaSenders() {
@@ -232,6 +242,7 @@ extension AudioWebRTCClient {
             self.rtcAudioSession.lockForConfiguration()
             do {
                 try self.rtcAudioSession.setCategory(AVAudioSession.Category.playAndRecord.rawValue)
+                try self.rtcAudioSession.setMode(AVAudioSession.Mode.voiceChat.rawValue)
                 try self.rtcAudioSession.overrideOutputAudioPort(.none)
             } catch let error {
                 debugPrint("Error setting AVAudioSession category: \(error)")
@@ -256,6 +267,22 @@ extension AudioWebRTCClient {
                 debugPrint("Couldn't force audio to speaker: \(error)")
             }
             self.rtcAudioSession.unlockForConfiguration()
+        }
+    }
+    
+    public func restoreAudioSession() {
+        self.audioQueue.async { [weak self] in
+            guard let self = self else {
+                return
+            }
+            
+            do {
+                self.rtcAudioSession.lockForConfiguration()
+                try RTCAudioSession.sharedInstance().setActive(true)
+                self.rtcAudioSession.unlockForConfiguration()
+            } catch let error {
+                debugPrint("Couldn't restore isActive: \(error)")
+            }
         }
     }
     
