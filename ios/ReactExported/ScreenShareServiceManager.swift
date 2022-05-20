@@ -16,31 +16,27 @@ class ScreenShareServiceManager: NSObject {
     var audioSession = AVAudioSession.sharedInstance()
     var player: AVAudioPlayer!
     
+    
     // React native exposed method (called when user click the button to share screen)
     @objc func initializeScreenShare() -> Void {
         logger.info("initializeScreenShare")
+
+        self.activeAudioSession(bool: true)
         
-        Task.init {
-            do{
-                try audioSession.setActive(true)
-            }catch{
-                print(error)
-            }
+        let path = Bundle.main.path(forResource: "music2", ofType : "mp3")!
+        let url = URL(fileURLWithPath : path)
+        
+        print("audioUrl2 = \(url)")
+        do {
             
-            let path = Bundle.main.path(forResource: "music2", ofType : "mp3")!
-            let url = URL(fileURLWithPath : path)
-            
-            print("audioUrl2 = \(url)")
-            do {
-                player = try AVAudioPlayer(contentsOf: url)
-                player.play()
-            }
-            catch {
-                print (error)
-            }
+            self.player = try AVAudioPlayer(contentsOf: url)
+            self.player.play()
+            self.playSoundInLoop()
         }
-        
-        
+        catch {
+            logger.error("Error to play audio = \(url)")
+        }
+ 
         // Request the system broadcast
         logger.info("initializeScreenShare - requesting broadcast")
         SystemBroadcastPicker.requestBroadcast()
@@ -91,4 +87,23 @@ class ScreenShareServiceManager: NSObject {
         
     }
     
+    func activeAudioSession(bool BoolToActive: Bool){
+        do{
+            try audioSession.setActive(BoolToActive)
+        }catch{
+            logger.error("Error to change status of audioSession")
+        }
+    }
+    
+    //This method prevents the sound that keeps the app active in the background
+    func playSoundInLoop(){
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3000) {
+            self.logger.info("restarting music")
+            self.player.currentTime = 0.1;
+            self.playSoundInLoop()//recursive call
+        }
+        
+    }
+    
 }
+
