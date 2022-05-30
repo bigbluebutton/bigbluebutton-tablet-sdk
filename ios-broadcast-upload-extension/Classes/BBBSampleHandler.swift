@@ -16,6 +16,7 @@ open class BBBSampleHandler : RPBroadcastSampleHandler {
     private var setScreenShareRemoteSDPOBserver:NSKeyValueObservation?;
     private var addScreenShareRemoteIceCandidateObserver:NSKeyValueObservation?;
     private var onApplicationTerminatedObserver:NSKeyValueObservation?;
+    private var onBroadcastStoppedObserver:NSKeyValueObservation?;
     private var screenBroadcaster:ScreenBroadcasterService?;
     
     open func setAppGroupName(appGroupName:String) {
@@ -41,6 +42,13 @@ open class BBBSampleHandler : RPBroadcastSampleHandler {
         logger.info("Configuring observer for finishApplication")
         self.onApplicationTerminatedObserver = userDefaults.observe(\.onApplicationTerminated, options: [.new]) { (defaults, change) in
             self.logger.info("Observer detected a onQuitApplicationWithBroadcastActive request!")
+            finishBroadcastGracefully(self)
+        }
+        
+        // Handle click in stop broadcast
+        logger.info("Configuring observer for stop broadcast")
+        self.onBroadcastStoppedObserver = userDefaults.observe(\.onBroadcastStopped, options: [.new]) { (defaults, change) in
+            self.logger.info("Observer detected a onBroadcastStopped request!")
             finishBroadcastGracefully(self)
         }
         

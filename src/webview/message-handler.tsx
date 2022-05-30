@@ -6,6 +6,7 @@ import setScreenShareRemoteSDP from '../methods/setScreenShareRemoteSDP';
 import setFullAudioRemoteSDP from '../methods/setFullAudioRemoteSDP';
 import addScreenShareRemoteIceCandidate from '../methods/addScreenShareRemoteIceCandidate';
 import createFullAudioOffer from '../methods/createFullAudioOffer';
+import stopScreenShare from '../methods/stopScreenShare';
 
 function observePromiseResult(
   instanceId: Number,
@@ -65,6 +66,9 @@ export function handleWebviewMessage(
           instanceId,
           JSON.stringify(data?.arguments[0])
         );
+        break;
+      case 'stopScreenShare':
+        promise = stopScreenShare(instanceId)
         break;
       default:
         throw `[${instanceId}] - Unknown method ${data?.method}`;
