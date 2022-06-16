@@ -33,8 +33,8 @@ open class ScreenShareWebRTCClient: NSObject {
     private let peerConnection: RTCPeerConnection
     private let rtcAudioSession =  RTCAudioSession.sharedInstance()
     private let audioQueue = DispatchQueue(label: "audio")
-    private let mediaConstrains = [kRTCMediaConstraintsOfferToReceiveAudio: kRTCMediaConstraintsValueTrue,
-                                   kRTCMediaConstraintsOfferToReceiveVideo: kRTCMediaConstraintsValueTrue]
+    private let mediaConstrains = [kRTCMediaConstraintsOfferToReceiveAudio: kRTCMediaConstraintsValueFalse,
+                                   kRTCMediaConstraintsOfferToReceiveVideo: kRTCMediaConstraintsValueFalse]
     private var videoSource: RTCVideoSource?
     private var videoCapturer: RTCVideoCapturer?
     private var localVideoTrack: RTCVideoTrack?
