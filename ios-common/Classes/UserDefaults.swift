@@ -15,6 +15,11 @@ extension UserDefaults {
         return string(forKey: BBBSharedData.SharedData.onApplicationTerminated) ?? ""
     }
     
+    // UI APP -> Broadcaster
+    @objc open dynamic var onBroadcastStopped: String {
+        return string(forKey: BBBSharedData.SharedData.onBroadcastStopped) ?? ""
+    }
+    
     // Broadcaster -> UI APP
     @objc open dynamic var broadcastPaused: String {
         return string(forKey: BBBSharedData.SharedData.broadcastPaused) ?? ""
