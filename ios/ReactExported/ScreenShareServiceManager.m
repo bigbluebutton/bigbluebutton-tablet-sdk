@@ -9,6 +9,7 @@
 #import "React/RCTBridgeModule.h"
 @interface RCT_EXTERN_REMAP_MODULE(BBBN_ScreenShareService, ScreenShareServiceManager, NSObject)
 
+RCT_EXTERN_METHOD(stopScreenShareBroadcastExtension)
 RCT_EXTERN_METHOD(initializeScreenShare)
 RCT_EXTERN_METHOD(createScreenShareOffer)
 RCT_EXTERN_METHOD(setScreenShareRemoteSDP: (NSString *)remoteSDP)

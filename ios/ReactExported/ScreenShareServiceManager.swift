@@ -16,6 +16,12 @@ class ScreenShareServiceManager: NSObject {
     var audioSession = AVAudioSession.sharedInstance()
     var player: AVAudioPlayer!
     
+
+    @objc func stopScreenShareBroadcastExtension() -> Void {
+        BBBSharedData
+            .getUserDefaults(appGroupName: BigBlueButtonSDK.getAppGroupName())
+            .set(BBBSharedData.generatePayload(), forKey: BBBSharedData.SharedData.onBroadcastStopped)
+    }
     
     // React native exposed method (called when user click the button to share screen)
     @objc func initializeScreenShare() -> Void {
