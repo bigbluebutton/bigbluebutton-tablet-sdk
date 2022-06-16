@@ -17,3 +17,7 @@ export function setScreenShareRemoteSDP(remoteSDP: string) {
 export function addScreenShareRemoteIceCandidate(remoteCandidateJson: string) {
   ScreenShareService.addScreenShareRemoteIceCandidate(remoteCandidateJson);
 }
+
+export function stopScreenShareBroadcastExtension() {
+  ScreenShareService.stopScreenShareBroadcastExtension();
+}
