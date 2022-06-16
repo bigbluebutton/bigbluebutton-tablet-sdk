@@ -120,5 +120,9 @@ open class BigBlueButtonSDK: NSObject {
             .getUserDefaults(appGroupName: self.appGroupName)
             .set(BBBSharedData.generatePayload(), forKey: BBBSharedData.SharedData.onApplicationTerminated)
     }
+    
+    public static func handleDeepLink(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]){
+        RCTLinkingManager.application(app, open: url, options: options)
+    }
 
 }
