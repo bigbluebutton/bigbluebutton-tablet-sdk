@@ -9,6 +9,7 @@ import Foundation
 import os
 import bigbluebutton_mobile_sdk_common
 import AVFAudio
+import React
 
 open class BigBlueButtonSDK: NSObject {
     // Logger (these messages are displayed in the console application)
