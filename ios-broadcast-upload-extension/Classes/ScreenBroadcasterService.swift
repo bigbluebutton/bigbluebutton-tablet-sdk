@@ -6,6 +6,7 @@
 import os
 import bigbluebutton_mobile_sdk_common
 import WebRTC
+import UIKit
 
 open class ScreenBroadcasterService {
     // Logger (these messages are displayed in the console application)
@@ -24,6 +25,8 @@ open class ScreenBroadcasterService {
                                      "stun:stun3.l.google.com:19302",
                                      "stun:stun4.l.google.com:19302"])
         webRTCClient.delegate = self
+        
+       
     }
 
     public func createOffer() async -> String? {
@@ -60,6 +63,23 @@ open class ScreenBroadcasterService {
         if(!isConnected) {
             self.logger.info("Ignoring pushVideoFrame - not connected")
         } else {
+            var rotationFrame: RTCVideoRotation = ._0
+            var orientation = CGImagePropertyOrientation.up
+           if #available(iOS 11.0, *) {
+               if let orientationAttachment = CMGetAttachment(sampleBuffer, key: RPVideoSampleOrientationKey as CFString, attachmentModeOut: nil) as? NSNumber {
+                   orientation = CGImagePropertyOrientation(rawValue: orientationAttachment.uint32Value) ?? .up
+               }
+            }
+            
+            switch orientation.rawValue {
+            case UInt32(6):
+                rotationFrame = ._270
+            case UInt32(8):
+                rotationFrame = ._90
+            default:
+                rotationFrame = ._0
+            }
+
             self.logger.info("pushing video")
             let imageBuffer:CVImageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)!
             let timeStampNs: Int64 = Int64(CMTimeGetSeconds(CMSampleBufferGetPresentationTimeStamp(sampleBuffer)) * 1000000000)
@@ -69,7 +89,7 @@ open class ScreenBroadcasterService {
                 webRTCClient.setRatio(originalWidth: rtcPixlBuffer.width, originalHeight: rtcPixlBuffer.height)
             }
             
-            let rtcVideoFrame = RTCVideoFrame(buffer: rtcPixlBuffer, rotation: ._0, timeStampNs: timeStampNs)
+            let rtcVideoFrame = RTCVideoFrame(buffer: rtcPixlBuffer, rotation: rotationFrame, timeStampNs: timeStampNs)
             self.webRTCClient.push(videoFrame: rtcVideoFrame)
             self.logger.info("video pushed")
         }
