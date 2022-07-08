@@ -1,12 +1,12 @@
 PODS:
-  - bigbluebutton-mobile-sdk (0.1.20):
+  - bigbluebutton-mobile-sdk (0.1.25):
     - bigbluebutton-mobile-sdk-common
     - React-Core
     - WebRTC-lib
-  - bigbluebutton-mobile-sdk-broadcast-upload-extension (0.1.20):
+  - bigbluebutton-mobile-sdk-broadcast-upload-extension (0.1.25):
     - bigbluebutton-mobile-sdk-common
     - WebRTC-lib
-  - bigbluebutton-mobile-sdk-common (0.1.20):
+  - bigbluebutton-mobile-sdk-common (0.1.25):
     - WebRTC-lib
   - boost-for-react-native (1.63.0)
   - DoubleConversion (1.1.6)
@@ -361,9 +361,9 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  bigbluebutton-mobile-sdk: aad15f1f9960351adfb6d1b8462ffac4e8451cc0
-  bigbluebutton-mobile-sdk-broadcast-upload-extension: fcb96a524c93416af45a0194c8b102f545c02c7c
-  bigbluebutton-mobile-sdk-common: 03b4ed0a392b11c38547cf6befa3b5c110f2410e
+  bigbluebutton-mobile-sdk: 242a4e5d15161c650434cc154e96c47c52ab5691
+  bigbluebutton-mobile-sdk-broadcast-upload-extension: 62c3ef96b1aba16fc5f10021e000cc64209392b8
+  bigbluebutton-mobile-sdk-common: fc8a8c0b1096b045b285497cc599d6ce67421fcb
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: cde416483dac037923206447da6e1454df403714
   FBLazyVector: 3bb422f41b18121b71783a905c10e58606f7dc3e
