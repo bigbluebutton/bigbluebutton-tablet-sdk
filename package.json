@@ -1,7 +1,7 @@
 {
-  "name": "bigbluebutton-mobile-sdk",
-  "version": "0.1.24",
-  "description": "This repository contains BigBlueButton react-native component, that's used in our [sample implementation](https://github.com/bigbluebutton/bigbluebutton-mobile).",
+  "name": "bigbluebutton-mobile-tablet-sdk",
+  "version": "0.1.25",
+  "description": "This repository contains BigBlueButton react-native component, that's used in our [sample implementation](https://github.com/bigbluebutton/bigbluebutton-mobile-tablet).",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",
@@ -38,13 +38,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/bigbluebutton/bigbluebutton-mobile-sdk",
+  "repository": "https://github.com/bigbluebutton/bigbluebutton-mobile-tablet-sdk",
   "author": "BigBlueButton Inc <bigbluebutton@bigbluebutton.org> (https://bigbluebutton.org)",
   "license": "LGPL-3.0",
   "bugs": {
-    "url": "https://github.com/bigbluebutton/bigbluebutton-mobile-sdk/issues"
+    "url": "https://github.com/bigbluebutton/bigbluebutton-mobile-tablet-sdk/issues"
   },
-  "homepage": "https://github.com/bigbluebutton/bigbluebutton-mobile-sdk#readme",
+  "homepage": "https://github.com/bigbluebutton/bigbluebutton-mobile-tablet-sdk#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
