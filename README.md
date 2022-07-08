@@ -1,20 +1,20 @@
-# bigbluebutton-mobile-sdk
+# bigbluebutton-mobile-tablet-sdk
 
-This repository contains BigBlueButton react-native component, that's used in our [sample implementation](https://github.com/bigbluebutton/bigbluebutton-mobile).
+This repository contains BigBlueButton Mobile Tablet react-native component, that's used in our [sample implementation](https://github.com/bigbluebutton/bigbluebutton-mobile-tablet).
 
-![version](https://img.shields.io/npm/v/bigbluebutton-mobile-sdk.svg)
+![version](https://img.shields.io/npm/v/bigbluebutton-mobile-tablet-sdk.svg)
 
 
 ## Installation
 
 ```sh
-npm install bigbluebutton-mobile-sdk
+npm install bigbluebutton-mobile-tablet-sdk
 ```
 
 ## Usage
 
 ```js
-import { BigBlueButtonMobile } from "bigbluebutton-mobile-sdk";
+import { BigBlueButtonMobile } from "bigbluebutton-mobile-tablet-sdk";
 
 // ...
 
