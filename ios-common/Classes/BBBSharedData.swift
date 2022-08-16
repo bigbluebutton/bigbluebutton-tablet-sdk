@@ -9,7 +9,7 @@ import os
 
 open class BBBSharedData {
     // Logger (these messages are displayed in the console application)
-    private static var logger = os.Logger(subsystem: "BigBlueButtonMobileSDK", category: "BBBSharedData")
+    private static var logger = os.Logger(subsystem: "BigBlueButtonTabletSDK", category: "BBBSharedData")
     private static var userDefaults:UserDefaults?
     private static var userDefaultsGroup:String?
     

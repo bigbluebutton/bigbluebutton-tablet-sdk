@@ -7,13 +7,13 @@
 
 import Foundation
 import os
-import bigbluebutton_mobile_sdk_common
 import AVFAudio
 import React
+import bigbluebutton_tablet_sdk_common
 
 open class BigBlueButtonSDK: NSObject {
     // Logger (these messages are displayed in the console application)
-    private static var logger = os.Logger(subsystem: "BigBlueButtonMobileSDK", category: "BigBlueButton")
+    private static var logger = os.Logger(subsystem: "BigBlueButtonTabletSDK", category: "BigBlueButton")
     private static var broadcastExtensionBundleId = ""
     private static var appGroupName = ""
     private static var userDefaults:UserDefaults?

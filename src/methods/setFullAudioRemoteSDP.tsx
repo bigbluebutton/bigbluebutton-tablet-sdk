@@ -20,7 +20,9 @@ function setFullAudioRemoteSDP(instanceId: Number, remoteSdp: string) {
     resolve = res;
 
     try {
-      console.log(`[${instanceId}] - >nativeSetFullAudioRemoteSDP ${remoteSdp}`);
+      console.log(
+        `[${instanceId}] - >nativeSetFullAudioRemoteSDP ${remoteSdp}`
+      );
       // call native swift method that triggers the broadcast popup
       nativeSetFullAudioRemoteSDP(remoteSdp);
     } catch (e) {

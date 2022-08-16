@@ -17,7 +17,7 @@ class SystemBroadcastPickerManager: RCTViewManager {
 class SystemBroadcastPicker : UIView {
     
     // Logger (these messages are displayed in the console application)
-    private var logger = os.Logger(subsystem: "BigBlueButtonMobileSDK", category: "SystemBroadcastPicker")
+    private var logger = os.Logger(subsystem: "BigBlueButtonTabletSDK", category: "SystemBroadcastPicker")
     
     // Reference to the broadcast screen picker
     private static var broadcastPicker: RPSystemBroadcastPickerView?

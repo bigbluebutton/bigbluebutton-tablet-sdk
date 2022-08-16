@@ -15,7 +15,7 @@ public protocol AudioWebRTCClientDelegate: AnyObject {
 }
 
 open class AudioWebRTCClient: NSObject {
-    private var logger = os.Logger(subsystem: "BigBlueButtonMobileSDK", category: "AudioWebRTCClient")
+    private var logger = os.Logger(subsystem: "BigBlueButtonTabletSDK", category: "AudioWebRTCClient")
     private var iceGatheringComplete:Bool = false
     
     // The `RTCPeerConnectionFactory` is in charge of creating new RTCPeerConnection instances.

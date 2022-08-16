@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Alert, StyleSheet, Text, View } from 'react-native';
-import { BigBlueButtonMobile } from 'bigbluebutton-mobile-sdk';
+import { BigBlueButtonTablet } from 'bigbluebutton-tablet-sdk';
 import type { INativeEvent } from './types';
 
 export default function App() {
@@ -32,8 +32,8 @@ export default function App() {
   return (
     <View style={styles.container}>
       {loadComponent ? (
-        <BigBlueButtonMobile
-          url="https://mobile.bbb.imdt.dev"
+        <BigBlueButtonTablet
+          url="https://demo-ios.bigbluebutton.org"
           style={styles.bbb}
           onError={(content: any) => handleOnError(content)}
           onSuccess={() => console.log('URL Valid')}

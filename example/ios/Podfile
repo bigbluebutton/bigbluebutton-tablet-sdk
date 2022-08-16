@@ -2,51 +2,66 @@ require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
 platform :ios, '14.7'
+install! 'cocoapods', :deterministic_uuids => false
 
-target 'BigBlueButtonMobileSdkBroadcastExample' do
-  pod 'bigbluebutton-mobile-sdk-common', :path => '../../ios-common'
-  pod 'bigbluebutton-mobile-sdk-broadcast-upload-extension', :path => '../../ios-broadcast-upload-extension'
+ENV['RCT_NEW_ARCH_ENABLED'] = '0'
+
+target 'BigBlueButtonTabletSdkBroadcastExample' do
+  pod 'bigbluebutton-tablet-sdk-common', :path => '../../ios-common'
+  pod 'bigbluebutton-tablet-sdk-broadcast-upload-extension', :path => '../../ios-broadcast-upload-extension'
+
 end
 
-target 'BigbluebuttonMobileSdkExample' do
+target 'BigBlueButtonTabletSdkExample' do
+  pod 'bigbluebutton-tablet-sdk', :path => '../..'
+  pod 'bigbluebutton-tablet-sdk-common', :path => '../../ios-common'
+  pod 'react-native-webview', :path => '../../node_modules/react-native-webview'
+
   config = use_native_modules!
 
-  use_react_native!(:path => config["reactNativePath"])
+  # Flags change depending on the env values.
+  flags = get_default_flags()
 
-  pod 'bigbluebutton-mobile-sdk', :path => '../..'
-  pod 'bigbluebutton-mobile-sdk-common', :path => '../../ios-common'
+  use_react_native!(
+    :path => config[:reactNativePath],
+    # to enable hermes on iOS, change `false` to `true` and then install pods
+    :hermes_enabled => true,
+    :fabric_enabled => flags[:fabric_enabled],
+    # An absolute path to your application root.
+    :app_path => "#{Pod::Config.instance.installation_root}/.."
+  )
 
   # Enables Flipper.
   #
   # Note that if you have use_frameworks! enabled, Flipper will not work and
-  # you should disable these next few lines.
-  # use_flipper!({ 'Flipper' => '0.80.0' })
-  #post_install do |installer|
-  #  flipper_post_install(installer)
-  #end
-  
+  # you should disable the next line.
+  # use_flipper!()
+
   post_install do |installer|
-    fix_deployment_target(installer)
-  end
+    react_native_post_install(installer)
+    __apply_Xcode_12_5_M1_post_install_workaround(installer)
 
-  def fix_deployment_target(installer)
-    return if !installer
-    project = installer.pods_project
-    project_deployment_target = project.build_configurations.first.build_settings['IPHONEOS_DEPLOYMENT_TARGET']
-
-    puts "Make sure all pods deployment target is #{project_deployment_target.green}"
-    project.targets.each do |target|
-      puts "  #{target.name}".blue
-      target.build_configurations.each do |config|
-        config.build_settings['SWIFT_VERSION'] = '5.5.2'
+    # https://github.com/CocoaPods/CocoaPods/issues/11402#issuecomment-1188774894
+        # Get main project development team id
+        dev_team = ""
+        project = installer.aggregate_targets[0].user_project
+        project.targets.each do |target|
+            target.build_configurations.each do |config|
+                if dev_team.empty? and !config.build_settings['DEVELOPMENT_TEAM'].nil?
+                    dev_team = config.build_settings['DEVELOPMENT_TEAM']
+                end
+            end
+        end
         
-        old_target = config.build_settings['IPHONEOS_DEPLOYMENT_TARGET']
-        new_target = project_deployment_target
-        next if old_target == new_target
-        puts "    #{config.name}: #{old_target.yellow} -> #{new_target.green}"
-        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = new_target
-      end
-    end
+        # Fix bundle targets' 'Signing Certificate' to 'Sign to Run Locally'
+        installer.pods_project.targets.each do |target|
+            if target.respond_to?(:product_type) and target.product_type == "com.apple.product-type.bundle"
+                target.build_configurations.each do |config|
+                    config.build_settings['DEVELOPMENT_TEAM'] = dev_team
+                end
+            end
+        end
+      #end of https://github.com/CocoaPods/CocoaPods/issues/11402#issuecomment-1188774894
   end
 
 end
