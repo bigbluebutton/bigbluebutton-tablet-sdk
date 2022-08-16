@@ -14,4 +14,7 @@ RCT_EXTERN_METHOD(initializeScreenShare)
 RCT_EXTERN_METHOD(createScreenShareOffer)
 RCT_EXTERN_METHOD(setScreenShareRemoteSDP: (NSString *)remoteSDP)
 RCT_EXTERN_METHOD(addScreenShareRemoteIceCandidate: (NSString *)remoteCandidate)
+
++ (BOOL)requiresMainQueueSetup { return NO; }
+
 @end

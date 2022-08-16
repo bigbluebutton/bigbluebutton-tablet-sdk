@@ -12,4 +12,7 @@
 RCT_EXTERN_METHOD(createFullAudioOffer)
 RCT_EXTERN_METHOD(setFullAudioRemoteSDP: (NSString *)remoteSDP)
 RCT_EXTERN_METHOD(addFullAudioRemoteIceCandidate: (NSString *)remoteCandidate)
+
++ (BOOL)requiresMainQueueSetup { return NO; }
+
 @end

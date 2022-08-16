@@ -1,11 +1,11 @@
 PODS:
-  - bigbluebutton-tablet-sdk (0.1.0):
+  - bigbluebutton-tablet-sdk (0.1.30):
     - bigbluebutton-tablet-sdk-common
     - React-Core
-  - bigbluebutton-tablet-sdk-broadcast-upload-extension (0.1.0):
+  - bigbluebutton-tablet-sdk-broadcast-upload-extension (0.1.30):
     - bigbluebutton-tablet-sdk-common
     - WebRTC-lib
-  - bigbluebutton-tablet-sdk-common (0.1.0):
+  - bigbluebutton-tablet-sdk-common (0.1.30):
     - WebRTC-lib
   - boost (1.76.0)
   - DoubleConversion (1.1.6)
@@ -439,9 +439,9 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  bigbluebutton-tablet-sdk: 75396b742cee8de39425235492859a8c966c5019
-  bigbluebutton-tablet-sdk-broadcast-upload-extension: 5e10242be5e7fd521fc1ea4b51f1d38c6d4b3487
-  bigbluebutton-tablet-sdk-common: edb98af2ffc59a1e2360b74569f69f8880960c3e
+  bigbluebutton-tablet-sdk: 33dabe9a50e2fb7b86bafb84df9ca4dffa285a6f
+  bigbluebutton-tablet-sdk-broadcast-upload-extension: 45c6c203b87ee9374149053b4c4e283633218516
+  bigbluebutton-tablet-sdk-common: 143b4f84f290b50b95076f7f26cfe56e6cc4fafe
   boost: a7c83b31436843459a1961bfd74b96033dc77234
   DoubleConversion: 831926d9b8bf8166fd87886c4abab286c2422662
   FBLazyVector: a7a655862f6b09625d11c772296b01cd5164b648
