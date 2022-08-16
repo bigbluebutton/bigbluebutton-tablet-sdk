@@ -1,49 +1,29 @@
-# bigbluebutton-mobile-tablet-sdk
-
-This repository contains BigBlueButton Mobile Tablet react-native component, that's used in our [sample implementation](https://github.com/bigbluebutton/bigbluebutton-mobile-tablet).
-
-![version](https://img.shields.io/npm/v/bigbluebutton-mobile-tablet-sdk.svg)
-
-
+# bigbluebutton-tablet-sdk
+Embed BigBlueButton in any react native project with BigBlueButton Tablet SDK. Using this SDK BigBlueButton runs within a webview in your application, supporting screen sharing, improved background audio and much more.
 ## Installation
 
 ```sh
-npm install bigbluebutton-mobile-tablet-sdk
+npm install bigbluebutton-tablet-sdk
 ```
 
 ## Usage
 
 ```js
-import { BigBlueButtonMobile } from "bigbluebutton-mobile-tablet-sdk";
+import { BigBlueButtonTabletSdkView } from "bigbluebutton-tablet-sdk";
 
 // ...
 
-<BigBlueButtonMobile
-        url="https://demo.bigbluebutton.org"
-        style={styles.box}
-      />
+<BigBlueButtonTabletSdkView color="tomato" />
 ```
-
-## Architecture
-
-This SDK (in combination with bigbluebutton-html5 code tweaks) implements replacement functions to navigator and WebRTC functions.
-
-### getDisplayMedia
-
-The following sequence diagram represents what happens when BigBlueButton calls the `navigator.getDisplayMedia` function:
-
-<img src="/docs/uml/ios-screenshare/exported/BigBlueButton Mobile screenshare.svg"/>
-
-
 
 ## Contributing
 
 See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
 
-## WebRTC
-
-This project references the library [WebRTC](https://webrtc.org).
-
 ## License
 
 LGPL-3.0
+
+---
+
+Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)

@@ -6,13 +6,13 @@
 
 import Foundation
 import os
-import bigbluebutton_mobile_sdk_common
+import bigbluebutton_tablet_sdk_common
 import AVFAudio
 
 @objc(ScreenShareServiceManager)
 class ScreenShareServiceManager: NSObject {
     // Logger (these messages are displayed in the console application)
-    private var logger = os.Logger(subsystem: "BigBlueButtonMobileSDK", category: "ScreenShareServiceManager")
+    private var logger = os.Logger(subsystem: "BigBlueButtonTabletSDK", category: "ScreenShareServiceManager")
     var audioSession = AVAudioSession.sharedInstance()
     var player: AVAudioPlayer!
     

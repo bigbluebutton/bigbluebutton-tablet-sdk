@@ -5,12 +5,12 @@
 //  Created by Tiago Daniel Jacobs on 20/04/22.
 //
 import os
-import bigbluebutton_mobile_sdk_common
+import bigbluebutton_tablet_sdk_common
 import WebRTC
 
 open class FullAudioService {
     // Logger (these messages are displayed in the console application)
-    private var logger = os.Logger(subsystem: "BigBlueButtonMobileSDK", category: "FullAudioService")
+    private var logger = os.Logger(subsystem: "BigBlueButtonTabletSDK", category: "FullAudioService")
     private var webRTCClient:AudioWebRTCClient?
     private let encoder = JSONEncoder()
 

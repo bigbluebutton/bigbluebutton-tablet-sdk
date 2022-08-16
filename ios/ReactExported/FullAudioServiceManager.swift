@@ -6,13 +6,13 @@
 
 import Foundation
 import os
-import bigbluebutton_mobile_sdk_common
+import bigbluebutton_tablet_sdk_common
 import AVFAudio
 
 @objc(FullAudioServiceManager)
 class FullAudioServiceManager: NSObject {
     // Logger (these messages are displayed in the console application)
-    private var logger = os.Logger(subsystem: "BigBlueButtonMobileSDK", category: "FullAudioServiceManager")
+    private var logger = os.Logger(subsystem: "BigBlueButtonTabletSDK", category: "FullAudioServiceManager")
     var audioSession = AVAudioSession.sharedInstance()
     var player: AVAudioPlayer!
     var fullAudioService: FullAudioService = FullAudioService( )

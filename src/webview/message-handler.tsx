@@ -40,8 +40,8 @@ export function handleWebviewMessage(
 ) {
   const stringData = event?.nativeEvent?.data;
 
-  console.log("handleWebviewMessage - ", instanceId);
-  
+  console.log('handleWebviewMessage - ', instanceId);
+
   const data = JSON.parse(stringData);
   if (data?.method && data?.sequence) {
     let promise;
@@ -68,7 +68,7 @@ export function handleWebviewMessage(
         );
         break;
       case 'stopScreenShare':
-        promise = stopScreenShare(instanceId)
+        promise = stopScreenShare(instanceId);
         break;
       default:
         throw `[${instanceId}] - Unknown method ${data?.method}`;

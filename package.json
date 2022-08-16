@@ -1,7 +1,7 @@
 {
-  "name": "bigbluebutton-mobile-tablet-sdk",
-  "version": "0.1.25",
-  "description": "This repository contains BigBlueButton react-native component, that's used in our [sample implementation](https://github.com/bigbluebutton/bigbluebutton-mobile-tablet).",
+  "name": "bigbluebutton-tablet-sdk",
+  "version": "0.1.26",
+  "description": "test",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",
@@ -12,10 +12,8 @@
     "lib",
     "android",
     "ios",
-    "ios-common",
-    "ios-broadcast-upload-extension",
     "cpp",
-    "bigbluebutton-mobile-sdk.podspec",
+    "bigbluebutton-tablet-sdk.podspec",
     "!lib/typescript/example",
     "!android/build",
     "!ios/build",
@@ -30,44 +28,47 @@
     "prepare": "bob build",
     "release": "release-it",
     "example": "yarn --cwd example",
-    "pods": "cd example && pod-install --quiet",
-    "bootstrap": "yarn example && yarn && yarn pods"
+    "bootstrap": "yarn example && yarn && yarn example pods"
   },
   "keywords": [
     "react-native",
     "ios",
     "android"
   ],
-  "repository": "https://github.com/bigbluebutton/bigbluebutton-mobile-tablet-sdk",
+  "repository": "https://github.com/bigbluebutton/bigbluebutton-tablet-sdk",
   "author": "BigBlueButton Inc <bigbluebutton@bigbluebutton.org> (https://bigbluebutton.org)",
   "license": "LGPL-3.0",
   "bugs": {
-    "url": "https://github.com/bigbluebutton/bigbluebutton-mobile-tablet-sdk/issues"
+    "url": "https://github.com/bigbluebutton/bigbluebutton-tablet-sdk/issues"
   },
-  "homepage": "https://github.com/bigbluebutton/bigbluebutton-mobile-tablet-sdk#readme",
+  "homepage": "https://github.com/bigbluebutton/bigbluebutton-tablet-sdk#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
-    "@commitlint/config-conventional": "^11.0.0",
-    "@react-native-community/eslint-config": "^2.0.0",
-    "@release-it/conventional-changelog": "^2.0.0",
-    "@types/jest": "^26.0.0",
-    "@types/react": "^16.9.19",
-    "@types/react-native": "0.62.13",
-    "commitlint": "^11.0.0",
-    "eslint": "^7.2.0",
-    "eslint-config-prettier": "^7.0.0",
-    "eslint-plugin-prettier": "^3.1.3",
-    "husky": "^6.0.0",
-    "jest": "^26.0.1",
+    "@arkweid/lefthook": "^0.7.7",
+    "@babel/eslint-parser": "^7.18.2",
+    "@commitlint/config-conventional": "^17.0.2",
+    "@react-native-community/eslint-config": "^3.0.2",
+    "@release-it/conventional-changelog": "^5.0.0",
+    "@types/jest": "^28.1.2",
+    "@types/react": "~17.0.21",
+    "@types/react-native": "0.68.0",
+    "commitlint": "^17.0.2",
+    "eslint": "^8.4.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^28.1.1",
     "pod-install": "^0.1.0",
     "prettier": "^2.0.5",
     "react": "17.0.2",
-    "react-native": "0.68.1",
-    "react-native-builder-bob": "^0.18.0",
-    "release-it": "^14.2.2",
-    "typescript": "^4.1.3"
+    "react-native": "0.68.2",
+    "react-native-builder-bob": "^0.18.3",
+    "release-it": "^15.0.0",
+    "typescript": "^4.5.2"
+  },
+  "resolutions": {
+    "@types/react": "17.0.21"
   },
   "peerDependencies": {
     "react": "*",
@@ -104,11 +105,14 @@
   },
   "eslintConfig": {
     "root": true,
+    "parser": "@babel/eslint-parser",
     "extends": [
       "@react-native-community",
       "prettier"
     ],
     "rules": {
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": "off",
       "prettier/prettier": [
         "error",
         {
@@ -147,6 +151,6 @@
     ]
   },
   "dependencies": {
-    "react-native-webview": "^11.17.2"
+    "react-native-webview": "^11.23.0"
   }
 }

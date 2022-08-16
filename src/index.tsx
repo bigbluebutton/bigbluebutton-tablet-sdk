@@ -7,7 +7,7 @@ import * as onScreenShareLocalIceCandidate from './events/onScreenShareLocalIceC
 import * as onScreenShareSignalingStateChange from './events/onScreenShareSignalingStateChange';
 import * as onBroadcastFinished from './events/onBroadcastFinished';
 
-type BigbluebuttonMobileSdkProps = {
+type BigBlueButtonTabletSdkProps = {
   url: string;
   style: ViewStyle;
   onError?: any;
@@ -15,8 +15,8 @@ type BigbluebuttonMobileSdkProps = {
 };
 
 const data = {
-  instances: 0
-}
+  instances: 0,
+};
 
 const renderPlatformSpecificComponents = () =>
   Platform.select({
@@ -24,12 +24,12 @@ const renderPlatformSpecificComponents = () =>
     android: null,
   });
 
-export const BigBlueButtonMobile = ({
+export const BigBlueButtonTablet = ({
   url,
   style,
   onError,
   onSuccess,
-}: BigbluebuttonMobileSdkProps) => {
+}: BigBlueButtonTabletSdkProps) => {
   const webViewRef = useRef(null);
   const thisInstanceId = ++data.instances;
 
@@ -37,22 +37,22 @@ export const BigBlueButtonMobile = ({
 
   useEffect(() => {
     const logPrefix = `[${thisInstanceId}] - ${url.substring(8, 16)}`;
-    
+
     console.log(`${logPrefix} - addingListeners`);
-    const listeners:EmitterSubscription[] = [];
+    const listeners: EmitterSubscription[] = [];
     listeners.push(onScreenShareLocalIceCandidate.setupListener(webViewRef));
     listeners.push(onScreenShareSignalingStateChange.setupListener(webViewRef));
     listeners.push(onBroadcastFinished.setupListener(webViewRef));
 
     return () => {
       console.log(`${logPrefix} - Removing listeners`);
-      
-      listeners.forEach( (listener, index) => {
+
+      listeners.forEach((listener, index) => {
         console.log(`${logPrefix} - Removing listener ${index}`);
         listener.remove();
-       } );
-    }
-  }, [webViewRef]);
+      });
+    };
+  }, [webViewRef, thisInstanceId, url]);
 
   return (
     <>
@@ -63,7 +63,9 @@ export const BigBlueButtonMobile = ({
           source={{ uri: url }}
           style={{ ...style }}
           contentMode={'mobile'}
-          onMessage={(msg) => handleWebviewMessage(thisInstanceId, webViewRef, msg)}
+          onMessage={(msg) =>
+            handleWebviewMessage(thisInstanceId, webViewRef, msg)
+          }
           applicationNameForUserAgent="BBBMobile"
           allowsInlineMediaPlayback={true}
           mediaCapturePermissionGrantType={'grant'}

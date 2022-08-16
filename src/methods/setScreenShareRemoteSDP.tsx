@@ -20,7 +20,9 @@ function setScreenShareRemoteSDP(instanceId: Number, remoteSdp: string) {
     resolve = res;
 
     try {
-      console.log(`[${instanceId}] - >nativeSetScreenShareRemoteSDP ${remoteSdp}`);
+      console.log(
+        `[${instanceId}] - >nativeSetScreenShareRemoteSDP ${remoteSdp}`
+      );
       // call native swift method that triggers the broadcast popup
       nativeSetScreenShareRemoteSDP(remoteSdp);
     } catch (e) {

@@ -6,11 +6,11 @@
 
 import ReplayKit
 import os
-import bigbluebutton_mobile_sdk_common
+import bigbluebutton_tablet_sdk_common
 
 open class BBBSampleHandler : RPBroadcastSampleHandler {
     // Logger (these messages are displayed in the console application)
-    private var logger = os.Logger(subsystem: "BigBlueButtonMobileSDK", category: "BBBSampleHandler")
+    private var logger = os.Logger(subsystem: "BigBlueButtonTabletSDK", category: "BBBSampleHandler")
     private var appGroupName:String = "";
     private var createScreenShareOfferObserver:NSKeyValueObservation?;
     private var setScreenShareRemoteSDPOBserver:NSKeyValueObservation?;

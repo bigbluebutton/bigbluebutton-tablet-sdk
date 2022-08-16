@@ -4,13 +4,13 @@
 //  Created by Tiago Daniel Jacobs on 27/03/22.
 //
 import os
-import bigbluebutton_mobile_sdk_common
+import bigbluebutton_tablet_sdk_common
 import WebRTC
 import UIKit
 
 open class ScreenBroadcasterService {
     // Logger (these messages are displayed in the console application)
-    private var logger = os.Logger(subsystem: "BigBlueButtonMobileSDK", category: "ScreenBroadcasterService")
+    private var logger = os.Logger(subsystem: "BigBlueButtonTabletSDK", category: "ScreenBroadcasterService")
     private var webRTCClient:ScreenShareWebRTCClient
     private var appGroupName:String
     private let encoder = JSONEncoder()
