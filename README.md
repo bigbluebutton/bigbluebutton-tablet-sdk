@@ -3,7 +3,7 @@ Embed BigBlueButton in any react native project with BigBlueButton Tablet SDK. U
 ## Installation
 
 ```sh
-npm install bigbluebutton-tablet-sdk
+yarn add bigbluebutton-tablet-sdk
 ```
 
 ## Usage
