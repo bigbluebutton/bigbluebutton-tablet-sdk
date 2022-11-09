@@ -66,7 +66,7 @@ export const BigBlueButtonTablet = ({
           onMessage={(msg) =>
             handleWebviewMessage(thisInstanceId, webViewRef, msg)
           }
-          applicationNameForUserAgent="BBBMobile"
+          applicationNameForUserAgent="BigBlueButton-Tablet"
           allowsInlineMediaPlayback={true}
           mediaCapturePermissionGrantType={'grant'}
           onLoadEnd={(content: any) => {

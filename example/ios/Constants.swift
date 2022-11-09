@@ -11,6 +11,6 @@ class Constants {
   public static var broadcastExtensionBundleId="org.bigbluebutton.tablet.sdk.example.03DE7B1E.BigBlueButtonTabletSdkBroadcastExample";
   
   // This is used to allow both applications (main and broadcast) to share information
-  public static var appGroupName="group.org.bigbluebutton.tablet";
+  public static var appGroupName="group.org.bigbluebutton.tablet.example";
   
 }

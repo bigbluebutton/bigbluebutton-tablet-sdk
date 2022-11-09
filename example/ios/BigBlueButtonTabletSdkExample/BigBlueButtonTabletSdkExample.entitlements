@@ -4,7 +4,7 @@
 <dict>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.org.bigbluebutton.tablet</string>
+		<string>group.org.bigbluebutton.tablet.example</string>
 	</array>
 </dict>
 </plist>
