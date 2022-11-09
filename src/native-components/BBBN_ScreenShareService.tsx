@@ -6,7 +6,7 @@ export function initializeScreenShare() {
   ScreenShareService.initializeScreenShare();
 }
 
-export function createScreenShareOffer(stunTurnJson:String) {
+export function createScreenShareOffer(stunTurnJson: String) {
   ScreenShareService.createScreenShareOffer(stunTurnJson);
 }
 

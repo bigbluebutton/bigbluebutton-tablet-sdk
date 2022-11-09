@@ -20,7 +20,9 @@ function createScreenShareOffer(instanceId: Number, stunTurnJson: String) {
     resolve = res;
 
     try {
-      console.log(`[${instanceId}] - >nativeCreateScreenShareOffer (${stunTurnJson})`);
+      console.log(
+        `[${instanceId}] - >nativeCreateScreenShareOffer (${stunTurnJson})`
+      );
       // call native swift method that triggers the broadcast popup
       nativeCreateScreenShareOffer(stunTurnJson);
     } catch (e) {

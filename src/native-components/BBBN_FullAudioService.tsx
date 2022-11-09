@@ -6,7 +6,7 @@ const FullAudioService = NativeModules.BBBN_FullAudioService;
 //   FullAudioService.initializeFullAudio();
 // }
 
-export function createFullAudioOffer(stunTurnJson:String) {
+export function createFullAudioOffer(stunTurnJson: String) {
   FullAudioService.createFullAudioOffer(stunTurnJson);
 }
 
