@@ -14,15 +14,15 @@ nativeEmitter.addListener('onFullAudioOfferCreated', (sdp) => {
 });
 
 // Entry point of this method
-function createFullAudioOffer(instanceId: Number) {
+function createFullAudioOffer(instanceId: Number, stunTurnJson: String) {
   return new Promise((res, rej) => {
     // store the resolver for later call (when event is received)
     resolve = res;
 
     try {
-      console.log(`[${instanceId}] - >nativeCreateFullAudioOffer`);
+      console.log(`[${instanceId}] - >nativeCreateFullAudioOffer (${stunTurnJson})`);
       // call native swift method that triggers the broadcast popup
-      nativeCreateFullAudioOffer();
+      nativeCreateFullAudioOffer(stunTurnJson);
     } catch (e) {
       rej(`Call to nativeCreateFullAudioOffer failed`);
     }

@@ -18,8 +18,8 @@ class FullAudioServiceManager: NSObject {
     var fullAudioService: FullAudioService = FullAudioService( )
     
     // React native exposed method (called when user click the button to share screen)
-    @objc func createFullAudioOffer() -> Void {
-        logger.info("createFullAudioOffer")
+    @objc func createFullAudioOffer(_ stunTurnJson:String) -> Void {
+        logger.info("createFullAudioOffer \(stunTurnJson)")
         Task.init {
             let optionalSdp = await self.fullAudioService.createOffer()
             if(optionalSdp != nil){

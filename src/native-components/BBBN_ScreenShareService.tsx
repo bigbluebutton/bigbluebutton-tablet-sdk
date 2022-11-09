@@ -6,8 +6,8 @@ export function initializeScreenShare() {
   ScreenShareService.initializeScreenShare();
 }
 
-export function createScreenShareOffer() {
-  ScreenShareService.createScreenShareOffer();
+export function createScreenShareOffer(stunTurnJson:String) {
+  ScreenShareService.createScreenShareOffer(stunTurnJson);
 }
 
 export function setScreenShareRemoteSDP(remoteSDP: string) {

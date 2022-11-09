@@ -6,8 +6,8 @@ const FullAudioService = NativeModules.BBBN_FullAudioService;
 //   FullAudioService.initializeFullAudio();
 // }
 
-export function createFullAudioOffer() {
-  FullAudioService.createFullAudioOffer();
+export function createFullAudioOffer(stunTurnJson:String) {
+  FullAudioService.createFullAudioOffer(stunTurnJson);
 }
 
 export function setFullAudioRemoteSDP(remoteSDP: string) {

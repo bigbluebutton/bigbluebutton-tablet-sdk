@@ -53,8 +53,8 @@ class ScreenShareServiceManager: NSObject {
     }
     
     // React native exposed method (called when user click the button to share screen)
-    @objc func createScreenShareOffer() -> Void {
-        logger.info("createScreenShareOffer")
+    @objc func createScreenShareOffer(_ stunTurnJson:String) -> Void {
+        logger.info("createScreenShareOffer \(stunTurnJson)")
         
         // Send request of SDP to the broadcast upload extension
         // TIP - the handling of SDP response is done in observer2 of BigBlueButtonSDK class

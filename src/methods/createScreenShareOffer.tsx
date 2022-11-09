@@ -14,15 +14,15 @@ nativeEmitter.addListener('onScreenShareOfferCreated', (sdp) => {
 });
 
 // Entry point of this method
-function createScreenShareOffer(instanceId: Number) {
+function createScreenShareOffer(instanceId: Number, stunTurnJson: String) {
   return new Promise((res, rej) => {
     // store the resolver for later call (when event is received)
     resolve = res;
 
     try {
-      console.log(`[${instanceId}] - >nativeCreateScreenShareOffer`);
+      console.log(`[${instanceId}] - >nativeCreateScreenShareOffer (${stunTurnJson})`);
       // call native swift method that triggers the broadcast popup
-      nativeCreateScreenShareOffer();
+      nativeCreateScreenShareOffer(stunTurnJson);
     } catch (e) {
       rej(`Call to nativeCreateScreenShareOffer failed`);
     }

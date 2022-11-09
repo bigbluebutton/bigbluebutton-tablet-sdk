@@ -9,7 +9,7 @@
 #import "React/RCTBridgeModule.h"
 @interface RCT_EXTERN_REMAP_MODULE(BBBN_FullAudioService, FullAudioServiceManager, NSObject)
 
-RCT_EXTERN_METHOD(createFullAudioOffer)
+RCT_EXTERN_METHOD(createFullAudioOffer: (NSString *)stunTurnJson)
 RCT_EXTERN_METHOD(setFullAudioRemoteSDP: (NSString *)remoteSDP)
 RCT_EXTERN_METHOD(addFullAudioRemoteIceCandidate: (NSString *)remoteCandidate)
 

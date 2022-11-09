@@ -50,10 +50,10 @@ export function handleWebviewMessage(
         promise = initializeScreenShare(instanceId);
         break;
       case 'createFullAudioOffer':
-        promise = createFullAudioOffer(instanceId);
+        promise = createFullAudioOffer(instanceId, JSON.stringify(data?.arguments[0]));
         break;
       case 'createScreenShareOffer':
-        promise = createScreenShareOffer(instanceId);
+        promise = createScreenShareOffer(instanceId, JSON.stringify(data?.arguments[0]));
         break;
       case 'setScreenShareRemoteSDP':
         promise = setScreenShareRemoteSDP(instanceId, data?.arguments[0].sdp);
