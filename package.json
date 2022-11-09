@@ -1,6 +1,6 @@
 {
   "name": "bigbluebutton-tablet-sdk",
-  "version": "0.1.32",
+  "version": "0.1.33",
   "description": "test",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -12,6 +12,8 @@
     "lib",
     "android",
     "ios",
+    "ios-common",
+    "ios-broadcast-upload-extension",
     "cpp",
     "bigbluebutton-tablet-sdk.podspec",
     "!lib/typescript/example",
